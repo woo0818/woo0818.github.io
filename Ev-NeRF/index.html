@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Ev-NeRF</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:image" content="https://inwoohwang.me/Ev-NeRF/img/nottingham.jpg">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1296">
+    <meta property="og:image:height" content="840">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://inwoohwang.me/Ev-NeRF/" />
+    <meta property="og:title" content="Ev-NeRF: Event Based Neural Radiance Field" />
+    <meta property="og:description"
+        content="Neural Radiance Field training can be accelerated through the use of grid-based representations in NeRF's learned mapping from spatial coordinates to colors and volumetric density. However, these grid-based approaches lack an explicit understanding of scale and therefore often introduce aliasing, usually in the form of jaggies or missing scene content. Anti-aliasing has previously been addressed by mip-NeRF 360, which reasons about sub-volumes along a cone rather than points along a ray, but this approach is not natively compatible with current grid-based techniques. We show how ideas from rendering and signal processing can be used to construct a technique that combines mip-NeRF 360 and grid-based models such as Instant NGP to yield error rates that are 8%-77% lower than either prior technique, and that trains 24x faster than mip-NeRF 360." />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ev-NeRF: Event Based Neural Radiance Field" />
+    <meta name="twitter:description"
+        content="Neural Radiance Field training can be accelerated through the use of grid-based representations in NeRF's learned mapping from spatial coordinates to colors and volumetric density. However, these grid-based approaches lack an explicit understanding of scale and therefore often introduce aliasing, usually in the form of jaggies or missing scene content. Anti-aliasing has previously been addressed by mip-NeRF 360, which reasons about sub-volumes along a cone rather than points along a ray, but this approach is not natively compatible with current grid-based techniques. We show how ideas from rendering and signal processing can be used to construct a technique that combines mip-NeRF 360 and grid-based models such as Instant NGP to yield error rates that are 8%-77% lower than either prior technique, and that trains 24x faster than mip-NeRF 360." />
+    <meta name="twitter:image" content="https://inwoohwang.me/Ev-NeRF/img/teaser.jpg" />
+
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/video_comparison.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <b>Ev-NeRF</b>: Event Based Neural Radiance Field</br>
+                <small>
+                    WACV 2023
+                </small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://inwoohwang.me/">
+                            Inwoo Hwang
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.junhokim.xyz/">
+                            Junho Kim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://3d.snu.ac.kr/members/">
+                            Young Min Kim
+                        </a>
+                    </li>
+                    </br>Seoul National University
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <ul class="nav nav-pills nav-justified">
+                    <li>
+                        <a href="https://arxiv.org/abs/2206.12455">
+                            <image src="img/zip_paper_image.jpg" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=dU4Hqr41RUo">
+                            <image src="img/youtube_icon.png" height="60px">
+                                <h4><strong>Video</strong></h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <video id="v0" width="100%" autoplay loop muted controls>
+                    <source src="img/teaser.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                    We present Ev-NeRF, a Neural Radiance Field derived from event data. While event cameras can measure
+                    subtle
+                    brightness changes in high frame rates, the measurements in low lighting or extreme motion suffer
+                    from significant
+                    domain discrepancy with complex noise. As a result, the performance of event-based vision tasks does
+                    not transfer
+                    to challenging environments, where the event cameras are expected to thrive over normal cameras. We
+                    find that the
+                    multi-view consistency of NeRF provides a powerful selfsupervision signal for eliminating spurious
+                    measurements
+                    and extracting the consistent underlying structure despite highly noisy input. Instead of posed
+                    images of the original
+                    NeRF, the input to Ev-NeRF is the event measurements accompanied by the movements of the sensors.
+                    Using the loss
+                    function that reflects the measurement model of the sensor, Ev-NeRF creates an integrated neural
+                    volume that summarizes
+                    the unstructured and sparse data points captured for about 2-4 seconds. The generated neural volume
+                    can also
+                    produce intensity images from novel views with reasonable depth estimates, which can serve as a
+                    high-quality input to
+                    various vision-based tasks. Our results show that Ev-NeRF achieves competitive performance for
+                    intensity image
+                    reconstruction under extreme noise and high-dynamic-range imaging.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Video
+                </h3>
+                <div class="text-center">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://youtube.com/embed/dU4Hqr41RUo" allowfullscreen
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Overview
+                </h3>
+                <br>
+                <img src="img/overview.png" width="100%">
+
+                <br><br>
+                <p class="text-justify">
+
+                    The input to Ev-NeRF is the stream of event data obtained from an event sensor moving around a
+                    static scene. The stream data is accompanied by a sequence of the sensor’s intermediate positions
+                    which are time-stamped. Ev-NeRF learns the implicit volume with the raw event output of the sensor
+                    and serves as a solution for various event-based applications, such as novel-view intensity image
+                    reconstruction, noise reduction, high dynamic range imaging, intensity image reconstruction, and
+                    depth estimation.
+
+
+
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Event Rendering Loss
+                </h3>
+                <br>
+                <img src="img/ev_loss.png" width="100%">
+
+                <br><br>
+                <p class="text-justify">
+
+                    Ev-NeRF is trained with a loss function that incorporates the sensor movement and the resulting
+                    events triggered by the difference of brightness.
+                    According to the measurement model of the sensor, the events accumulated during a short time
+                    interval and its reflect the difference in brightness.
+                    Using the implicit volume, we render intensity frames from the view points of two adjacent event
+                    camera poses and calculate difference in the intensity of adjacent rendered frames.
+                    <em>Event rendering loss</em> is the discrepancy between the accumulated event and difference
+                    in the intensity of adjacent rendered frames.
+
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@InProceedings{Hwang_2023_WACV,
+    author    = {Hwang, Inwoo and Kim, Junho and Kim, Young Min},
+    title     = {Ev-NeRF: Event Based Neural Radiance Field},
+    booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+    month     = {January},
+    year      = {2023},
+    pages     = {837-847}
+}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+
+                <p class="text-justify">
+
+
+                    The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a> and <a
+                        href="https://dorverbin.github.io/refnerf">Ref-NeRF</a>.
+
+                </p>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>
