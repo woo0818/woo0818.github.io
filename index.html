@@ -1,0 +1,375 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Inwoo Hwang</title>
+
+  <meta name="author" content="Inwoo Hwang">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="icon" href="images/icon.png">
+  <script src="script/functions.js"></script>
+</head>
+
+<body>
+  <table
+    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px">
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr style="padding:0px">
+                <td style="padding:2.5%;width:63%;vertical-align:middle">
+                  <p style="text-align:center">
+                    <name>Inwoo Hwang</name>
+                  </p>
+                  <p>I'm currently a 3rd year PhD student in <a href="https://3d.snu.ac.kr/">3D Vision lab</a> at Seoul
+                    National
+                    University, advised by Prof. <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>.
+                    My research is focused on building practical applications for 3D data, spanning the fields of
+                    computer vision and neural rendering.
+
+                    I will join <a href="https://research.snap.com/index.html">Snap Research</a> as a research
+                    intern this summer (May.2024) in the computational imaging team.
+                    <!--I'm interested in acquiring or reconstructing 3D data using image prior or sensor information.
+                    I'm currently focusing on diffusion models.-->
+                  </p>
+                  <p style="text-align:center">
+                    <a href="https://mailhide.io/e/77JbuY0W">Email</a> &nbsp;/&nbsp;
+                    <a href="/pdfs/cv.pdf">CV</a> &nbsp;/&nbsp;
+                    <a href="https://www.linkedin.com/in/inwoo-hwang-58821325a/">LinkedIn</a> &nbsp;/&nbsp;
+                    <a href="https://scholar.google.co.kr/citations?user=_6DhycEAAAAJ&hl=ko">Google Scholar</a>
+                  </p>
+                </td>
+                <td style="padding:2.5%;width:40%;max-width:40%">
+                  <img style="width:100%;max-width:100%;border-radius:50%" alt="profile photo"
+                    src="images/profile_img.jpg">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr>
+
+
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:20px;width:100%;vertical-align:middle">
+                  <heading>Publications</heading>
+                  <p>
+                    <b>Research Keywords</b>: Motion Generation, Text-to-3D, Neural Rendering.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+
+              <tr onmouseout="text2scene_stop()" onmouseover="text2scene_start()">
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <div class='two' id='text2scene_over'>
+                      <img src="images/text2scene.gif" width="160">
+                    </div>
+                    <img src=' images/text2scene.jpg' width="160">
+                  </div>
+                  <script type="text/javascript">
+                    function text2scene_start() {
+                      document.getElementById('text2scene_over').style.opacity = "1";
+                    }
+
+                    function text2scene_stop() {
+                      document.getElementById('text2scene_over').style.opacity = "0";
+                    }
+                    text2scene_stop()
+                  </script>
+                </td>
+                <td style="padding:20px;width:75%;vertical-align:middle">
+                  <a href="http://inwoohwang.me/Text2Scene">
+                    <papertitle>Text2Scene: Text-driven Indoor Scene Stylization with Part-aware Details</papertitle>
+                  </a>
+                  <br>
+                  <strong>Inwoo Hwang</strong>,
+                  <a href="https://www.sshowbiz.xyz/">Hyeonwoo Kim</a>,
+                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+                  <br>
+                  <em>CVPR</em>, 2023 <mark>Highlight</mark>
+                  <br>
+                  <a href="https://arxiv.org/abs/2308.16880">arxiv</a>
+                  |
+                  <a
+                    href="https://openaccess.thecvf.com/content/CVPR2023/html/Hwang_Text2Scene_Text-Driven_Indoor_Scene_Stylization_With_Part-Aware_Details_CVPR_2023_paper.html">paper</a>
+                  |
+                  <a href="https://www.youtube.com/watch?v=CGIXY2kwIYM">video</a>
+                  |
+                  <a href="http://inwoohwang.me/Text2Scene">project page</a>
+                  <p></p>
+                  <p>A method to automatically create realistic and part-aware textures for virtual scenes
+                    composed of multiple objects.</p>
+                </td>
+              </tr>
+
+
+
+              <tr onmouseout="text2pointcloud_stop()" onmouseover="text2pointcloud_start()">
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <div class='two' id='text2pointcloud_over'>
+                      <img src="images/text2pointcloud.gif" width="160">
+                    </div>
+                    <img src=' images/text2pointcloud.png' width="160">
+                  </div>
+                  <script type="text/javascript">
+                    function text2pointcloud_start() {
+                      document.getElementById('text2pointcloud_over').style.opacity = "1";
+                    }
+
+                    function text2pointcloud_stop() {
+                      document.getElementById('text2pointcloud_over').style.opacity = "0";
+                    }
+                    text2pointcloud_stop()
+                  </script>
+                </td>
+                <td style="padding:20px;width:75%;vertical-align:middle">
+                  <a href="https://diglib.eg.org/xmlui/handle/10.2312/egs20231007">
+                    <papertitle>Text2PointCloud: Text-Driven Stylization for Sparse PointCloud</papertitle>
+                  </a>
+                  <br>
+                  <strong>Inwoo Hwang</strong>,
+                  <a href="https://www.sshowbiz.xyz/">Hyeonwoo Kim</a>,
+                  Donggeun Lim,
+                  <a href="https://inbumpark.github.io/">Inbum Park</a>,
+                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+                  <br>
+                  <em>Eurographics short</em>, 2023
+                  <br>
+                  <a href="https://diglib.eg.org/xmlui/handle/10.2312/egs20231007">paper</a>
+                  |
+                  <a href="https://www.youtube.com/watch?v=aGDaKHKv1Xc">video</a>
+                  <p></p>
+                  <p>A method to process sparse, noisy point cloud input and generate high-quality stylized output.</p>
+                </td>
+              </tr>
+
+              <tr onmouseout="evnerf_stop()" onmouseover="evnerf_start()">
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <div class='two' id='evnerf_over'>
+                      <img src="images/evnerf.gif" width="160">
+                    </div>
+                    <img src=' images/evnerf.jpg' width="160">
+                  </div>
+                  <script type="text/javascript">
+                    function evnerf_start() {
+                      document.getElementById('evnerf_over').style.opacity = "1";
+                    }
+
+                    function evnerf_stop() {
+                      document.getElementById('evnerf_over').style.opacity = "0";
+                    }
+                    evnerf_stop()
+                  </script>
+                </td>
+                <td style="padding:20px;width:75%;vertical-align:middle">
+                  <!--<a
+                    href="https://openaccess.thecvf.com/content/WACV2023/html/Hwang_Ev-NeRF_Event_Based_Neural_Radiance_Field_WACV_2023_paper.html">
+                    <papertitle>Ev-NeRF: Event Based Neural Radiance Field</papertitle>
+                  </a> -->
+                  <a href="http://inwoohwang.me/Ev-NeRF">
+                    <papertitle>Ev-NeRF: Event Based Neural Radiance Field</papertitle>
+                  </a>
+                  <br>
+                  <strong>Inwoo Hwang</strong>,
+                  <a href="https://www.junhokim.xyz/">Junho Kim</a>,
+                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+                  <br>
+                  <em>WACV</em>, 2023
+                  <br>
+                  <a href="https://arxiv.org/abs/2206.12455">arxiv</a>
+                  |
+                  <a
+                    href="https://openaccess.thecvf.com/content/WACV2023/html/Hwang_Ev-NeRF_Event_Based_Neural_Radiance_Field_WACV_2023_paper.html">paper</a>
+                  |
+                  <a href="https://www.youtube.com/watch?v=dU4Hqr41RUo">video</a>
+                  |
+                  <a href="http://inwoohwang.me/Ev-NeRF">project page</a>
+                  <p></p>
+                  <p>A Neural Radiance Field (NeRF) derived from event data, which serves as solutions for various
+                    event-based applications and highly robust to sensor noise.</p>
+                </td>
+              </tr>
+
+              <tr onmouseout="evtta_stop()" onmouseover="evtta_start()">
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <div class='two' id='evtta_over'>
+                      <img src="images/evtta_over.png" width="160">
+                    </div>
+                    <img src=' images/evtta.png' width="160">
+                  </div>
+                  <script type="text/javascript">
+                    function evtta_start() {
+                      document.getElementById('evtta_over').style.opacity = "1";
+                    }
+
+                    function evtta_stop() {
+                      document.getElementById('evtta_over').style.opacity = "0";
+                    }
+                    evtta_stop()
+                  </script>
+                </td>
+                <td style="padding:20px;width:75%;vertical-align:middle">
+                  <a
+                    href="https://openaccess.thecvf.com/content/CVPR2022/html/Kim_Ev-TTA_Test-Time_Adaptation_for_Event-Based_Object_Recognition_CVPR_2022_paper.html">
+                    <papertitle>Ev-TTA: Test-Time Adaptation for Event-Based Object Recognition</papertitle>
+                  </a>
+                  <br>
+                  <a href="https://www.junhokim.xyz/">Junho Kim</a>,
+                  <strong>Inwoo Hwang</strong>,
+                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+                  <br>
+                  <em>CVPR</em>, 2022
+                  <br>
+                  <a href="https://arxiv.org/abs/2203.12247">arxiv</a>
+                  |
+                  <a
+                    href="https://openaccess.thecvf.com/content/CVPR2022/papers/Kim_Ev-TTA_Test-Time_Adaptation_for_Event-Based_Object_Recognition_CVPR_2022_paper.pdf">paper</a>
+                  |
+                  <a href="https://www.youtube.com/watch?v=H4D7gDHn7oI">video</a>
+                  <p></p>
+                  <p>A simple and effective test-time adaptation algorithms for event-based object recognition.
+                    Successfully adapt classifiers to various external conditions.</p>
+                </td>
+              </tr>
+
+              <tr onmouseout="maskgrasp_stop()" onmouseover="maskgrasp_start()">
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <div class='two' id='maskgrasp_over'>
+                      <img src="images/maskgrasp.gif" width="160">
+                    </div>
+                    <img src=' images/maskgrasp.jpg' width="160">
+                  </div>
+                  <script type="text/javascript">
+                    function maskgrasp_start() {
+                      document.getElementById('maskgrasp_over').style.opacity = "1";
+                    }
+
+                    function maskgrasp_stop() {
+                      document.getElementById('maskgrasp_over').style.opacity = "0";
+                    }
+                    maskgrasp_stop()
+                  </script>
+                </td>
+                <td style="padding:20px;width:75%;vertical-align:middle">
+                  <a href="https://ieeexplore.ieee.org/document/9982130">
+                    <papertitle>MasKGrasp: Mask-based Grasping for Scenes with Multiple General Real-world Objects
+                    </papertitle>
+                  </a>
+                  <br>
+                  <a href="https://twjhlee.github.io/">Junho Lee</a>,
+                  <a href="https://hurjunhwa.github.io/">Junhwa Hur</a>,
+                  <strong>Inwoo Hwang</strong>,
+                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+                  <br>
+                  <em>IROS</em>, 2022
+                  <br>
+                  <a href="https://ieeexplore.ieee.org/document/9982130">paper</a>
+                  |
+                  <a href="https://www.youtube.com/watch?v=iWvstHPu97Y">video</a>
+                  <p></p>
+                  <p>A real world grasping algorithm that can generalize to transparent and opaque obejcts via masks.
+                  </p>
+                </td>
+              </tr>
+
+
+
+
+
+            </tbody>
+          </table>
+
+          <hr>
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tr>
+              <td style="padding:2.5%;width:100%;vertical-align:middle">
+                <h2>Honors and Awards</h2>
+                <p> Excellent Research Talent Fellowship, from BK21, 2023 fall
+                </p>
+                <p> Hyundai Motor Chung Mong-Koo Scholarship, 2022 to current
+                </p>
+                <p> University Mathematics Competition, Field 1 for Mathematics Major, Gold Medal, 2020
+                </p>
+                <p>
+                  President Science Scholarship (Field: Mathematics), 2016 to 2021
+                </p>
+                <p>
+                  Final Korean Mathematical Olympiad, Excellence award, 2015
+                </p>
+              </td>
+            </tr>
+          </table>
+
+
+          <hr>
+          <!-- Education -->
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tr>
+              <td style="padding:2.5%;width:100%;vertical-align:middle">
+                <h2>Education</h2>
+                <p> Seoul National University, Seoul, Korea, Mar. 2022 - Present M.S./Ph.D. in Electrical and Computer
+                  Engineering </p>
+                <p> Seoul National University, Seoul, Korea, Mar. 2016 - Feb. 2022 B.S. in Electrical and Computer
+                  Engineering</p>
+                <p> Seoul Science High School, Seoul, Korea, Mar. 2013 - Feb. 2016
+                </p>
+              </td>
+            </tr>
+          </table>
+          <hr>
+
+          <!-- Academic Activities -->
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tr>
+              <td style="padding:2.5%;width:100%;vertical-align:middle">
+                <h2>Academic Activites</h2>
+                <p>Conference Reviewer: CVPR, ICCV, ICRA</p>
+                <p>Journal Reviewer: RA-L</p>
+              </td>
+            </tr>
+          </table>
+
+
+
+          <br>
+          <hr>
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tr>
+              <td style="padding:0px">
+                <br>
+                <p style="text-align:right;font-size:small;">
+                  Design / source code from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron</a>'s
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+  </table>
+</body>
+
+</html>
