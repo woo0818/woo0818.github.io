@@ -503,6 +503,94 @@
 
                     
                 </div>
+                <div class="content has-text-justified"></div>
+                    
+                    <p>
+                      Test Case #2
+                    </p>
+                </div>
+
+                <div class="columns is-centered">
+                    <div class="video-container" data-index="0">
+                        <video playsinline autoplay muted loop>
+                            <source src="static/videos/video2animation2_input.mkv" type="video/mp4">
+                        </video>
+                        <video playsinline muted loop style="display: none;">
+                            <source src="static/videos/video2animation2_initial.mkv" type="video/mp4">
+                        </video>
+                        <div class="button prev">
+                            <div class="arrow"></div>
+                        </div>
+                        <div class="button next">
+                            <div class="arrow"></div>
+                        </div>
+                        <p>Keyframes + SceneMI</p>
+                    </div>
+                    
+                    <div class="video-container" data-index="1">
+                        <video playsinline autoplay muted loop>
+                            <source src="static/videos/video2animation2_ours.mkv" type="video/mp4">
+                        </video>
+                        <video playsinline muted loop style="display: none;">
+                            <source src="static/videos/video2animation2_before.mkv" type="video/mp4">
+                        </video>
+                        <div class="button prev">
+                            <div class="arrow"></div>
+                        </div>
+                        <div class="button next">
+                            <div class="arrow"></div>
+                        </div>
+                        <p>Baseline Comparison</p>
+                    </div>
+                
+                    <script>
+                        document.querySelectorAll('.video-container').forEach(container => {
+                            const videos = Array.from(container.querySelectorAll('video'));
+                            const prevButton = container.querySelector('.prev');
+                            const nextButton = container.querySelector('.next');
+                            const caption = container.querySelector('p');
+                
+                            // Custom captions for each column
+                            const captionsList = [
+                                ["Input Monocular Video", "Initial Results"],
+                                ["SceneMI", "SceneMI + Input Keyframes"]
+                            ];
+
+                            let currentIndex = 0;
+
+                            function showVideo(index) {
+                                // Hide all videos in this container
+                                videos.forEach(video => {
+                                    video.style.display = 'none';
+                                    video.pause();
+                                });
+
+                                // Show the selected video
+                                videos[index].style.display = 'block';
+                                videos[index].play();
+
+                                // Update caption
+                                caption.textContent = captionsList[container.dataset.index][index];
+                            }
+
+                            // Event listeners for buttons
+                            prevButton.addEventListener('click', () => {
+                                currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+                                showVideo(currentIndex);
+                            });
+
+                            nextButton.addEventListener('click', () => {
+                                currentIndex = (currentIndex + 1) % videos.length;
+                                showVideo(currentIndex);
+                            });
+
+                            // Initialize first video
+                            showVideo(currentIndex);
+                                        });
+                    </script>
+
+                    
+                </div>
             </div>
             
               </div>
