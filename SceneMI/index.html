@@ -59,6 +59,11 @@
             border-radius: 10px; /* Optional: Rounded corners for modern design */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
         }
+        .video-wrapper {
+            width: 45%; /* 각 비디오 컨테이너가 동일한 너비를 차지하도록 설정 */
+            margin: 0 2.5%; /* 비디오 사이의 간격 */
+            text-align: center;
+        }
         video {
             width: 100%;
             border-radius: 8px; /* Optional: Rounded corners for video */
@@ -388,12 +393,21 @@
                       </video>
                       <p>GIMO</p>
                   </div>
-                  <div class="column is-centered has-text-centered">
-                      <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                          <source src="static/videos/gimo1_ours_side.mkv" type="video/mp4">
-                      </video>
-                      <p>Ours</p>
-                  </div>
+                  <div class="column video-wrapper video-container" data-index="100" data-captions='["Ours", "Ours + Input Keyframes"]'>
+                    <video playsinline autoplay muted loop>
+                        <source src="static/videos/gimo1_ours_side.mkv" type="video/mp4">
+                    </video>
+                    <video playsinline muted loop style="display: none;">
+                        <source src="static/videos/gimo1_ours_side.mkv" type="video/mp4">
+                    </video>
+                    <div class="button prev">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="button next">
+                        <div class="arrow"></div>
+                    </div>
+                    <p>Baseline Comparison</p>
+                </div>
               </div>
             </div>
             <div class="column is-centered has-text-centered">
