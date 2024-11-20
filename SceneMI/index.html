@@ -39,6 +39,75 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <style>
+    body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .video-container {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            margin: 30px auto; /* Adds vertical spacing between columns */
+            padding: 15px; /* Adds internal padding for aesthetic spacing */
+            background-color: #ffffff; /* Optional: Add a background for better visual separation */
+            border: 1px solid #ccc; /* Optional: Add a border for better definition */
+            border-radius: 10px; /* Optional: Rounded corners for modern design */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
+        }
+        video {
+            width: 100%;
+            border-radius: 8px; /* Optional: Rounded corners for video */
+        }
+        .button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .button:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+        .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .prev .arrow {
+            border-width: 10px 15px 10px 0;
+            border-color: transparent gray transparent transparent;
+        }
+        .next .arrow {
+            border-width: 10px 0 10px 15px;
+            border-color: transparent transparent transparent gray;
+        }
+        .prev {
+            left: 5px;
+        }
+        .next {
+            right: 5px;
+        }
+        p {
+            font-size: 18px;
+            margin-top: 10px;
+            text-align: center;
+        }
+</style>
 </head>
 <body>
 
@@ -71,6 +140,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
+            <p></p>
             Existing motion in-betweening research focuses on isolated character movements, often overlooking the impact of the surrounding environment. 
             However, in real-world scenarios, movements are essentially shaped by the context—such as a character adjusting their position and posture to avoid obstacles. 
             In this work, we introduce Scene-aware Motion In-betweening (SceneMI), a framework that generates transitions between keyframes that seamlessly adapt to the environment. 
@@ -141,7 +211,7 @@
               <div class="columns is-centered">
                   <div class="column is-centered has-text-centered">
                       <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                          <source src=" type="video/mp4">
+                          <source src="static/videos/scene_aware2_mdm.mkv" type="video/mp4">
                       </video>
                       <p>MDM</p>
                   </div>
@@ -186,7 +256,7 @@
       <div class="container is-max-desktop">
           <div class="column is-centered has-text-centered">
               <div class="column is-centered has-text-centered">
-                <h2 class="title is-3">Robustness (Noisy) on Keyframes</h2>
+                <h2 class="title is-3">Robustness on (Noisy) Keyframes</h2>
                 <div class="content has-text-justified">
                     <p>
                       SceneMI perform scene-aware motion in-betweening~~.
@@ -353,18 +423,85 @@
                 </div>
 
                 <div class="columns is-centered">
-                    <div class="column is-centered has-text-centered">
-                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                            <source src="" type="video/mp4">
+                    <div class="video-container" data-index="0">
+                        <video playsinline autoplay muted loop>
+                            <source src="static/videos/video2animation_input.mkv" type="video/mp4">
                         </video>
-                        <p>Before SceneMI</p>
+                        <video playsinline muted loop style="display: none;">
+                            <source src="static/videos/video2animation_initial.mkv" type="video/mp4">
+                        </video>
+                        <div class="button prev">
+                            <div class="arrow"></div>
+                        </div>
+                        <div class="button next">
+                            <div class="arrow"></div>
+                        </div>
+                        <p>Keyframes + SceneMI</p>
                     </div>
-                    <div class="column is-centered has-text-centered">
-                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                    
+                    <div class="video-container" data-index="1">
+                        <video playsinline autoplay muted loop>
                             <source src="static/videos/video2animation_ours.mkv" type="video/mp4">
                         </video>
-                        <p>After SceneMI</p>
+                        <video playsinline muted loop style="display: none;">
+                            <source src="static/videos/video2animation_before.mkv" type="video/mp4">
+                        </video>
+                        <div class="button prev">
+                            <div class="arrow"></div>
+                        </div>
+                        <div class="button next">
+                            <div class="arrow"></div>
+                        </div>
+                        <p>Baseline Comparison</p>
                     </div>
+                
+                    <script>
+                        document.querySelectorAll('.video-container').forEach(container => {
+                            const videos = Array.from(container.querySelectorAll('video'));
+                            const prevButton = container.querySelector('.prev');
+                            const nextButton = container.querySelector('.next');
+                            const caption = container.querySelector('p');
+                
+                            // Custom captions for each column
+                            const captionsList = [
+                                ["Input Monocular Video", "Initial Results"],
+                                ["SceneMI", "SceneMI + Input Keyframes"]
+                            ];
+
+                            let currentIndex = 0;
+
+                            function showVideo(index) {
+                                // Hide all videos in this container
+                                videos.forEach(video => {
+                                    video.style.display = 'none';
+                                    video.pause();
+                                });
+
+                                // Show the selected video
+                                videos[index].style.display = 'block';
+                                videos[index].play();
+
+                                // Update caption
+                                caption.textContent = captionsList[container.dataset.index][index];
+                            }
+
+                            // Event listeners for buttons
+                            prevButton.addEventListener('click', () => {
+                                currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+                                showVideo(currentIndex);
+                            });
+
+                            nextButton.addEventListener('click', () => {
+                                currentIndex = (currentIndex + 1) % videos.length;
+                                showVideo(currentIndex);
+                            });
+
+                            // Initialize first video
+                            showVideo(currentIndex);
+                                        });
+                    </script>
+
+                    
                 </div>
             </div>
             
