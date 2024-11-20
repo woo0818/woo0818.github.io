@@ -264,37 +264,76 @@
                 </div>
 
                 <div class="columns is-centered">
-                    <div class="column is-centered has-text-centered">
-                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                            <source src=" type="video/mp4">
+                    <div class="video-container" data-index="0" data-captions='["MDM", "Input Noisy Keyframes"]'>
+                        <video playsinline autoplay muted loop>
+                            <source src="static/videos/robustness1_ours.mkv" type="video/mp4">
                         </video>
-                        <p>MDM</p>
+                        <video playsinline muted loop style="display: none;">
+                            <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
+                        </video>
+                        <div class="button prev">
+                            <div class="arrow"></div>
+                        </div>
+                        <div class="button next">
+                            <div class="arrow"></div>
+                        </div>
+                        <p>Keyframes + SceneMI</p>
                     </div>
-                    <div class="column is-centered has-text-centered">
-                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                            <source src="" type="video/mp4">
+                    
+                    <div class="video-container" data-index="1" data-captions='["CondMDI", "Input Noisy Keyframes"]'>
+                        <video playsinline autoplay muted loop>
+                            <source src="static/videos/robustness1_ours.mkv" type="video/mp4">
                         </video>
-                        <p>CondMDI</p>
+                        <video playsinline muted loop style="display: none;">
+                            <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
+                        </video>
+                        <div class="button prev">
+                            <div class="arrow"></div>
+                        </div>
+                        <div class="button next">
+                            <div class="arrow"></div>
+                        </div>
+                        <p>Baseline Comparison</p>
                     </div>
                 </div>
             </div>
             <div class="column is-centered has-text-centered">
-                <div class="content has-text-justified">
-                    
-                </div>
                 <div class="columns is-centered">
-                    <div class="column is-centered has-text-centered">
-                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                            <source src="" type="video/mp4">
+                    <div class="video-container" data-index="2" data-captions='["Ours w.o. noise-awareness", "Input Noisy Keyframes"]'>
+                        <video playsinline autoplay muted loop>
+                            <source src="static/videos/robustness1_ours_wo_noiseawareness.mkv" type="video/mp4">
                         </video>
-                        <p>Ours w.o. scene-awareness</p>
-                    </div>
-                    <div class="column is-centered has-text-centered">
-                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                            <source src="" type="video/mp4">
+                        <video playsinline muted loop style="display: none;">
+                            <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
                         </video>
-                        <p>Ours</p>
+                        <div class="button prev">
+                            <div class="arrow"></div>
+                        </div>
+                        <div class="button next">
+                            <div class="arrow"></div>
+                        </div>
+                        <p>Keyframes + SceneMI</p>
                     </div>
+                    
+                    <div class="video-container" data-index="3" data-captions='["Ours", "Input Noisy Keyframes"]'>
+                        <video playsinline autoplay muted loop>
+                            <source src="static/videos/robustness1_ours.mkv" type="video/mp4">
+                        </video>
+                        <video playsinline muted loop style="display: none;">
+                            <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
+                        </video>
+                        <div class="button prev">
+                            <div class="arrow"></div>
+                        </div>
+                        <div class="button next">
+                            <div class="arrow"></div>
+                        </div>
+                        <p>Baseline Comparison</p>
+                    </div>
+                
+                    
+
+                    
                 </div>
             </div>
             
@@ -423,7 +462,7 @@
                 </div>
 
                 <div class="columns is-centered">
-                    <div class="video-container" data-index="0">
+                    <div class="video-container" data-index="4" data-captions='["Input Monocular Video", "Initial Stage"]'>
                         <video playsinline autoplay muted loop>
                             <source src="static/videos/video2animation_input.mkv" type="video/mp4">
                         </video>
@@ -439,7 +478,7 @@
                         <p>Keyframes + SceneMI</p>
                     </div>
                     
-                    <div class="video-container" data-index="1">
+                    <div class="video-container" data-index="5" data-captions='["Ours", "Ours + Input Keyframes"]'>
                         <video playsinline autoplay muted loop>
                             <source src="static/videos/video2animation_ours.mkv" type="video/mp4">
                         </video>
@@ -455,52 +494,7 @@
                         <p>Baseline Comparison</p>
                     </div>
                 
-                    <script>
-                        document.querySelectorAll('.video-container').forEach(container => {
-                            const videos = Array.from(container.querySelectorAll('video'));
-                            const prevButton = container.querySelector('.prev');
-                            const nextButton = container.querySelector('.next');
-                            const caption = container.querySelector('p');
-                
-                            // Custom captions for each column
-                            const captionsList = [
-                                ["Input Monocular Video", "Initial Results"],
-                                ["SceneMI", "SceneMI + Input Keyframes"]
-                            ];
-
-                            let currentIndex = 0;
-
-                            function showVideo(index) {
-                                // Hide all videos in this container
-                                videos.forEach(video => {
-                                    video.style.display = 'none';
-                                    video.pause();
-                                });
-
-                                // Show the selected video
-                                videos[index].style.display = 'block';
-                                videos[index].play();
-
-                                // Update caption
-                                caption.textContent = captionsList[container.dataset.index][index];
-                            }
-
-                            // Event listeners for buttons
-                            prevButton.addEventListener('click', () => {
-                                currentIndex = (currentIndex - 1 + videos.length) % videos.length;
-                                showVideo(currentIndex);
-                            });
-
-                            nextButton.addEventListener('click', () => {
-                                currentIndex = (currentIndex + 1) % videos.length;
-                                showVideo(currentIndex);
-                            });
-
-                            // Initialize first video
-                            showVideo(currentIndex);
-                                        });
-                    </script>
-
+                    
                     
                 </div>
                 <div class="content has-text-justified"></div>
@@ -511,7 +505,7 @@
                 </div>
 
                 <div class="columns is-centered">
-                    <div class="video-container" data-index="0">
+                    <div class="video-container" data-index="6" data-captions='["Input Monocular Video", "Initial Stage"]'>
                         <video playsinline autoplay muted loop>
                             <source src="static/videos/video2animation2_input.mkv" type="video/mp4">
                         </video>
@@ -527,7 +521,7 @@
                         <p>Keyframes + SceneMI</p>
                     </div>
                     
-                    <div class="video-container" data-index="1">
+                    <div class="video-container" data-index="7" data-captions='["Ours", "Ours + Input Keyframes"]'>
                         <video playsinline autoplay muted loop>
                             <source src="static/videos/video2animation2_ours.mkv" type="video/mp4">
                         </video>
@@ -543,52 +537,7 @@
                         <p>Baseline Comparison</p>
                     </div>
                 
-                    <script>
-                        document.querySelectorAll('.video-container').forEach(container => {
-                            const videos = Array.from(container.querySelectorAll('video'));
-                            const prevButton = container.querySelector('.prev');
-                            const nextButton = container.querySelector('.next');
-                            const caption = container.querySelector('p');
-                
-                            // Custom captions for each column
-                            const captionsList = [
-                                ["Input Monocular Video", "Initial Results"],
-                                ["SceneMI", "SceneMI + Input Keyframes"]
-                            ];
-
-                            let currentIndex = 0;
-
-                            function showVideo(index) {
-                                // Hide all videos in this container
-                                videos.forEach(video => {
-                                    video.style.display = 'none';
-                                    video.pause();
-                                });
-
-                                // Show the selected video
-                                videos[index].style.display = 'block';
-                                videos[index].play();
-
-                                // Update caption
-                                caption.textContent = captionsList[container.dataset.index][index];
-                            }
-
-                            // Event listeners for buttons
-                            prevButton.addEventListener('click', () => {
-                                currentIndex = (currentIndex - 1 + videos.length) % videos.length;
-                                showVideo(currentIndex);
-                            });
-
-                            nextButton.addEventListener('click', () => {
-                                currentIndex = (currentIndex + 1) % videos.length;
-                                showVideo(currentIndex);
-                            });
-
-                            // Initialize first video
-                            showVideo(currentIndex);
-                                        });
-                    </script>
-
+                    
                     
                 </div>
             </div>
@@ -599,6 +548,48 @@
   </div>
   </div>
 </section>
+
+<!-- JavaScript -->
+<script>
+    document.querySelectorAll('.video-container').forEach(container => {
+      const videos = Array.from(container.querySelectorAll('video'));
+      const prevButton = container.querySelector('.prev');
+      const nextButton = container.querySelector('.next');
+      const caption = container.querySelector('p');
+      const captionsList = JSON.parse(container.dataset.captions);
+  
+      let currentIndex = 0;
+  
+      function showVideo(index) {
+        // Hide all videos in this container
+        videos.forEach(video => {
+          video.style.display = 'none';
+          video.pause();
+        });
+  
+        // Show the selected video
+        videos[index].style.display = 'block';
+        videos[index].play();
+  
+        // Update caption
+        caption.textContent = captionsList[index];
+      }
+  
+      // Event listeners for buttons
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+        showVideo(currentIndex);
+      });
+  
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % videos.length;
+        showVideo(currentIndex);
+      });
+  
+      // Initialize first video
+      showVideo(currentIndex);
+    });
+  </script>
 
 
 </body>
