@@ -192,8 +192,8 @@
 
                 <div class="content has-text-justified">
                     <p></p>
-                    Our work first address motion in-betweening in 3D scenes, capable of generating realistic transitions that respect both keyframe and environmental constraints.
-                    We 
+                    
+                    Our work is the first to tackle motion in-betweening within 3D scenes, showcasing the ability to generate realistic transitions that adhere to both keyframe and environmental constraints. We provide additional qualitative video results for scene-aware motion in-betweening tasks under sparse keyframe settings, comparing against baselines using the TRUMANS dataset.
                     <p></p>
                 </div>
 
@@ -255,7 +255,7 @@
                                     <video poster="" id="tree" playsinline autoplay muted loop width="100%">
                                         <source src="static/videos/scene_aware1_ours.mkv" type="video/mp4">
                                     </video>
-                                    <p>Ours</p>
+                                    <p><strong>Ours</strong></p>
                                 </div>
                             </div>
                             
@@ -291,7 +291,7 @@
                                     <video poster="" id="tree" playsinline autoplay muted loop width="100%">
                                         <source src="static/videos/scene_aware2_ours.mkv" type="video/mp4">
                                     </video>
-                                    <p>Ours</p>
+                                    <p><strong>Ours</strong></p>
                                 </div>
                             </div>
 
@@ -329,34 +329,31 @@
                             <div class="columns is-centered">
                                 <div class="column is-centered has-text-centered">
                                     <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                                        <source src="static/videos/scene_aware1_mdm.mkv" type="video/mp4">
+                                        <source src="static/videos/.mkv" type="video/mp4">
                                     </video>
-                                    <p>MDM</p>
+                                    <p>Ours Case #1</p>
                                 </div>
                                 <div class="column is-centered has-text-centered">
                                     <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                                        <source src="static/videos/scene_aware1_condmdi.mkv" type="video/mp4">
+                                        <source src="static/videos/.mkv" type="video/mp4">
                                     </video>
-                                    <p>CondMDI</p>
+                                    <p>Ours Case #2</p>
                                 </div>
                             </div>
                         
 
-                            <div class="content has-text-justified">
-                                
-                            </div>
                             <div class="columns is-centered">
                                 <div class="column is-centered has-text-centered">
                                     <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                                        <source src="static/videos/scene_aware1_ours_wo_sceneawareness.mkv" type="video/mp4">
+                                        <source src="static/videos/.mkv" type="video/mp4">
                                     </video>
-                                    <p>Ours w.o. scene-awareness</p>
+                                    <p>Ours Case #3</p>
                                 </div>
                                 <div class="column is-centered has-text-centered">
                                     <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                                        <source src="static/videos/scene_aware1_ours.mkv" type="video/mp4">
+                                        <source src="static/videos/.mkv" type="video/mp4">
                                     </video>
-                                    <p>Ours</p>
+                                    <p>Ours Case #4</p>
                                 </div>
                             </div>
                             
@@ -384,9 +381,13 @@
                 
                 <div class="content has-text-justified">
                     <p></p>
-                    xisting motion in-betweening research focuses on isolated character movements, often overlooking the impact of the surrounding environment. 
-                    H
+
+                    Our work demonstrates robustness to keyframe quality, handling imperfections and noise effectively.
+                    We present video comparisons against baselines for scene-aware motion in-betweening under noisy keyframe conditions, using a synthetic noisy test set generated by adding Gaussian noise to the TRUMANS dataset.
+                    We demonstrate our performance under dense noisy keyframe settings (with an interval of 3), showcasing the robustness in extreme noisy scenarios.
+                    The videos are switchable, allowing viewers to observe how noisy keyframes are given as input.
                     <p></p>
+                    
                 </div>
                 
 
@@ -445,9 +446,7 @@
                             </div>
                         </div>
                         
-                        
-                
-                        <div class="columns is-centered">
+                        <div class="columns is-centered has-text-centered">
                             <div class="video-container" data-index="2" data-captions='["Ours w.o. noise-awareness", "Input Noisy Keyframes"]'>
                                 <video playsinline autoplay muted loop>
                                     <source src="static/videos/robustness1_ours_wo_noiseawareness.mkv" type="video/mp4">
