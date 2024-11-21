@@ -112,7 +112,28 @@
             margin-top: 10px;
             text-align: center;
         }
+                
 </style>
+
+
+<style>
+    /* Toggle arrow position is fixed */
+    #toggle-comparisons {
+        position: relative;
+        z-index: 10;
+    }
+
+    #toggle-arrow {
+        transition: transform 0.3s ease; /* Smooth arrow rotation */
+    }
+
+    #comparisons-section {
+        transition: opacity 0.3s ease, height 0.3s ease; /* Smooth content visibility */
+    }
+</style>
+
+
+
 </head>
 <body>
 
@@ -159,283 +180,417 @@
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-
-    
   </div>
 </section>
 
 <section class="hero is-small is-light">
-  <div class="hero-body">
-      <div class="container is-max-desktop">
-          <div class="column is-centered has-text-centered">
-              <div class="column is-centered has-text-centered">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            
+            <div class="column is-centered has-text-centered">
                 <h2 class="title is-3">Scene-Awareness</h2>
+
                 <div class="content has-text-justified">
-                    <p>
-                      SceneMI perform scene-aware motion in-betweening.
-                    </p>
+                    <p></p>
+                    Our work first address motion in-betweening in 3D scenes, capable of generating realistic transitions that respect both keyframe and environmental constraints.
+                    <p></p>
                 </div>
 
-                <div class="columns is-centered">
-                    <div class="column is-centered has-text-centered">
-                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                            <source src="static/videos/scene_aware1_mdm.mkv" type="video/mp4">
-                        </video>
-                        <p>MDM</p>
-                    </div>
-                    <div class="column is-centered has-text-centered">
-                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                            <source src="static/videos/scene_aware1_condmdi.mkv" type="video/mp4">
-                        </video>
-                        <p>CondMDI</p>
-                    </div>
-                </div>
-            </div>
-            <div class="column is-centered has-text-centered">
-                <div class="content has-text-justified">
+                <div class="column is-centered has-text-centered">
                     
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-top: 15px solid black;
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Comparisons</p>
+                        </div>
+                    
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+                            
+                            
+                            <div class="column is-centered has-text-centered">
+                                <div class="columns is-centered">
+                                    <div class="column is-centered has-text-centered">
+                                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                            <source src="static/videos/scene_aware1_mdm.mkv" type="video/mp4">
+                                        </video>
+                                        <p>MDM</p>
+                                    </div>
+                                    <div class="column is-centered has-text-centered">
+                                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                            <source src="static/videos/scene_aware1_condmdi.mkv" type="video/mp4">
+                                        </video>
+                                        <p>CondMDI</p>
+                                    </div>
+                                </div>
+                            </div>
+                        
+
+
+                            <div class="column is-centered has-text-centered">
+                                <div class="content has-text-justified">
+                                    
+                                </div>
+                                <div class="columns is-centered">
+                                    <div class="column is-centered has-text-centered">
+                                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                            <source src="static/videos/scene_aware1_ours_wo_sceneawareness.mkv" type="video/mp4">
+                                        </video>
+                                        <p>Ours w.o. scene-awareness</p>
+                                    </div>
+                                    <div class="column is-centered has-text-centered">
+                                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                            <source src="static/videos/scene_aware1_ours.mkv" type="video/mp4">
+                                        </video>
+                                        <p>Ours</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="content is-centered">
+                                <hr class="case-divider">
+                            </div>
+
+                            <div class="column is-centered has-text-centered">
+
+                                <div class="columns is-centered">
+                                    <div class="column is-centered has-text-centered">
+                                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                            <source src="static/videos/scene_aware2_mdm.mkv" type="video/mp4">
+                                        </video>
+                                        <p>MDM</p>
+                                    </div>
+                                    <div class="column is-centered has-text-centered">
+                                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                            <source src="static/videos/scene_aware2_condmdi.mkv" type="video/mp4">
+                                        </video>
+                                        <p>CondMDI</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        
+
+                            <div class="column is-centered has-text-centered">
+                                <div class="content has-text-justified">
+                                    
+                                </div>
+                                <div class="columns is-centered">
+                                    <div class="column is-centered has-text-centered">
+                                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                            <source src="static/videos/scene_aware2_ours_wo_sceneawareness.mkv" type="video/mp4">
+                                        </video>
+                                        <p>Ours w.o. scene-awareness</p>
+                                    </div>
+                                    <div class="column is-centered has-text-centered">
+                                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                            <source src="static/videos/scene_aware2_ours.mkv" type="video/mp4">
+                                        </video>
+                                        <p>Ours</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    
+                    </div>
+
                 </div>
-                <div class="columns is-centered">
-                    <div class="column is-centered has-text-centered">
-                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                            <source src="static/videos/scene_aware1_ours_wo_sceneawareness.mkv" type="video/mp4">
-                        </video>
-                        <p>Ours w.o. scene-awareness</p>
+
+                <div class="column is-centered has-text-centered"></div>
+                    
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-top: 15px solid black;
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Further Results</p>
+                        </div>
+                    
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+                            
+                            
+                            <div class="column is-centered has-text-centered">
+                                <div class="columns is-centered">
+                                    <div class="column is-centered has-text-centered">
+                                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                            <source src="static/videos/scene_aware1_mdm.mkv" type="video/mp4">
+                                        </video>
+                                        <p>MDM</p>
+                                    </div>
+                                    <div class="column is-centered has-text-centered">
+                                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                            <source src="static/videos/scene_aware1_condmdi.mkv" type="video/mp4">
+                                        </video>
+                                        <p>CondMDI</p>
+                                    </div>
+                                </div>
+                            </div>
+                        
+
+
+                            <div class="column is-centered has-text-centered">
+                                <div class="content has-text-justified">
+                                    
+                                </div>
+                                <div class="columns is-centered">
+                                    <div class="column is-centered has-text-centered">
+                                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                            <source src="static/videos/scene_aware1_ours_wo_sceneawareness.mkv" type="video/mp4">
+                                        </video>
+                                        <p>Ours w.o. scene-awareness</p>
+                                    </div>
+                                    <div class="column is-centered has-text-centered">
+                                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                            <source src="static/videos/scene_aware1_ours.mkv" type="video/mp4">
+                                        </video>
+                                        <p>Ours</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                            
+
+
+                        </div>
+                    
                     </div>
-                    <div class="column is-centered has-text-centered">
-                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                            <source src="static/videos/scene_aware1_ours.mkv" type="video/mp4">
-                        </video>
-                        <p>Ours</p>
-                    </div>
+
                 </div>
             </div>
-            <div class="column is-centered has-text-centered">
-
-              <div class="columns is-centered">
-                  <div class="column is-centered has-text-centered">
-                      <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                          <source src="static/videos/scene_aware2_mdm.mkv" type="video/mp4">
-                      </video>
-                      <p>MDM</p>
-                  </div>
-                  <div class="column is-centered has-text-centered">
-                      <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                          <source src="static/videos/scene_aware2_condmdi.mkv" type="video/mp4">
-                      </video>
-                      <p>CondMDI</p>
-                  </div>
-              </div>
-          </div>
-          <div class="column is-centered has-text-centered">
-              <div class="content has-text-justified">
-                  
-              </div>
-              <div class="columns is-centered">
-                  <div class="column is-centered has-text-centered">
-                      <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                          <source src="static/videos/scene_aware2_ours_wo_sceneawareness.mkv" type="video/mp4">
-                      </video>
-                      <p>Ours w.o. scene-awareness</p>
-                  </div>
-                  <div class="column is-centered has-text-centered">
-                      <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                          <source src="static/videos/scene_aware2_ours.mkv" type="video/mp4">
-                      </video>
-                      <p>Ours</p>
-                  </div>
-              </div>
-          </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  </div>
+        </div>
+    </div>
 </section>
 
 
 
 <section class="hero is-small is-light">
-  <div class="hero-body">
-      <div class="container is-max-desktop">
-          <div class="column is-centered has-text-centered">
-              <div class="column is-centered has-text-centered">
+<div class="hero-body">
+    <div class="container is-max-desktop">
+            <div class="column is-centered has-text-centered">
                 <h2 class="title is-3">Robustness on (Noisy) Keyframes</h2>
+                
                 <div class="content has-text-justified">
-                    <p>
-                      SceneMI perform scene-aware motion in-betweening~~.
-                    </p>
+                    <p></p>
+                    xisting motion in-betweening research focuses on isolated character movements, often overlooking the impact of the surrounding environment. 
+                    H
+                    <p></p>
                 </div>
+                
 
-                <div class="columns is-centered">
-                    <div class="video-container" data-index="0" data-captions='["MDM", "Input Noisy Keyframes"]'>
-                        <video playsinline autoplay muted loop>
-                            <source src="static/videos/robustness1_mdm.mkv" type="video/mp4">
-                        </video>
-                        <video playsinline muted loop style="display: none;">
-                            <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
-                        </video>
-                        <div class="button prev">
-                            <div class="arrow"></div>
-                        </div>
-                        <div class="button next">
-                            <div class="arrow"></div>
-                        </div>
-                        <p>Keyframes + SceneMI</p>
+                <div class="toggle-section" style="margin-bottom: 10px;">
+                    <div style="display: flex; align-items: center; justify-content: flex-start;">
+                        <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                            <span class="toggle-arrow" style="
+                                display: inline-block;
+                                width: 0;
+                                height: 0;
+                                border-left: 10px solid transparent;
+                                border-right: 10px solid transparent;
+                                border-top: 15px solid black;
+                                transition: transform 0.3s ease;
+                            "></span>
+                        </button>
+                        <span style="margin-left: 10px;">Comparison</span>
                     </div>
-                    
-                    <div class="video-container" data-index="1" data-captions='["CondMDI", "Input Noisy Keyframes"]'>
-                        <video playsinline autoplay muted loop>
-                            <source src="static/videos/robustness1_condmdi.mkv" type="video/mp4">
-                        </video>
-                        <video playsinline muted loop style="display: none;">
-                            <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
-                        </video>
-                        <div class="button prev">
-                            <div class="arrow"></div>
-                        </div>
-                        <div class="button next">
-                            <div class="arrow"></div>
-                        </div>
-                        <p>Baseline Comparison</p>
-                    </div>
-                </div>
                 
+                    <!-- Content to Toggle -->
+                    <div class="toggle-content" style="display: block; width: 100%;">
+                        <div class="content is-centered">
+                                <p>Case1.</p>
+                        </div>
                 
-        
-                <div class="columns is-centered">
-                    <div class="video-container" data-index="2" data-captions='["Ours w.o. noise-awareness", "Input Noisy Keyframes"]'>
-                        <video playsinline autoplay muted loop>
-                            <source src="static/videos/robustness1_ours_wo_noiseawareness.mkv" type="video/mp4">
-                        </video>
-                        <video playsinline muted loop style="display: none;">
-                            <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
-                        </video>
-                        <div class="button prev">
-                            <div class="arrow"></div>
+                        <div class="columns is-centered has-text-centered">
+                            
+                            <div class="video-container" data-index="0" data-captions='["MDM", "Input Noisy Keyframes"]'>
+                                <video playsinline autoplay muted loop>
+                                    <source src="static/videos/robustness1_mdm.mkv" type="video/mp4">
+                                </video>
+                                <video playsinline muted loop style="display: none;">
+                                    <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
+                                </video>
+                                <div class="button prev">
+                                    <div class="arrow"></div>
+                                </div>
+                                <div class="button next">
+                                    <div class="arrow"></div>
+                                </div>
+                                <p>Keyframes + SceneMI</p>
+                            </div>
+                            
+                            <div class="video-container" data-index="1" data-captions='["CondMDI", "Input Noisy Keyframes"]'>
+                                <video playsinline autoplay muted loop>
+                                    <source src="static/videos/robustness1_condmdi.mkv" type="video/mp4">
+                                </video>
+                                <video playsinline muted loop style="display: none;">
+                                    <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
+                                </video>
+                                <div class="button prev">
+                                    <div class="arrow"></div>
+                                </div>
+                                <div class="button next">
+                                    <div class="arrow"></div>
+                                </div>
+                                <p>Baseline Comparison</p>
+                            </div>
                         </div>
-                        <div class="button next">
-                            <div class="arrow"></div>
-                        </div>
-                        <p>Keyframes + SceneMI</p>
-                    </div>
-                    
-                    <div class="video-container" data-index="3" data-captions='["Ours", "Input Noisy Keyframes"]'>
-                        <video playsinline autoplay muted loop>
-                            <source src="static/videos/robustness1_ours.mkv" type="video/mp4">
-                        </video>
-                        <video playsinline muted loop style="display: none;">
-                            <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
-                        </video>
-                        <div class="button prev">
-                            <div class="arrow"></div>
-                        </div>
-                        <div class="button next">
-                            <div class="arrow"></div>
-                        </div>
-                        <p>Baseline Comparison</p>
-                    </div>
+                        
+                        
+                
+                        <div class="columns is-centered">
+                            <div class="video-container" data-index="2" data-captions='["Ours w.o. noise-awareness", "Input Noisy Keyframes"]'>
+                                <video playsinline autoplay muted loop>
+                                    <source src="static/videos/robustness1_ours_wo_noiseawareness.mkv" type="video/mp4">
+                                </video>
+                                <video playsinline muted loop style="display: none;">
+                                    <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
+                                </video>
+                                <div class="button prev">
+                                    <div class="arrow"></div>
+                                </div>
+                                <div class="button next">
+                                    <div class="arrow"></div>
+                                </div>
+                                <p>Keyframes + SceneMI</p>
+                            </div>
+                            
+                            <div class="video-container" data-index="3" data-captions='["Ours", "Input Noisy Keyframes"]'>
+                                <video playsinline autoplay muted loop>
+                                    <source src="static/videos/robustness1_ours.mkv" type="video/mp4">
+                                </video>
+                                <video playsinline muted loop style="display: none;">
+                                    <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
+                                </video>
+                                <div class="button prev">
+                                    <div class="arrow"></div>
+                                </div>
+                                <div class="button next">
+                                    <div class="arrow"></div>
+                                </div>
+                                <p>Baseline Comparison</p>
+                            </div>
 
-                </div>
-                
-                <div class="content has-text-justified"></div>
-                    <p>
-                      SceneMI perform scene-aware motion in-betweening~~.
-                    </p>
-                </div>
+                        </div>
+                        
+                        <div class="content has-text-justified"></div>
+                            <p>
+                            SceneMI perform scene-aware motion in-betweening~~.
+                            </p>
+                        
 
-                <div class="columns is-centered">
-                    <div class="video-container" data-index="22" data-captions='["MDM", "Input Noisy Keyframes"]'>
-                        <video playsinline autoplay muted loop>
-                            <source src="static/videos/robustness2_mdm.mkv" type="video/mp4">
-                        </video>
-                        <video playsinline muted loop style="display: none;">
-                            <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
-                        </video>
-                        <div class="button prev">
-                            <div class="arrow"></div>
+                        <div class="columns is-centered">
+                            <div class="video-container" data-index="22" data-captions='["MDM", "Input Noisy Keyframes"]'>
+                                <video playsinline autoplay muted loop>
+                                    <source src="static/videos/robustness2_mdm.mkv" type="video/mp4">
+                                </video>
+                                <video playsinline muted loop style="display: none;">
+                                    <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
+                                </video>
+                                <div class="button prev">
+                                    <div class="arrow"></div>
+                                </div>
+                                <div class="button next">
+                                    <div class="arrow"></div>
+                                </div>
+                                <p>Keyframes + SceneMI</p>
+                            </div>
+                            
+                            <div class="video-container" data-index="21" data-captions='["CondMDI", "Input Noisy Keyframes"]'>
+                                <video playsinline autoplay muted loop>
+                                    <source src="static/videos/robustness2_condmdi.mkv" type="video/mp4">
+                                </video>
+                                <video playsinline muted loop style="display: none;">
+                                    <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
+                                </video>
+                                <div class="button prev">
+                                    <div class="arrow"></div>
+                                </div>
+                                <div class="button next">
+                                    <div class="arrow"></div>
+                                </div>
+                                <p>Baseline Comparison</p>
+                            </div>
                         </div>
-                        <div class="button next">
-                            <div class="arrow"></div>
-                        </div>
-                        <p>Keyframes + SceneMI</p>
-                    </div>
-                    
-                    <div class="video-container" data-index="21" data-captions='["CondMDI", "Input Noisy Keyframes"]'>
-                        <video playsinline autoplay muted loop>
-                            <source src="static/videos/robustness2_condmdi.mkv" type="video/mp4">
-                        </video>
-                        <video playsinline muted loop style="display: none;">
-                            <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
-                        </video>
-                        <div class="button prev">
-                            <div class="arrow"></div>
-                        </div>
-                        <div class="button next">
-                            <div class="arrow"></div>
-                        </div>
-                        <p>Baseline Comparison</p>
-                    </div>
-                </div>
+                        
                 
-        
-                <div class="columns is-centered">
-                    <div class="video-container" data-index="22" data-captions='["Ours w.o. noise-awareness", "Input Noisy Keyframes"]'>
-                        <video playsinline autoplay muted loop>
-                            <source src="static/videos/robustness2_ours_wo_noiseawareness.mkv" type="video/mp4">
-                        </video>
-                        <video playsinline muted loop style="display: none;">
-                            <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
-                        </video>
-                        <div class="button prev">
-                            <div class="arrow"></div>
+                        <div class="columns is-centered">
+                            <div class="video-container" data-index="22" data-captions='["Ours w.o. noise-awareness", "Input Noisy Keyframes"]'>
+                                <video playsinline autoplay muted loop>
+                                    <source src="static/videos/robustness2_ours_wo_noiseawareness.mkv" type="video/mp4">
+                                </video>
+                                <video playsinline muted loop style="display: none;">
+                                    <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
+                                </video>
+                                <div class="button prev">
+                                    <div class="arrow"></div>
+                                </div>
+                                <div class="button next">
+                                    <div class="arrow"></div>
+                                </div>
+                                <p>Keyframes + SceneMI</p>
+                            </div>
+                            
+                            <div class="video-container" data-index="23" data-captions='["Ours", "Input Noisy Keyframes"]'>
+                                <video playsinline autoplay muted loop>
+                                    <source src="static/videos/robustness2_ours.mkv" type="video/mp4">
+                                </video>
+                                <video playsinline muted loop style="display: none;">
+                                    <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
+                                </video>
+                                <div class="button prev">
+                                    <div class="arrow"></div>
+                                </div>
+                                <div class="button next">
+                                    <div class="arrow"></div>
+                                </div>
+                                <p>Baseline Comparison</p>
+                            </div>
                         </div>
-                        <div class="button next">
-                            <div class="arrow"></div>
-                        </div>
-                        <p>Keyframes + SceneMI</p>
-                    </div>
                     
-                    <div class="video-container" data-index="23" data-captions='["Ours", "Input Noisy Keyframes"]'>
-                        <video playsinline autoplay muted loop>
-                            <source src="static/videos/robustness2_ours.mkv" type="video/mp4">
-                        </video>
-                        <video playsinline muted loop style="display: none;">
-                            <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
-                        </video>
-                        <div class="button prev">
-                            <div class="arrow"></div>
-                        </div>
-                        <div class="button next">
-                            <div class="arrow"></div>
-                        </div>
-                        <p>Baseline Comparison</p>
                     </div>
                 </div>
 
             </div>
             
-              </div>
-          </div>
-      </div>
-  </div>
-  </div>
+    </div>
+</div>
+
 </section>
 
 
 <section class="hero">
-  <div class="hero-body">
-      <div class="container is-max-desktop">
-          <div class="column is-centered has-text-centered">
-              <div class="column is-centered has-text-centered">
-                <h2 class="title is-3">Real-World Performance</h2>
+<div class="hero-body">
+    <div class="container is-max-desktop">
+        <div class="column is-centered has-text-centered">
+            <div class="column is-centered has-text-centered">
+            <h2 class="title is-3">Real-World Performance</h2>
                 <div class="content has-text-justified">
                     <p>
-                      SceneMI perform on Real-World data GIMO
+                        SceneMI perform on Real-World data GIMO
                     </p>
                     <p>
-                      Test Case #1-front
+                        Test Case #1-front
                     </p>
                 </div>
 
@@ -444,7 +599,7 @@
                         <video poster="" id="tree" playsinline autoplay muted loop width="100%">
                             <source src="static/videos/gimo1.mkv" type="video/mp4">
                         </video>
-                        <p>GIMO</p>
+                        <p>(Noisy) Original Sequence</p>
                     </div>
                     <div class="column is-centered has-text-centered">
                         <video poster="" id="tree" playsinline autoplay muted loop width="100%">
@@ -454,82 +609,81 @@
                     </div>
                 </div>
             </div>
-            <div class="column is-centered has-text-centered">
-                <div class="content has-text-justified">
-                    <p>
-                      Test Case #1-side
-                    </p>
-                </div>
-                <div class="columns is-centered">
-                  <div class="column is-centered has-text-centered">
-                      <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                          <source src="static/videos/gimo1_side.mkv" type="video/mp4">
-                      </video>
-                      <p>GIMO</p>
-                  </div>
-                  <div class="column video-wrapper video-container" data-index="100" data-captions='["Ours", "Ours + Input Keyframes"]'>
-                    <video playsinline autoplay muted loop>
-                        <source src="static/videos/gimo1_ours_side.mkv" type="video/mp4">
-                    </video>
-                    <video playsinline muted loop style="display: none;">
-                        <source src="static/videos/gimo1_ours_side.mkv" type="video/mp4">
-                    </video>
-                    <div class="button prev">
-                        <div class="arrow"></div>
-                    </div>
-                    <div class="button next">
-                        <div class="arrow"></div>
-                    </div>
-                    <p>Baseline Comparison</p>
-                </div>
-              </div>
+        <div class="column is-centered has-text-centered">
+            <div class="content has-text-justified">
+                <p>
+                    Test Case #1-side
+                </p>
             </div>
-            <div class="column is-centered has-text-centered">
-              <div class="content has-text-justified">
-                  <p>
-                    Test Case #1-top
-                  </p>
-              </div>
-              <div class="columns is-centered">
+            <div class="columns is-centered">
                 <div class="column is-centered has-text-centered">
                     <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                        <source src="static/videos/gimo1_top.mkv" type="video/mp4">
+                        <source src="static/videos/gimo1_side.mkv" type="video/mp4">
                     </video>
                     <p>GIMO</p>
                 </div>
-                <div class="column is-centered has-text-centered">
-                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                        <source src="static/videos/gimo1_ours_top.mkv" type="video/mp4">
-                    </video>
-                    <p>Ours</p>
+                <div class="column video-wrapper video-container" data-index="100" data-captions='["Ours", "Ours + Input Keyframes"]'>
+                <video playsinline autoplay muted loop>
+                    <source src="static/videos/gimo1_ours_side.mkv" type="video/mp4">
+                </video>
+                <video playsinline muted loop style="display: none;">
+                    <source src="static/videos/gimo1_ours_side.mkv" type="video/mp4">
+                </video>
+                <div class="button prev">
+                    <div class="arrow"></div>
                 </div>
+                <div class="button next">
+                    <div class="arrow"></div>
+                </div>
+                <p>Baseline Comparison</p>
             </div>
-            <div class="column is-centered has-text-centered"></div>
-              <div class="content has-text-justified">
-                  <p>
-                    Test Case #2
-                  </p>
-              </div>
-              <div class="columns is-centered">
-                <div class="column is-centered has-text-centered">
-                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                        <source src="static/videos/gimo2.mkv" type="video/mp4">
-                    </video>
-                    <p>GIMO</p>
-                </div>
-                <div class="column is-centered has-text-centered">
-                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
-                        <source src="static/videos/gimo2_ours.mkv" type="video/mp4">
-                    </video>
-                    <p>Ours</p>
-                </div>
             </div>
-          </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  </div>
+        </div>
+        <div class="column is-centered has-text-centered">
+            <div class="content has-text-justified">
+                <p>
+                Test Case #1-top
+                </p>
+            </div>
+            <div class="columns is-centered">
+            <div class="column is-centered has-text-centered">
+                <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                    <source src="static/videos/gimo1_top.mkv" type="video/mp4">
+                </video>
+                <p>GIMO</p>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                    <source src="static/videos/gimo1_ours_top.mkv" type="video/mp4">
+                </video>
+                <p>Ours</p>
+            </div>
+        </div>
+        <div class="column is-centered has-text-centered"></div>
+            <div class="content has-text-justified">
+                <p>
+                Test Case #2
+                </p>
+            </div>
+            <div class="columns is-centered">
+            <div class="column is-centered has-text-centered">
+                <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                    <source src="static/videos/gimo2.mkv" type="video/mp4">
+                </video>
+                <p>GIMO</p>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                    <source src="static/videos/gimo2_ours.mkv" type="video/mp4">
+                </video>
+                <p>Ours</p>
+            </div>
+        </div>
+        </div>
+            </div>
+    </div>
+</div>
+  
 </section>
 
 
@@ -637,7 +791,44 @@
   </div>
 </section>
 
-<!-- JavaScript -->
+<script>
+    const toggleButton = document.getElementById("toggle-comparisons");
+    const comparisonsSection = document.getElementById("comparisons-section");
+    const toggleArrow = document.getElementById("toggle-arrow");
+
+    toggleButton.addEventListener("click", () => {
+        const isHidden = comparisonsSection.style.display === "none";
+
+        if (isHidden) {
+            comparisonsSection.style.display = "block"; // Show the content
+            toggleArrow.style.transform = "rotate(0deg)"; // Down arrow
+        } else {
+            comparisonsSection.style.display = "none"; // Hide the content
+            toggleArrow.style.transform = "rotate(180deg)"; // Up arrow
+        }
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.toggle-section').forEach(toggleGroup => {
+        const toggleButton = toggleGroup.querySelector('.toggle-button');
+        const contentSection = toggleGroup.querySelector('.toggle-content');
+        const toggleArrow = toggleButton.querySelector('.toggle-arrow');
+        
+        toggleButton.addEventListener('click', () => {
+            const isHidden = contentSection.style.display === "none";
+            
+            if (isHidden) {
+                contentSection.style.display = "block"; // Show content
+                toggleArrow.style.transform = "rotate(0deg)"; // Down arrow
+            } else {
+                contentSection.style.display = "none"; // Hide content
+                toggleArrow.style.transform = "rotate(180deg)"; // Up arrow
+            }
+        });
+    });
+</script>
+
 <script>
     document.querySelectorAll('.video-container').forEach(container => {
       const videos = Array.from(container.querySelectorAll('video'));
