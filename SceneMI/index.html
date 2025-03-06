@@ -199,11 +199,12 @@
                     </h2>
 
                     
-                    
+                    <p style="font-size: 18px; text-align: left;">
                     We visualize the results of  SceneMI on the <strong>clean</strong> TRUMANS dataset using the classical motion in-betweening setting with surrounding environments.
                     Here, we employ a <strong>sparse</strong> keyframe interval of 60 frames, corresponding to 2-second motion sequences between consecutive keyframes.
                     This presents a challenging scenario that requires scene awareness for motion synthesis.
                     SceneMI first to tackle motion in-betweening within 3D scenes, demonstrating the ability to generate realistic transitions that adhere to both keyframe and environmental constraints.
+                </p>
                     
                     <p></p>
                 </div>
@@ -400,10 +401,11 @@
                     <h2 style="font-weight: bold; color: #d9534f;">
                         Keyframes - Dense, Noisy. <p></p> Scene - Hand-Crafted
                     </h2>
-                    
+                    <p style="font-size: 18px; text-align: left;">
                     We provide video comparisons with baselines for scene-aware motion in-betweening under noisy keyframe conditions, using a synthetic noisy <strong>TRUMANS</strong> test set.
                     Here, we visualize performance in <strong>dense, noisy</strong> keyframe settings (interval of 3), an extreme case for motion in-betweening that requires handling significant noise.
                     Unlike other motion in-betweening works that require clean keyframes, SceneMI demonstrate robustness to keyframe quality by effectively handling noise during the diffusion process.
+                </p>
                     <p></p>
                 </div>
 
@@ -563,10 +565,12 @@
                         Keyframes - Noisy (Real-World Noise from IMU sensor)  <p></p> Scene - Phone-Scanned.
                     </h2>
                     <p></p>
+                    <p style="font-size: 18px; text-align: left;">
                     We demonstrate the robust generalization of SceneMI using the real-world GIMO dataset.
                     The real-world data GIMO's motion sequences are affected by IMU sensor inaccuracies, and its phone-scanned scenes are significantly differ from training set.
                     By recognizing human-scene interactions from real-world data, we synthesize higher-quality motions that surpass the raw sequences while faithfully preserving the original semantics of the interactions.
                     Here, we uniformly select keyframes at intervals of 30 or 60 frames, corresponding to one keyframe every 1 or 2 seconds.
+                </p>
                     <p></p>
                 </div>
 
@@ -824,12 +828,16 @@
                     <h2 style="font-weight: bold; color: #d9534f;">
                         Keyframes - Noisy (Real-World Noise from RGB estimation)  <p></p> Scene - Video-based Reconstruction.
                     </h2>
+                    <p style="font-size: 18px; text-align: left;">
                     We highlight the potential of SceneMI by introducing a complete video-based HSI reconstruction pipeline.
                     Here, we demonstrate the results of human-scene interactions from monocular video inputs and SceneMI's crucial role in this pipeline.
                     <p></p>
+                    <p style="font-size: 18px; text-align: left;">
                     Initially, the scenes and motions obtained from our pipeline often exhibit penetration artifacts or jittering due to being obtained independently and affected by occlusion.
                     By applying SceneMI with reconstructed scene geometry and obtained keyframes, we enhance physical plausibility, synthesize natural motions, and complete the video-based HSI reconstruction pipeline.
+                </p>
                     <p></p>
+                </p>
 
                     
                 </div>
