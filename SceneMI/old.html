@@ -1,0 +1,196 @@
+
+
+<section class="hero is-small is-light">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+                <div class="column is-centered has-text-centered">
+                    <h2 class="title is-3">Robustness on (Noisy) Keyframes</h2>
+                    
+                    <div class="content has-text-justified">
+                        <p></p>
+    
+                        Our work demonstrates robustness to keyframe quality by effectively handling imperfections and noise. 
+                        We provide video comparisons with baselines for scene-aware motion in-betweening under noisy keyframe conditions, using a synthetic test set created by adding Gaussian noise to the <strong>TRUMANS</strong> dataset. 
+                        Additionally, we visualize performance in dense noisy keyframe settings (interval of 3), highlighting robustness in extreme scenarios.
+                        The videos are <em><strong>switchable</strong></em>, allowing viewers to observe how noisy keyframes are given as input.
+                        <p></p>
+                        
+                    </div>
+                    
+    
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-top: 15px solid black;
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Comparisons</p>
+                        </div>
+    
+                        
+                    
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+                            
+                    
+                            <div class="columns is-centered has-text-centered">
+                                
+                                <div class="video-container" data-index="0" data-captions='["MDM", "Input Noisy Keyframes"]'>
+                                    <video playsinline autoplay muted loop>
+                                        <source src="static/videos/robustness1_mdm.mkv" type="video/mp4">
+                                    </video>
+                                    <video playsinline muted loop style="display: none;">
+                                        <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
+                                    </video>
+                                    <div class="button prev">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <div class="button next">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <p>supplementary video</p>
+                                </div>
+                                
+                                <div class="video-container" data-index="1" data-captions='["CondMDI", "Input Noisy Keyframes"]'>
+                                    <video playsinline autoplay muted loop>
+                                        <source src="static/videos/robustness1_condmdi.mkv" type="video/mp4">
+                                    </video>
+                                    <video playsinline muted loop style="display: none;">
+                                        <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
+                                    </video>
+                                    <div class="button prev">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <div class="button next">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <p>supplementary video</p>
+                                </div>
+                            </div>
+                            
+                            <div class="columns is-centered has-text-centered">
+                                <div class="video-container" data-index="2" data-captions='["Ours w.o. noise-awareness", "Input Noisy Keyframes"]'>
+                                    <video playsinline autoplay muted loop>
+                                        <source src="static/videos/robustness1_ours_wo_noiseawareness.mkv" type="video/mp4">
+                                    </video>
+                                    <video playsinline muted loop style="display: none;">
+                                        <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
+                                    </video>
+                                    <div class="button prev">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <div class="button next">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <p>supplementary video</p>
+                                </div>
+                                
+                                <div class="video-container" data-index="3" data-captions='["Ours", "Input Noisy Keyframes"]'>
+                                    <video playsinline autoplay muted loop>
+                                        <source src="static/videos/robustness1_ours.mkv" type="video/mp4">
+                                    </video>
+                                    <video playsinline muted loop style="display: none;">
+                                        <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
+                                    </video>
+                                    <div class="button prev">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <div class="button next">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <p>supplementary video</p>
+                                </div>
+    
+                            </div>
+                            
+                            <div class="content is-centered">
+                                <hr class="case-divider">
+                            </div>
+                            
+    
+                            <div class="columns is-centered">
+                                <div class="video-container" data-index="22" data-captions='["MDM", "Input Noisy Keyframes"]'>
+                                    <video playsinline autoplay muted loop>
+                                        <source src="static/videos/robustness2_mdm.mkv" type="video/mp4">
+                                    </video>
+                                    <video playsinline muted loop style="display: none;">
+                                        <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
+                                    </video>
+                                    <div class="button prev">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <div class="button next">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <p>supplementary video</p>
+                                </div>
+                                
+                                <div class="video-container" data-index="21" data-captions='["CondMDI", "Input Noisy Keyframes"]'>
+                                    <video playsinline autoplay muted loop>
+                                        <source src="static/videos/robustness2_condmdi.mkv" type="video/mp4">
+                                    </video>
+                                    <video playsinline muted loop style="display: none;">
+                                        <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
+                                    </video>
+                                    <div class="button prev">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <div class="button next">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <p>supplementary video</p>
+                                </div>
+                            </div>
+                            
+                    
+                            <div class="columns is-centered">
+                                <div class="video-container" data-index="22" data-captions='["Ours w.o. noise-awareness", "Input Noisy Keyframes"]'>
+                                    <video playsinline autoplay muted loop>
+                                        <source src="static/videos/robustness2_ours_wo_noiseawareness.mkv" type="video/mp4">
+                                    </video>
+                                    <video playsinline muted loop style="display: none;">
+                                        <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
+                                    </video>
+                                    <div class="button prev">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <div class="button next">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <p>supplementary video</p>
+                                </div>
+                                
+                                <div class="video-container" data-index="23" data-captions='["Ours", "Input Noisy Keyframes"]'>
+                                    <video playsinline autoplay muted loop>
+                                        <source src="static/videos/robustness2_ours.mkv" type="video/mp4">
+                                    </video>
+                                    <video playsinline muted loop style="display: none;">
+                                        <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
+                                    </video>
+                                    <div class="button prev">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <div class="button next">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <p>supplementary video</p>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+    
+                </div>
+                
+        </div>
+    </div>
+    
+    </section>
+    
