@@ -200,10 +200,10 @@
 
                     
                     
-                    We first visualize the results of  SceneMI on the <strong>clean</strong> TRUMANS dataset using the classical motion in-betweening setting with surrounding environments.
+                    We visualize the results of  SceneMI on the <strong>clean</strong> TRUMANS dataset using the classical motion in-betweening setting with surrounding environments.
                     Here, we employ a <strong>sparse</strong> keyframe interval of 60 frames, corresponding to 2-second motion sequences between consecutive keyframes.
                     This presents a challenging scenario that requires scene awareness for motion synthesis.
-                    We first to tackle motion in-betweening within 3D scenes, demonstrating the ability to generate realistic transitions that adhere to both keyframe and environmental constraints.
+                    SceneMI first to tackle motion in-betweening within 3D scenes, demonstrating the ability to generate realistic transitions that adhere to both keyframe and environmental constraints.
                     
                     <p></p>
                 </div>
@@ -403,7 +403,7 @@
                     
                     We provide video comparisons with baselines for scene-aware motion in-betweening under noisy keyframe conditions, using a synthetic noisy <strong>TRUMANS</strong> test set.
                     Here, we visualize performance in <strong>dense, noisy</strong> keyframe settings (interval of 3), an extreme case for motion in-betweening that requires handling significant noise.
-                    Unlike other motion in-betweening works that require clean keyframes, we demonstrate robustness to keyframe quality by effectively handling noise during the diffusion process.
+                    Unlike other motion in-betweening works that require clean keyframes, SceneMI demonstrate robustness to keyframe quality by effectively handling noise during the diffusion process.
                     <p></p>
                 </div>
 
@@ -563,9 +563,9 @@
                         Keyframes - Noisy (Real-World Noise from IMU sensor)  <p></p> Scene - Phone-Scanned.
                     </h2>
                     <p></p>
-                    We demonstrate the robust generalization of our approach using the real-world GIMO dataset.
-                    GIMO's motion sequences are affected by IMU sensor inaccuracies, and its phone-scanned scenes differ significantly from SceneMI's training set.
-                    By recognizing and modeling human-scene interactions, we synthesize higher-quality motions that surpass the original sequences while faithfully preserving the semantics of the interactions.
+                    We demonstrate the robust generalization of SceneMI using the real-world GIMO dataset.
+                    The real-world data GIMO's motion sequences are affected by IMU sensor inaccuracies, and its phone-scanned scenes are significantly differ from training set.
+                    By recognizing human-scene interactions from real-world data, we synthesize higher-quality motions that surpass the raw sequences while faithfully preserving the original semantics of the interactions.
                     Here, we uniformly select keyframes at intervals of 30 or 60 frames, corresponding to one keyframe every 1 or 2 seconds.
                     <p></p>
                 </div>
