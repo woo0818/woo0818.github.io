@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SceneMI: Motion In-betweening for Modeling Human-Scene Interaction.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SceneMI: Motion In-betweening for Modeling Human-Scene Interaction</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<!--   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  
+  <style>
+    /* Toggle arrow position is fixed */
+    #toggle-comparisons {
+        position: relative;
+        z-index: 10;
+    }
+
+    #toggle-arrow {
+        transition: transform 0.3s ease; /* Smooth arrow rotation */
+    }
+        
+    .button:hover {
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+    .arrow {
+        width: 0;
+        height: 0;
+        border-style: solid;
+    }
+    .prev .arrow {
+        border-width: 10px 15px 10px 0;
+        border-color: transparent gray transparent transparent;
+    }
+    .next .arrow {
+        border-width: 10px 0 10px 15px;
+        border-color: transparent transparent transparent gray;
+    }
+    .prev {
+        left: 5px;
+    }
+    .next {
+        right: 5px;
+    }
+                
+</style>
+</head>
+
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SceneMI: Motion In-betweening for Modeling Human-Scene Interaction</h1>
+          <!--
+          <div class="is-size-3 publication-authors">
+             
+            <span class="author-block"> </span>
+          </div> -->
+          
+        
+        <div class="is-size-5 publication-authors">
+        <div class="author-list">
+            <span class="author-block"><a href="https://inwoohwang.me/">Inwoo Hwang</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://zhoubinwy.github.io/">Bing Zhou</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://3d.snu.ac.kr/">Young Min Kim</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://jianwang-cmu.github.io/">Jian Wang</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://ericguo5513.github.io/">Chuan Guo</a><sup>1</sup></span>
+        </div>
+        </div>
+        
+        <div class="is-size-5 publication-authors affiliation-list">
+            <span class="author-block"><sup>1</sup>Seoul National University</span><br>
+            <span class="author-block"><sup>2</sup>Snap Inc.</span>
+        </div>
+        
+        <div class="is-size-5 publication-authors lab-logos">
+            <a class="lab-logo" href="https://3d.snu.ac.kr/">
+                <img src="static/images/3dv.png">
+            </a>
+            <a class="lab-logo" href="https://research.snap.com/index.html">
+                <img src="static/images/snap.svg">
+            </a>
+        </div>
+        
+
+          
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://inwoohwang.me/SceneMI"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://inwoohwang.me/SceneMI"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (TBD)</span>
+                  </a>
+              </span>
+              
+              <br>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="column is-centered has-text-centered">
+                <h2 class="title is-3">SceneMI's Featured Videos</h2>
+                
+                <div class="columns is-centered is-gapless">
+                    <div class="column has-text-centered is-narrow">
+                        <img src="static/videos/scene_aware3_keyframes.png" alt="Sparse Keyframes" style="max-width: 225px; height: auto; margin-right: 2px;">
+                        <p style="font-size: 18px; margin-top: 3px;">Sparse Keyframes</p>
+                    </div>
+                    <div class="column has-text-centered is-narrow">
+                        <video playsinline autoplay muted loop style="max-width: 225px; height: auto; margin-right: 2px;">
+                            <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px; margin-top: 3px;">Noisy Keyframes</p>
+                    </div>
+                    <div class="column has-text-centered is-narrow">
+                        <video playsinline autoplay muted loop style="max-width: 225px; height: auto; margin-right: 2px;">
+                            <source src="static/videos/gimo4.mkv" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px; margin-top: 3px;">Noisy Real-World Data</p>
+                    </div>
+                    <div class="column has-text-centered is-narrow">
+                        <video playsinline autoplay muted loop style="max-width: 225px; height: auto;">
+                            <source src="static/videos/video2animation1_input.mkv" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px; margin-top: 3px;">Monocular RGB Video</p>
+                    </div>
+                </div>
+                
+                <div class="columns is-centered is-gapless">
+                    <div class="column has-text-centered is-narrow">
+                        <video playsinline autoplay muted loop style="max-width: 225px; height: auto; margin-right: 2px;">
+                            <source src="static/videos/scene_aware3_ours.mkv" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px; margin-top: 3px; word-wrap: break-word; max-width: 225px;">Scene-Aware Motion In-betweening</p>
+                    </div>
+                    <div class="column has-text-centered is-narrow">
+                        <video playsinline autoplay muted loop style="max-width: 225px; height: auto; margin-right: 2px;">
+                            <source src="static/videos/robustness2_ours.mkv" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px; margin-top: 3px; word-wrap: break-word; max-width: 225px;">Robustness on Noisy Keyframes</p>
+                    </div>
+                    <div class="column has-text-centered is-narrow">
+                        <video playsinline autoplay muted loop style="max-width: 225px; height: auto; margin-right: 2px;">
+                            <source src="static/videos/gimo4_ours.mkv" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px; margin-top: 3px; word-wrap: break-word; max-width: 225px;">Generalization to Real-World</p>
+                    </div>
+                    <div class="column has-text-centered is-narrow">
+                        <video playsinline autoplay muted loop style="max-width: 225px; height: auto;">
+                            <source src="static/videos/video2animation1_ours.mkv" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px; margin-top: 3px; word-wrap: break-word; max-width: 225px;">Video-based HSI reconstruction</p>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Modeling human-scene interactions (HSI) is essential for understanding and simulating everyday human behaviors. 
+            Recent approaches utilizing generative modeling have made progress in this domain; however, they are limited in controllability and flexibility for real-world applications. 
+            To address these challenges, we propose reformulating the HSI modeling problem as Scene-aware Motion In-betweening---a more tractable and practical task. We introduce <b>SceneMI</b>, a framework that supports several practical applications, including keyframe-guided character animation in 3D scenes and enhancing the motion quality of imperfect HSI data. 
+            SceneMI employs dual scene descriptors to comprehensively encode global and local scene context. Furthermore, our framework leverages the inherent denoising nature of diffusion models to generalize on noisy keyframes.
+            Experimental results demonstrate SceneMI's effectiveness in scene-aware keyframe in-betweening and generalization to the real-world GIMO dataset, where motions and scenes are acquired by noisy IMU sensors and smartphones. We further showcase SceneMI's applicability in HSI reconstruction from monocular videos. 
+            </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+    
+    
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="./static/images/teaser.png"
+             alt="SceneMI teaser image."
+             class="teaser-image"/>
+             <h2 class="subtitle has-text-centered is-size-6">
+              <span class="dnerf">SceneMI</span> synthesizes physically plausible transitions 
+              <span style="color: violet;">(purple)</span> that simultaneously satisfy 
+              keyframe constraints <span style="color: blue;">(blue)</span> and 
+              environmental affordances in challenging scenarios. The model exhibits robust 
+              generalization with <i>noisy</i> keyframes in phone-scanned scenes from real-world 
+              data (third figure).  
+              SceneMI can further assist realistic 3D human-scene interaction reconstruction only 
+              from monocular video inputs (rightmost figure).
+          </h2>
+      </div>
+
+  </div>
+  
+  </section>
+
+
+
+
+<section class="hero is-small is-light">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="column is-centered has-text-centered">
+                <h2 class="title is-3 has-text-weight-semibold" style="color: #1C3D5A;">
+                    Scene-Awareness
+                </h2>
+
+                <div class="content has-text-justified">
+                    <p class="has-text-weight-semibold mt-4" style="font-size: 20px; color: #B88A44;">
+                        Keyframes - Sparse, Clean &nbsp; | &nbsp; Scene - Hand-Crafted
+                    </p>
+                    <p class="has-text-weight-semibold mb-4" style="font-size: 20px; color: #4A90E2;">
+                        Dataset - TRUMANS (Clean)
+                    </p>
+
+                    <p class="mt-5" style="font-size: 18px; color: #333; text-align: left;">
+                        We visualize the results of <strong>SceneMI</strong> on the <strong>clean</strong> TRUMANS dataset using the classical motion in-betweening setting with surrounding environments.
+                        Here, we employ a <strong>sparse</strong> keyframe interval of 60 frames, corresponding to 2-second motion sequences between consecutive keyframes.
+                        This presents a challenging scenario that requires scene awareness for motion synthesis.
+                        
+                    </p>
+                    <p class="mt-5" style="font-size: 18px; color: #333; text-align: left;">
+                        SceneMI is the first to tackle motion in-betweening within 3D scenes, demonstrating the ability to generate realistic transitions that adhere to both keyframe and environmental constraints.
+                    </p>
+                </div>
+
+                <div class="column is-centered has-text-centered">
+                    
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-top: 15px solid black;
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Comparisons</p>
+                            
+                        </div>
+
+                       
+                    
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+                            
+                            
+                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/scene_aware1_mdm.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px;  margin-top: 5px;">MDM</p>
+                                </div>
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/scene_aware1_condmdi.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; margin-top: 5px;">CondMDI</p>
+                                </div>
+                            </div>
+                            
+                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/scene_aware1_ours_wo_sceneawareness.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Scene-awareness</p>
+                                </div>
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/scene_aware1_ours.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="content is-centered" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+                                <hr style="border: 0; height: 2px; width: 80%; margin: 0 auto; background-color: transparent; border-top: 2px dashed #000508a8;">
+                            </div>
+                            
+                            
+
+                            
+
+                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/scene_aware2_mdm.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px;  margin-top: 5px;">MDM</p>
+                                </div>
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/scene_aware2_condmdi.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; margin-top: 5px;">CondMDI</p>
+                                </div>
+                            </div>
+                            
+                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/scene_aware2_ours_wo_sceneawareness.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Scene-awareness</p>
+                                </div>
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/scene_aware2_ours.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    
+                    </div>
+
+                </div>
+
+                <div class="column is-centered has-text-centered"></div>
+                    
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-top: 15px solid black;
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Further Results</p>
+                        </div>
+                        <div class="content has-text-justified">
+                                    
+                        </div>
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+
+                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/scene_aware6_ours.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px;  margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #1</p>
+                                </div>
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/scene_aware4_ours.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #2</p>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/scene_aware3_ours.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px;  margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #3</p>
+                                </div>
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/scene_aware5_ours.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #4</p>
+                                </div>
+                            </div>
+                            
+    
+                        </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="column is-centered has-text-centered">
+                <h2 class="title is-3 has-text-weight-semibold" style="color: #1C3D5A;">
+                    Robustness on Noisy Keyframes
+                </h2>
+
+                <div class="content has-text-justified">
+                    <p class="has-text-weight-semibold mt-4" style="font-size: 20px; color: #B88A44;">
+                        Keyframes - Dense, Noisy &nbsp; | &nbsp; Scene - Hand-Crafted
+                    </p>
+                    <p class="has-text-weight-semibold mb-4" style="font-size: 20px; color: #4A90E2;">
+                        Dataset - TRUMANS (Synthetic Noisy).
+                    </p>
+
+                    <p class="mt-5" style="font-size: 18px; color: #333; text-align: left;">
+                        We provide video comparisons with baselines for scene-aware motion in-betweening under noisy keyframe conditions, using a <strong>synthetic noisy TRUMANS</strong> test set.
+                    Here, we visualize performance in <strong>dense, noisy</strong> keyframe settings (interval of 3), an extreme case for motion in-betweening that requires handling significant noise.
+                        
+                    </p>
+                    <p class="mt-5" style="font-size: 18px; color: #333; text-align: left;">
+                        SceneMI demonstrate robustness to keyframe quality by effectively handling noise during the diffusion process.
+                    </p>
+                </div>
+                
+
+                <div class="column is-centered has-text-centered">
+                    
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-top: 15px solid black;
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Comparisons</p>
+                            
+                        </div>
+
+                       
+                    
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+                            
+                            
+                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 290px; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/robustness1_keyframes.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Input Noisy Keyframes</p>
+                                </div>
+                            </div>
+                            
+                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/robustness1_mdm.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px;  margin-top: 5px;">MDM</p>
+                                </div>
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/robustness1_condmdi.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px;  margin-top: 5px;">CondMDI</p>
+                                </div>
+                            </div>
+                            
+                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/robustness1_ours_wo_noiseawareness.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Noise-awareness</p>
+                                </div>
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/robustness1_ours.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="content is-centered" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+                                <hr style="border: 0; height: 2px; width: 80%; margin: 0 auto; background-color: transparent; border-top: 2px dashed #000508a8;">
+                            </div>
+                            
+                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 290px; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Input Noisy Keyframes</p>
+                                </div>
+                            </div>
+                            
+                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/robustness2_mdm.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px;  margin-top: 5px;">MDM</p>
+                                </div>
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/robustness1_condmdi.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px;  margin-top: 5px;">CondMDI</p>
+                                </div>
+                            </div>
+                            
+                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/robustness2_ours_wo_noiseawareness.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Noise-awareness</p>
+                                </div>
+                                <div class="column has-text-centered is-narrow">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/robustness2_ours.mkv" type="video/mp4">
+                                    </video>
+                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                    
+                    </div>
+
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="hero is-small is-light">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="column is-centered has-text-centered">
+                <h2 class="title is-3 has-text-weight-semibold" style="color: #1C3D5A;">
+                    Generalization to Real-World
+                </h2>
+
+                <div class="content has-text-justified">
+                    <p class="has-text-weight-semibold mt-4" style="font-size: 20px; color: #B88A44;">
+                        Keyframes - Noisy (Real-World Noise from IMU sensor)  &nbsp; | &nbsp; Scene - Phone-Scanned
+                    </p>
+                    <p class="has-text-weight-semibold mb-4" style="font-size: 20px; color: #4A90E2;">
+                        Dataset - GIMO (Real-World Data)
+                    </p>
+
+                    <p class="mt-5" style="font-size: 18px; color: #333; text-align: left;">
+                        We demonstrate the <strong>robust generalization of SceneMI</strong> using the  <strong>real-world GIMO</strong> dataset.
+                        The real-world data GIMO's motion sequences are affected by IMU sensor inaccuracies, and its phone-scanned scenes are significantly differ from training set.
+                        Here, we uniformly select keyframes at intervals of 30 or 60 frames, corresponding to one keyframe every 1 or 2 seconds.
+                    </p>
+                    <p class="mt-5" style="font-size: 18px; color: #333; text-align: left;">
+                        By recognizing human-scene interactions from real-world data, we synthesize higher-quality motions that surpass the raw sequences while faithfully preserving the original semantics of the interactions.
+                    </p>
+                </div>
+
+                
+            </div>
+
+            <div class="toggle-section" style="margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; justify-content: flex-start;">
+                    <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                        <span class="toggle-arrow" style="
+                            display: inline-block;
+                            width: 0;
+                            height: 0;
+                            border-left: 10px solid transparent;
+                            border-right: 10px solid transparent;
+                            border-top: 15px solid black;
+                            transition: transform 0.3s ease;
+                        "></span>
+                    </button>
+                    <p style="font-weight: bold; margin: 0;">Seminar Room</p>
+                </div>
+
+                <!-- Content to Toggle -->
+                <div class="toggle-content" style="display: block; width: 100%;">
+                    <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                        <div class="column has-text-centered is-narrow">
+                            <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                <source src="static/videos/gimo2.mkv" type="video/mp4">
+                            </video>
+                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
+                        </div>
+                        <div class="column has-text-centered is-narrow">
+                            <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                <source src="static/videos/gimo2_ours.mkv" type="video/mp4">
+                            </video>
+                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toggle-section" style="margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; justify-content: flex-start;">
+                    <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                        <span class="toggle-arrow" style="
+                            display: inline-block;
+                            width: 0;
+                            height: 0;
+                            border-left: 10px solid transparent;
+                            border-right: 10px solid transparent;
+                            border-top: 15px solid black;
+                            transition: transform 0.3s ease;
+                        "></span>
+                    </button>
+                    <p style="font-weight: bold; margin: 0;">Bedroom-1</p>
+                </div>
+
+                <!-- Content to Toggle -->
+                <div class="toggle-content" style="display: block; width: 100%;">
+                    <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                        <div class="column has-text-centered is-narrow">
+                            <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                <source src="static/videos/gimo3.mkv" type="video/mp4">
+                            </video>
+                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
+                        </div>
+                        <div class="column has-text-centered is-narrow">
+                            <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                <source src="static/videos/gimo3_ours.mkv" type="video/mp4">
+                            </video>
+                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toggle-section" style="margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; justify-content: flex-start;">
+                    <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                        <span class="toggle-arrow" style="
+                            display: inline-block;
+                            width: 0;
+                            height: 0;
+                            border-left: 10px solid transparent;
+                            border-right: 10px solid transparent;
+                            border-top: 15px solid black;
+                            transition: transform 0.3s ease;
+                        "></span>
+                    </button>
+                    <p style="font-weight: bold; margin: 0;">Bedroom-2</p>
+                </div>
+
+                <!-- Content to Toggle -->
+                <div class="toggle-content" style="display: block; width: 100%;">
+                    <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                        <div class="column has-text-centered is-narrow">
+                            <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                <source src="static/videos/gimo4.mkv" type="video/mp4">
+                            </video>
+                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
+                        </div>
+                        <div class="column has-text-centered is-narrow">
+                            <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                <source src="static/videos/gimo4_ours.mkv" type="video/mp4">
+                            </video>
+                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="toggle-section" style="margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; justify-content: flex-start;">
+                    <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                        <span class="toggle-arrow" style="
+                            display: inline-block;
+                            width: 0;
+                            height: 0;
+                            border-left: 10px solid transparent;
+                            border-right: 10px solid transparent;
+                            border-top: 15px solid black;
+                            transition: transform 0.3s ease;
+                        "></span>
+                    </button>
+                    <p style="font-weight: bold; margin: 0;">Classroom</p>
+                </div>
+
+                <!-- Content to Toggle -->
+                <div class="toggle-content" style="display: block; width: 100%;">
+                    <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                        <div class="column has-text-centered is-narrow">
+                            <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                <source src="static/videos/gimo5.mkv" type="video/mp4">
+                            </video>
+                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
+                        </div>
+                        <div class="column has-text-centered is-narrow">
+                            <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                <source src="static/videos/gimo5_ours.mkv" type="video/mp4">
+                            </video>
+                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="toggle-section" style="margin-bottom: 10px;"> 
+                <div style="display: flex; align-items: center; justify-content: flex-start;">
+                    <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                        <span class="toggle-arrow" style="
+                            display: inline-block;
+                            width: 0;
+                            height: 0;
+                            border-left: 10px solid transparent;
+                            border-right: 10px solid transparent;
+                            border-top: 15px solid black;
+                            transition: transform 0.3s ease;
+                        "></span>
+                    </button>
+                    <p style="font-weight: bold; margin: 0;">Lab - front</p>
+                </div>
+
+                <!-- Content to Toggle -->
+                <div class="toggle-content" style="display: block; width: 100%;">
+                    <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                        <div class="column has-text-centered is-narrow">
+                            <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                <source src="static/videos/gimo1_front.mkv" type="video/mp4">
+                            </video>
+                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
+                        </div>
+                        <div class="column has-text-centered is-narrow">
+                            <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                <source src="static/videos/gimo1_ours_front.mkv" type="video/mp4">
+                            </video>
+                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="toggle-section" style="margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; justify-content: flex-start;">
+                    <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                        <span class="toggle-arrow" style="
+                            display: inline-block;
+                            width: 0;
+                            height: 0;
+                            border-left: 10px solid transparent;
+                            border-right: 10px solid transparent;
+                            border-top: 15px solid black;
+                            transition: transform 0.3s ease;
+                        "></span>
+                    </button>
+                    <p style="font-weight: bold; margin: 0;">Lab - side</p>
+                </div>
+
+                <!-- Content to Toggle -->
+                <div class="toggle-content" style="display: block; width: 100%;">
+                    <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                        <div class="column has-text-centered is-narrow">
+                            <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                <source src="static/videos/gimo1_side.mkv" type="video/mp4">
+                            </video>
+                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
+                        </div>
+                        <div class="column has-text-centered is-narrow">
+                            <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                <source src="static/videos/gimo1_ours_side.mkv" type="video/mp4">
+                            </video>
+                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            
+            </div>  
+        </div>
+    </div>
+</section>
+
+
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="column is-centered has-text-centered">
+                <h2 class="title is-3 has-text-weight-semibold" style="color: #1C3D5A;">
+                    Video-based Human-Scene Interaction (HSI) Reconstruction
+                </h2>
+
+                <div class="content has-text-justified">
+                    <p class="has-text-weight-semibold mt-4" style="font-size: 20px; color: #B88A44;">
+                        Keyframes - Noisy (Real-World Noise from RGB estimation) &nbsp; | &nbsp; Scene - Video-based Reconstruction
+                    </p>
+                    <p class="has-text-weight-semibold mb-4" style="font-size: 20px; color: #4A90E2;">
+                        Dataset - PROX (Real-World Video)
+                    </p>
+
+                    <p class="mt-5" style="font-size: 18px; color: #333; text-align: left;">
+                        We highlight the potential of SceneMI by introducing a complete monocular <strong>Video-based HSI reconstruction</strong> pipeline.
+                        Here, we demonstrate the results of human-scene interactions from monocular video inputs and SceneMI's crucial role in this pipeline.
+                    </p>
+                    <p class="mt-5" style="font-size: 18px; color: #333; text-align: left;">
+                        Initially, the scenes and motions obtained from our pipeline often exhibit penetration artifacts or jittering due to being obtained independently and affected by occlusion.
+                    By applying SceneMI with reconstructed scene geometry and obtained keyframes, we enhance physical plausibility, synthesize natural motions, and complete the video-based HSI reconstruction pipeline.
+                    </p>
+                </div>
+                
+                <div class="columns is-centered">
+                    <div class="column is-centered has-text-centered">
+                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                            <source src="static/videos/video2animation1_input.mkv" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>Input Monocular Video</strong></p>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                            <source src="static/videos/video2animation1_initial.mkv"" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>Initial reconstruction</strong></p>
+                    </div>
+                </div>
+
+                <div class="columns is-centered">
+                    <div class="column is-centered has-text-centered">
+                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                            <source src="static/videos/video2animation1_ours.mkv" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>Final reconstruction (Applying SceneMI)</strong></p>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                            <source src="static/videos/video2animation1_ours_keyframes.mkv"" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>SceneMI results with input</strong></p>
+                    </div>
+                </div>
+
+                <div class="content is-centered">
+                    <hr class="case-divider">
+                </div>
+
+                
+                <div class="content has-text-justified"></div>
+                    
+                    <p>
+                      
+                    </p>
+                </div>
+
+                <div class="columns is-centered">
+                    <div class="column is-centered has-text-centered">
+                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                            <source src="static/videos/video2animation2_input.mkv" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>Input Monocular Video</strong></p>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                            <source src="static/videos/video2animation2_initial.mkv"" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>Initial reconstruction</strong></p>
+                    </div>
+                </div>
+
+                <div class="columns is-centered">
+                    <div class="column is-centered has-text-centered">
+                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                            <source src="static/videos/video2animation2_ours.mkv" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>Final reconstruction (Applying SceneMI)</strong></p>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                            <source src="static/videos/video2animation2_ours_keyframes.mkv"" type="video/mp4">
+                        </video>
+                        <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>SceneMI results with input</strong></p>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+        TBD
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+
+            Website source code based on the Nerfies <a href="https://nerfies.github.io/">project page</a>. If you want to reuse their source code, please credit them appropriately.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+    const toggleButton = document.getElementById("toggle-comparisons");
+    const comparisonsSection = document.getElementById("comparisons-section");
+    const toggleArrow = document.getElementById("toggle-arrow");
+
+    toggleButton.addEventListener("click", () => {
+        const isHidden = comparisonsSection.style.display === "none";
+
+        if (isHidden) {
+            comparisonsSection.style.display = "block"; // Show the content
+            toggleArrow.style.transform = "rotate(0deg)"; // Down arrow
+        } else {
+            comparisonsSection.style.display = "none"; // Hide the content
+            toggleArrow.style.transform = "rotate(180deg)"; // Up arrow
+        }
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.toggle-section').forEach(toggleGroup => {
+        const toggleButton = toggleGroup.querySelector('.toggle-button');
+        const contentSection = toggleGroup.querySelector('.toggle-content');
+        const toggleArrow = toggleButton.querySelector('.toggle-arrow');
+        
+        toggleButton.addEventListener('click', () => {
+            const isHidden = contentSection.style.display === "none";
+            
+            if (isHidden) {
+                contentSection.style.display = "block"; // Show content
+                toggleArrow.style.transform = "rotate(0deg)"; // Down arrow
+            } else {
+                contentSection.style.display = "none"; // Hide content
+                toggleArrow.style.transform = "rotate(180deg)"; // Up arrow
+            }
+        });
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.video-container').forEach(container => {
+      const videos = Array.from(container.querySelectorAll('video'));
+      const prevButton = container.querySelector('.prev');
+      const nextButton = container.querySelector('.next');
+      const caption = container.querySelector('p');
+      const captionsList = JSON.parse(container.dataset.captions);
+  
+      let currentIndex = 0;
+  
+      function showVideo(index) {
+        // Hide all videos in this container
+        videos.forEach(video => {
+          video.style.display = 'none';
+          video.pause();
+        });
+  
+        // Show the selected video
+        videos[index].style.display = 'block';
+        videos[index].play();
+  
+        // Update caption
+        caption.textContent = captionsList[index];
+      }
+  
+      // Event listeners for buttons
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+        showVideo(currentIndex);
+      });
+  
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % videos.length;
+        showVideo(currentIndex);
+      });
+  
+      // Initialize first video
+      showVideo(currentIndex);
+    });
+  </script>
+
+
+
+</body>
+</html>
