@@ -157,3 +157,16 @@ span.highlight {
 	margin-left: 0.5em;
 	margin-right: 0.5em;
 }
+
+#clustrmaps, 
+iframe[src*="clustrmaps"], 
+div[id*="clustrmaps"], 
+a[href*="clustrmaps"] {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
