@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Motion Synthesis with Sparse and Flexible Keyjoint Control">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Motion Synthesis with Sparse and Flexible Keyjoint Control</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+    body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .video-container {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            margin: 30px auto; /* Adds vertical spacing between columns */
+            padding: 15px; /* Adds internal padding for aesthetic spacing */
+            background-color: #ffffff; /* Optional: Add a background for better visual separation */
+            border: 1px solid #ccc; /* Optional: Add a border for better definition */
+            border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-wrapper {
+            width: 45%; 
+            margin: 0 2.5%; 
+            text-align: center;
+        }
+        video {
+            width: 100%;
+            border-radius: 8px; 
+        }
+        .button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .button:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+        .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .prev .arrow {
+            border-width: 10px 15px 10px 0;
+            border-color: transparent gray transparent transparent;
+        }
+        .next .arrow {
+            border-width: 10px 0 10px 15px;
+            border-color: transparent transparent transparent gray;
+        }
+        .prev {
+            left: 5px;
+        }
+        .next {
+            right: 5px;
+        }
+        p {
+            font-size: 18px;
+            margin-top: 10px;
+            text-align: center;
+        }
+                
+</style>
+
+
+<style>
+    /* Toggle arrow position is fixed */
+    #toggle-comparisons {
+        position: relative;
+        z-index: 10;
+    }
+
+    #toggle-arrow {
+        transition: transform 0.3s ease; /* Smooth arrow rotation */
+    }
+
+    #comparisons-section {
+        transition: opacity 0.3s ease, height 0.3s ease; /* Smooth content visibility */
+    }
+</style>
+
+
+
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Motion Synthesis with Sparse and Flexible Keyjoint Control</h1>
+          <div class="is-size-3 publication-authors">
+            <span class="author-block">
+              Anonymous ICCV submission 142</span>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            <p></p>
+            Creating expressive character animations is labor-intensive, requiring intricate manual adjustment of animators across space and time. 
+Previous works on controllable motion generation often rely on a predefined set of dense spatio-temporal specifications (e.g., dense pelvis trajectories with exact per-frame timing), limiting practicality for animators.
+To process high-level intent and intuitive control in diverse scenarios, we propose a practical controllable motions synthesis framework that respects sparse and flexible keyjoint signals.
+Our approach employs a decomposed diffusion-based motion synthesis framework that first synthesizes keyjoint movements from sparse input control signals and then synthesizes full-body motion based on the completed keyjoint trajectories. 
+The low-dimensional keyjoint movements can easily adapt to various control signal types, such as end-effector position for diverse goal-driven motion synthesis, or incorporate functional constraints on a subset of keyjoints.
+Additionally, we introduce a time-agnostic control formulation, eliminating the need for frame-specific timing annotations and enhancing control flexibility. 
+Then, the shared second stage can synthesize a natural whole-body motion that precisely satisfies the task requirement from dense keyjoint movements.
+We demonstrate the effectiveness of sparse and flexible keyjoint control through comprehensive experiments on diverse datasets and scenarios.
+            <p></p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small is-light">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            
+            <div class="column is-centered has-text-centered">
+                <h2 class="title is-3">Explicit Control Example</h2>
+
+                <div class="content has-text-justified">
+                    <p></p>
+
+                    <h2 style="font-weight: bold; color: #20508f;">
+                        Dense Control Examples
+                    </h2>
+                    
+                    <p style="font-size: 20px; text-align: left;">
+                        From <span style="font-weight: bold;">single-to-multiple joints dense</span> trajecotries, we synthesize natural motion with high precision.
+
+                    
+                    </p>
+                    
+                    <p></p>
+                </div>
+                
+                
+                <div class="column is-centered has-text-centered">
+
+                    
+                    
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-top: 15px solid black;
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Dense Signal</p>
+                            
+                                    
+                            
+                        </div>
+
+                        <div class="content has-text-justified">
+
+                
+                        </div>
+                    
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+                            
+                            
+                            <div class="columns is-centered">
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/dense1.mp4" type="video/mp4">
+                                    </video>
+                                    <p>a person walks in a curved line.</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/dense2.mp4" type="video/mp4">
+                                    </video>
+                                    <p>a person running to the right</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/dense3.mp4" type="video/mp4">
+                                    </video>
+                                    <p>a person walked in a clockwise circle.</p>
+                                </div>
+                            </div>
+
+                            <div class="columns is-centered">
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/dense4.mp4" type="video/mp4">
+                                    </video>
+                                    <p>jogging forward in medium pace.</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/dense5.mp4" type="video/mp4">
+                                    </video>
+                                    <p>he is leaning on something and cleaning it with a towel.</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/dense6.mp4" type="video/mp4">
+                                    </video>
+                                    <p>the person crouches and walks forward.</p>
+                                </div>
+                            </div>
+
+                            
+                            
+                        
+
+                            
+
+                        </div>
+                    
+                    </div>
+
+                </div>
+
+                <div class="content has-text-justified">
+                    <p></p>
+
+                    <h2 style="font-weight: bold; color: #20508f;">
+                        Sparse Control Examples
+                    </h2>
+
+                    
+                    <p style="font-size: 20px; text-align: left;">
+                        From highly sparse signal, we synthesize plausible motion with high accuracies.
+                        We visualize synthesized intermediate <span style="font-weight: bold;">keyjoint trajectories</span> with <span style="color: rgb(81, 157, 187); font-weight: bold;">skyblue</span> color.
+                    </p>
+                    
+                    
+
+                <div class="column is-centered has-text-centered"></div>
+                    
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-top: 15px solid black;
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Sparse Signal</p>
+                        </div>
+                        <div class="content has-text-justified">
+                                    
+                        </div>
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+                            
+                            
+                            <div class="columns is-centered">
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/sparse1.mp4" type="video/mp4">
+                                    </video>
+                                    <p>a person moves sideways to the right and then sideways back to the left and then one more step to the right.</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/sparse2.mp4" type="video/mp4">
+                                    </video>
+                                    <p>a person slowly walks backwards.</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/sparse3.mp4" type="video/mp4">
+                                    </video>
+                                    <p>a person takes a huge leap forward.</p>
+                                </div>
+                            </div>
+
+                            <div class="columns is-centered">
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/sparse4.mp4" type="video/mp4">
+                                    </video>
+                                    <p>a person walks forward with a limp.</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/sparse5.mp4" type="video/mp4">
+                                    </video>
+                                    <p>a person starts walking with their right foot first and takes eleven steps forward.</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/sparse6.mp4" type="video/mp4">
+                                    </video>
+                                    <p>a person takes two steps forward, then walks sideways three steps, then walks forward diagonally and to the left three steps.</p>
+                                </div>
+                            </div>
+
+                            
+                            
+                        
+
+                        </div>
+
+
+                        </div>
+                        
+                        <div class="content has-text-justified">
+                            <p></p>
+        
+                            <h2 style="font-weight: bold; color: #20508f;">
+                                Comparison with Baselines
+                            </h2>
+        
+                            
+                            <p style="font-size: 18px; text-align: left;">
+                                Existing controllable motion synthesis methods often struggle with sparse control; however, our approach maintains high performance despite the sparsity of control.
+                        </p>
+
+                        
+                        <div class="column is-centered has-text-centered">
+                    
+                            <div class="toggle-section" style="margin-bottom: 10px;">
+                                <div style="display: flex; align-items: center; justify-content: flex-start;">
+                                    <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                        <span class="toggle-arrow" style="
+                                            display: inline-block;
+                                            width: 0;
+                                            height: 0;
+                                            border-left: 10px solid transparent;
+                                            border-right: 10px solid transparent;
+                                            border-top: 15px solid black;
+                                            transition: transform 0.3s ease;
+                                        "></span>
+                                    </button>
+                                    <p style="font-weight: bold; margin: 0;">Comparison with Baselines</p>
+                                    
+                                            
+                                    
+                                </div>
+        
+                                <div class="content has-text-justified">
+        
+                        
+                                </div>
+                            
+                                <!-- Content to Toggle -->
+                                <div class="toggle-content" style="display: block; width: 100%;">
+                                    
+                                    
+                                    
+        
+                                    <div class="columns is-centered">
+                                        <div class="column is-centered has-text-centered">
+                                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                                <source src="static/videos/comparison1_motionlcm.mp4" type="video/mp4">
+                                            </video>
+                                            <p>MotionLCM</p>
+                                        </div>
+                                        <div class="column is-centered has-text-centered">
+                                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                                <source src="static/videos/comparison1_tlcontrol.mp4" type="video/mp4">
+                                            </video>
+                                            <p>TLControl</p>
+                                        </div>
+                                        <div class="column is-centered has-text-centered">
+                                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                                <source src="static/videos/comparison1_ours.mp4" type="video/mp4">
+                                            </video>
+                                            <p><strong>Ours</strong></p>
+                                        </div>
+                                    </div>
+        
+                                    <div class="columns is-centered">
+                                        <div class="column is-centered has-text-centered">
+                                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                                <source src="static/videos/comparison2_motionlcm.mp4" type="video/mp4">
+                                            </video>
+                                            <p>MotionLCM</p>
+                                        </div>
+                                        <div class="column is-centered has-text-centered">
+                                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                                <source src="static/videos/comparison2_tlcontrol.mp4" type="video/mp4">
+                                            </video>
+                                            <p>TLControl</p>
+                                        </div>
+                                        <div class="column is-centered has-text-centered">
+                                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                                <source src="static/videos/comparison2_ours.mp4" type="video/mp4">
+                                            </video>
+                                            <p><strong>Ours</strong></p>
+                                        </div>
+                                    </div>
+                                    
+                                
+        
+                                    
+        
+                                </div>
+                            
+                            </div>
+        
+                        </div>
+
+                        <div class="content has-text-justified">
+                            <p></p>
+        
+                            <h2 style="font-weight: bold; color: #20508f;">
+                                Goal-Driven Scenarios
+                            </h2>
+        
+                            
+                            <p style="font-size: 18px; text-align: left;">
+                                From highly sparse signals, which are initial pose and target end-effector goal, we synthesize goal-driven motion. We trained a unified network for different tasks and demonstrate its performance across various goal-driven scenarios.
+                        </p>
+
+                        <div class="column is-centered has-text-centered">
+                    
+                            <div class="toggle-section" style="margin-bottom: 10px;">
+                                <div style="display: flex; align-items: center; justify-content: flex-start;">
+                                    <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                        <span class="toggle-arrow" style="
+                                            display: inline-block;
+                                            width: 0;
+                                            height: 0;
+                                            border-left: 10px solid transparent;
+                                            border-right: 10px solid transparent;
+                                            border-top: 15px solid black;
+                                            transition: transform 0.3s ease;
+                                        "></span>
+                                    </button>
+                                    <p style="font-weight: bold; margin: 0;">Goal-Driven Scenarios</p>
+                                    
+                                            
+                                    
+                                </div>
+        
+                                <div class="content has-text-justified">
+        
+                        
+                                </div>
+                            
+                                <!-- Content to Toggle -->
+                                <div class="toggle-content" style="display: block; width: 100%;">
+                                    
+                                    
+                                    <div class="columns is-centered">
+                                        <div class="column is-centered has-text-centered">
+                                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                                <source src="static/videos/goal_reaching.mp4" type="video/mp4">
+                                            </video>
+                                            <p>Reaching Hand Target</p>
+                                        </div>
+                                        <div class="column is-centered has-text-centered">
+                                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                                <source src="static/videos/goal_climbing.mp4" type="video/mp4">
+                                            </video>
+                                            <p>Climbing with Rock Constraints</p>
+                                        </div>
+                                        <div class="column is-centered has-text-centered">
+                                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                                <source src="static/videos/goal_sitting.mp4" type="video/mp4">
+                                            </video>
+                                            <p>Sitting with Hand Control</p>
+                                        </div>
+                                    </div>
+        
+                                    
+                                    
+                                
+        
+                                    
+        
+                                </div>
+                            
+                            </div>
+        
+                        </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="hero is-small is-light">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            
+            <div class="column is-centered has-text-centered">
+                <h2 class="title is-3">Implicit Control Examples</h2>
+
+                <div class="content has-text-justified">
+                    <p>We define control signals as functions derived from a set of keyjoints, enabling more user-friendly control.</p>
+
+                    <h2 style="font-weight: bold; color: #20508f;">
+                        Hand-Head Touching
+                    </h2>
+                    <p style="font-size: 18px; text-align: left;">
+                    With our decomposed framework, our approach better satisfies objective constraints while preserving the realsim of the full-body motion.
+                </p>
+                    <p></p>
+                </div>
+
+                <div class="column is-centered has-text-centered">
+                    
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-top: 15px solid black;
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Head-Hand Touching</p>
+                            
+                                    
+                            
+                        </div>
+
+                        <div class="content has-text-justified">
+
+                
+                        </div>
+                    
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+
+
+                            <div class="columns is-centered">
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/headhand_dno.mp4" type="video/mp4">
+                                    </video>
+                                    <p>DNO</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/headhand_single.mp4" type="video/mp4">
+                                    </video>
+                                    <p><strong>Ours w/o decomposed</strong></p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/headhand_ours.mp4" type="video/mp4">
+                                    </video>
+                                    <p><strong>Ours</strong></p>
+                                </div>
+                            </div>
+
+                            
+                            
+                    
+
+
+                        </div>
+                    
+                    </div>
+
+                </div>
+
+                <div class="content has-text-justified">
+                    <p></p>
+
+                    <h2 style="font-weight: bold; color: #20508f;">
+                        Time-Agnostic Control
+                    </h2>
+                    <p style="font-size: 18px; text-align: left;">
+                    Without exact timing information, model fails to accurately follow the trajectory. Our time-agnostic control enables the trajectory control without need for exact timesteps, enabling temporrally flexible synthesis.
+                </p>
+                    <p></p>
+                </div>
+
+                <div class="column is-centered has-text-centered">
+                    
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-top: 15px solid black;
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Time-Agnostic Control</p>
+                            
+                                    
+                            
+                        </div>
+
+                        <div class="content has-text-justified">
+
+                
+                        </div>
+                    
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+                            
+                            
+                            
+                            
+                        
+
+                            <div class="columns is-centered">
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/time_agnostic_explicit1.mp4" type="video/mp4">
+                                    </video>
+                                    <p>w/o time-agnostic</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/time_agnostic_ours1_2.mp4" type="video/mp4">
+                                    </video>
+                                    <p><strong>Ours</strong></p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <img src="static/videos/traj1.png" alt="Ours trajectory" width="100%">
+                                    <p><strong>Input (no-timing information) & Our trajectory</strong></p>
+                                </div>
+                            </div>
+
+                            <div class="columns is-centered">
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/traj_agnostic_explicit2.mp4" type="video/mp4">
+                                    </video>
+                                    <p>w/o time-agnostic</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/time_agnostic_ours2_2.mp4" type="video/mp4">
+                                    </video>
+                                    <p><strong>Ours</strong></p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <img src="static/videos/traj2.png" alt="Ours trajectory" width="100%">
+                                    <p><strong>Input (no-timing information) & Our trajectory</strong></p>
+                                </div>
+                            </div>
+                            
+                            
+                            
+                    
+
+
+                        </div>
+                    
+                    </div>
+
+                </div>
+
+                
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+                
+
+
+        </div>
+    </div>
+</div>
+  
+</section>
+
+
+<script>
+    const toggleButton = document.getElementById("toggle-comparisons");
+    const comparisonsSection = document.getElementById("comparisons-section");
+    const toggleArrow = document.getElementById("toggle-arrow");
+
+    toggleButton.addEventListener("click", () => {
+        const isHidden = comparisonsSection.style.display === "none";
+
+        if (isHidden) {
+            comparisonsSection.style.display = "block"; // Show the content
+            toggleArrow.style.transform = "rotate(0deg)"; // Down arrow
+        } else {
+            comparisonsSection.style.display = "none"; // Hide the content
+            toggleArrow.style.transform = "rotate(180deg)"; // Up arrow
+        }
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.toggle-section').forEach(toggleGroup => {
+        const toggleButton = toggleGroup.querySelector('.toggle-button');
+        const contentSection = toggleGroup.querySelector('.toggle-content');
+        const toggleArrow = toggleButton.querySelector('.toggle-arrow');
+        
+        toggleButton.addEventListener('click', () => {
+            const isHidden = contentSection.style.display === "none";
+            
+            if (isHidden) {
+                contentSection.style.display = "block"; // Show content
+                toggleArrow.style.transform = "rotate(0deg)"; // Down arrow
+            } else {
+                contentSection.style.display = "none"; // Hide content
+                toggleArrow.style.transform = "rotate(180deg)"; // Up arrow
+            }
+        });
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.video-container').forEach(container => {
+      const videos = Array.from(container.querySelectorAll('video'));
+      const prevButton = container.querySelector('.prev');
+      const nextButton = container.querySelector('.next');
+      const caption = container.querySelector('p');
+      const captionsList = JSON.parse(container.dataset.captions);
+  
+      let currentIndex = 0;
+  
+      function showVideo(index) {
+        // Hide all videos in this container
+        videos.forEach(video => {
+          video.style.display = 'none';
+          video.pause();
+        });
+  
+        // Show the selected video
+        videos[index].style.display = 'block';
+        videos[index].play();
+  
+        // Update caption
+        caption.textContent = captionsList[index];
+      }
+  
+      // Event listeners for buttons
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+        showVideo(currentIndex);
+      });
+  
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % videos.length;
+        showVideo(currentIndex);
+      });
+  
+      // Initialize first video
+      showVideo(currentIndex);
+    });
+  </script>
+
+
+</body>
+</html>
