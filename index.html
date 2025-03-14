@@ -539,7 +539,6 @@
     </tbody>
   </table>
   <style>
-    /* 기본적으로 ClustrMaps ID를 숨김 */
     #clustrmaps {
         display: none !important;
         visibility: hidden;
@@ -552,7 +551,6 @@
     <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=200&t=n&d=uQJN5flI_cOqhH19y7QsokJR3c8rLc1zA7UT34AArdI&co=ffffff&ct=ffffff&cmo=ffffff&cmn=ffffff'></script>
     
     <script>
-    // ClustrMaps가 로드된 후, 자동으로 추가되는 요소를 숨김
     document.addEventListener("DOMContentLoaded", function() {
         setTimeout(function() {
             let clustrmapsDivs = document.querySelectorAll("iframe[src*='clustrmaps'], div[id*='clustrmaps']");
@@ -563,7 +561,7 @@
                 div.style.height = "0";
                 div.style.overflow = "hidden";
             });
-        }, 3000); // 3초 후에 실행 (ClustrMaps가 로드될 시간 고려)
+        }, 3000); 
     });
     </script>
 </body>
