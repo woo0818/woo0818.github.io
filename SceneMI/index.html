@@ -236,67 +236,6 @@
     }, { once: true });
 </script>
 
-<section class="hero is-small">
-    <div class="hero-body">
-        <div class="container is-max-desktop">
-            <div class="column is-centered has-text-centered">
-                <h2 class="title is-3">SceneMI's Featured Videos</h2>
-                
-                <div class="columns is-multiline is-mobile is-centered">
-                    <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
-                        <img src="static/videos/scene_aware3_keyframes.png" alt="Sparse Keyframes" style="max-width: 100%; height: auto; margin-bottom: 5px;">
-                        <p style="font-size: 14px; color: blue;">Input 1</p>
-                        <p style="font-size: 18px; font-weight: bold;">Sparse Keyframes</p>
-                        <video playsinline autoplay muted loop style="max-width: 100%; height: auto;">
-                            <source src="static/videos/scene_aware3_ours.mkv" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; font-weight: bold; color: violet;">Output 1</p>
-                        <p style="font-size: 18px; font-weight: bold;">Scene-Aware Motion In-betweening</p>
-                    </div>
-                    
-                    <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
-                        <video playsinline autoplay muted loop style="max-width: 100%; height: auto; margin-bottom: 5px;">
-                            <source src="static/videos/robustness2_keyframes.mkv" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; color: blue;">Input 2</p>
-                        <p style="font-size: 18px; font-weight: bold;">Noisy Keyframes</p>
-                        <video playsinline autoplay muted loop style="max-width: 100%; height: auto;">
-                            <source src="static/videos/robustness2_ours.mkv" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; font-weight: bold; color: violet;">Output 2</p>
-                        <p style="font-size: 18px; font-weight: bold;">Robustness on Noisy Keyframes</p>
-                    </div>
-                    
-                    <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
-                        <video playsinline autoplay muted loop style="max-width: 100%; height: auto; margin-bottom: 5px;">
-                            <source src="static/videos/gimo4.mkv" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; color: blue;">Input 3</p>
-                        <p style="font-size: 18px; font-weight: bold;">Noisy Real-World Data</p>
-                        <video playsinline autoplay muted loop style="max-width: 100%; height: auto;">
-                            <source src="static/videos/gimo4_ours.mkv" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; font-weight: bold; color: violet;">Output 3</p>
-                        <p style="font-size: 18px; font-weight: bold;">Generalization to Real-World</p>
-                    </div>
-                    
-                    <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
-                        <video playsinline autoplay muted loop style="max-width: 100%; height: auto; margin-bottom: 5px;">
-                            <source src="static/videos/video2animation1_input.mkv" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; color: blue;">Input 4</p>
-                        <p style="font-size: 18px; font-weight: bold;">Monocular RGB Video</p>
-                        <video playsinline autoplay muted loop style="max-width: 100%; height: auto;">
-                            <source src="static/videos/video2animation1_ours.mkv" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; font-weight: bold; color: violet;">Output 4</p>
-                        <p style="font-size: 18px; font-weight: bold;">Video-based HSI Reconstruction</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 
 <section class="section" style="text-align:left">
@@ -361,8 +300,7 @@
 
 
 
-
-<section class="hero is-small is-light">
+  <section class="hero is-small is-light">
     <div class="hero-body">
         <div class="container is-max-desktop">
             <div class="column is-centered has-text-centered">
@@ -382,7 +320,6 @@
                         We visualize the results of <strong>SceneMI</strong> on the <strong>clean</strong> TRUMANS dataset using the classical motion in-betweening setting with surrounding environments.
                         Here, we employ a <strong>sparse</strong> keyframe interval of 60 frames, corresponding to 2-second motion sequences between consecutive keyframes.
                         This presents a challenging scenario that requires scene awareness for motion synthesis.
-                        
                     </p>
                     <p class="mt-5" style="font-size: 18px; color: #333; text-align: left;">
                         SceneMI is the first to tackle motion in-betweening within 3D scenes, demonstrating the ability to generate realistic transitions that adhere to both keyframe and environmental constraints.
@@ -390,7 +327,6 @@
                 </div>
 
                 <div class="column is-centered has-text-centered">
-                    
                     <div class="toggle-section" style="margin-bottom: 10px;">
                         <div style="display: flex; align-items: center; justify-content: flex-start;">
                             <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
@@ -404,24 +340,17 @@
                                     transition: transform 0.3s ease;
                                 "></span>
                             </button>
-                            
-                            
                             <p style="font-weight: bold; margin: 0;">Comparisons</p>
-                            
                         </div>
-
-                       
                     
                         <!-- Content to Toggle -->
                         <div class="toggle-content" style="display: block; width: 100%;">
-                            
-                            
-                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                            <div class="columns is-centered is-half-mobile is-gapless" style="margin-top: 10px;">
                                 <div class="column has-text-centered is-narrow">
                                     <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
                                         <source src="static/videos/scene_aware1_mdm.mkv" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px;  margin-top: 5px;">MDM</p>
+                                    <p style="font-size: 18px; margin-top: 5px;">MDM</p>
                                 </div>
                                 <div class="column has-text-centered is-narrow">
                                     <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
@@ -431,9 +360,9 @@
                                 </div>
                             </div>
                             
-                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                            <div class="columns is-centered is-half-mobile is-gapless" style="margin-top: 10px;">
                                 <div class="column has-text-centered is-narrow">
-                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
                                         <source src="static/videos/scene_aware1_ours_wo_sceneawareness.mkv" type="video/mp4">
                                     </video>
                                     <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Scene-awareness</p>
@@ -445,116 +374,97 @@
                                     <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
                                 </div>
                             </div>
-                            
+
                             <div class="content is-centered" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
                                 <hr style="border: 0; height: 2px; width: 80%; margin: 0 auto; background-color: transparent; border-top: 2px dashed #000508a8;">
                             </div>
-                            
-                            
 
-                            
-
-                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                            <div class="columns is-centered is-half-mobile is-gapless" style="margin-top: 10px;">
                                 <div class="column has-text-centered is-narrow">
-                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                    <video playsinline autoplay muted loop style="max-width: 100%; height: auto; margin-right: 2px;">
                                         <source src="static/videos/scene_aware2_mdm.mkv" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px;  margin-top: 5px;">MDM</p>
+                                    <p style="font-size: 18px; margin-top: 5px;">MDM</p>
                                 </div>
                                 <div class="column has-text-centered is-narrow">
-                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                    <video playsinline autoplay muted loop style="max-width: 100%; height: auto; margin-left: 2px;">
                                         <source src="static/videos/scene_aware2_condmdi.mkv" type="video/mp4">
                                     </video>
                                     <p style="font-size: 18px; margin-top: 5px;">CondMDI</p>
                                 </div>
                             </div>
                             
-                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
+                            <div class="columns is-centered is-half-mobile is-gapless" style="margin-top: 10px;">
                                 <div class="column has-text-centered is-narrow">
-                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
+                                    <video playsinline autoplay muted loop style="max-width: 100%; height: auto; margin-right: 2px;">
                                         <source src="static/videos/scene_aware2_ours_wo_sceneawareness.mkv" type="video/mp4">
                                     </video>
                                     <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Scene-awareness</p>
                                 </div>
                                 <div class="column has-text-centered is-narrow">
-                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
+                                    <video playsinline autoplay muted loop style="max-width: 100%; height: auto; margin-left: 2px;">
                                         <source src="static/videos/scene_aware2_ours.mkv" type="video/mp4">
                                     </video>
                                     <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
                                 </div>
                             </div>
-
                         </div>
-                    
                     </div>
-
                 </div>
 
-                <div class="column is-centered has-text-centered"></div>
-                    
-                    <div class="toggle-section" style="margin-bottom: 10px;">
-                        <div style="display: flex; align-items: center; justify-content: flex-start;">
-                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
-                                <span class="toggle-arrow" style="
-                                    display: inline-block;
-                                    width: 0;
-                                    height: 0;
-                                    border-left: 15px solid transparent;
-                                    border-right: 15px solid transparent;
-                                    border-top: 23px solid rgba(33, 175, 139, 0.822);
-                                    transition: transform 0.3s ease;
-                                "></span>
-                            </button>
-                            <p style="font-weight: bold; margin: 0;">Further Results</p>
-                        </div>
-                        <div class="content has-text-justified">
-                                    
-                        </div>
-                        <!-- Content to Toggle -->
-                        <div class="toggle-content" style="display: block; width: 100%;">
-
-                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
-                                <div class="column has-text-centered is-narrow">
-                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
-                                        <source src="static/videos/scene_aware6_ours.mkv" type="video/mp4">
-                                    </video>
-                                    <p style="font-size: 18px;  margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #1</p>
-                                </div>
-                                <div class="column has-text-centered is-narrow">
-                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
-                                        <source src="static/videos/scene_aware4_ours.mkv" type="video/mp4">
-                                    </video>
-                                    <p style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #2</p>
-                                </div>
-                            </div>
-                            
-                            
-                            <div class="columns is-centered is-gapless" style="margin-top: 10px;">
-                                <div class="column has-text-centered is-narrow">
-                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-right: 2px;">
-                                        <source src="static/videos/scene_aware3_ours.mkv" type="video/mp4">
-                                    </video>
-                                    <p style="font-size: 18px;  margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #3</p>
-                                </div>
-                                <div class="column has-text-centered is-narrow">
-                                    <video playsinline autoplay muted loop style="max-width: 390px; height: auto; margin-left: 2px;">
-                                        <source src="static/videos/scene_aware5_ours.mkv" type="video/mp4">
-                                    </video>
-                                    <p style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #4</p>
-                                </div>
-                            </div>
-                            
-    
-                        </div>
-                        </div>
-
+                <div class="toggle-section" style="margin-bottom: 10px;">
+                    <div style="display: flex; align-items: center; justify-content: flex-start;">
+                        <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                            <span class="toggle-arrow" style="
+                                display: inline-block;
+                                width: 0;
+                                height: 0;
+                                border-left: 15px solid transparent;
+                                border-right: 15px solid transparent;
+                                border-top: 23px solid rgba(33, 175, 139, 0.822);
+                                transition: transform 0.3s ease;
+                            "></span>
+                        </button>
+                        <p style="font-weight: bold; margin: 0;">Further Results</p>
                     </div>
 
+                    <div class="toggle-content" style="display: block; width: 100%;">
+                        <div class="columns is-centered is-half-mobile is-gapless" style="margin-top: 10px;">
+                            <div class="column has-text-centered is-narrow">
+                                <video playsinline autoplay muted loop style="max-width: 100%; height: auto; margin-right: 2px;">
+                                    <source src="static/videos/scene_aware6_ours.mkv" type="video/mp4">
+                                </video>
+                                <p style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #1</p>
+                            </div>
+                            <div class="column has-text-centered is-narrow">
+                                <video playsinline autoplay muted loop style="max-width: 100%; height: auto; margin-left: 2px;">
+                                    <source src="static/videos/scene_aware4_ours.mkv" type="video/mp4">
+                                </video>
+                                <p style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #2</p>
+                            </div>
+                        </div>
+
+                        <div class="columns is-centered is-half-mobile is-gapless" style="margin-top: 10px;">
+                            <div class="column has-text-centered is-narrow">
+                                <video playsinline autoplay muted loop style="max-width: 100%; height: auto; margin-right: 2px;">
+                                    <source src="static/videos/scene_aware3_ours.mkv" type="video/mp4">
+                                </video>
+                                <p style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #3</p>
+                            </div>
+                            <div class="column has-text-centered is-narrow">
+                                <video playsinline autoplay muted loop style="max-width: 100%; height: auto; margin-left: 2px;">
+                                    <source src="static/videos/scene_aware5_ours.mkv" type="video/mp4">
+                                </video>
+                                <p style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #4</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 
 
 
