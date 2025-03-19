@@ -167,7 +167,7 @@
                         <img src="static/videos/scene_aware3_keyframes.png" alt="Sparse Keyframes" style="max-width: 100%; height: auto; margin-bottom: 5px;">
                         <p style="font-size: 14px; color: blue;">Input 1</p>
                         <p style="font-size: 18px; font-weight: bold;">Sparse Keyframes</p>
-                        <video class="autoplay-video" playsinline muted loop>
+                        <video class="autoplay-video" playsinline muted="muted" loop autoplay>
                             <source src="static/videos/scene_aware3_ours.mp4" type="video/mp4">
                         </video>
                         <p style="font-size: 14px; font-weight: bold; color: violet;">Output 1</p>
@@ -175,12 +175,12 @@
                     </div>
 
                     <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
-                        <video class="autoplay-video" playsinline muted loop>
+                        <video class="autoplay-video" playsinline muted="muted" loop autoplay>
                             <source src="static/videos/robustness2_keyframes.mp4" type="video/mp4">
                         </video>
                         <p style="font-size: 14px; color: blue;">Input 2</p>
                         <p style="font-size: 18px; font-weight: bold;">Noisy Keyframes</p>
-                        <video class="autoplay-video" playsinline muted loop>
+                        <video class="autoplay-video" playsinline muted="muted" loop autoplay>
                             <source src="static/videos/robustness2_ours.mp4" type="video/mp4">
                         </video>
                         <p style="font-size: 14px; font-weight: bold; color: violet;">Output 2</p>
@@ -188,12 +188,12 @@
                     </div>
 
                     <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
-                        <video class="autoplay-video" playsinline muted loop>
+                        <video class="autoplay-video" playsinline muted="muted" loop autoplay>
                             <source src="static/videos/gimo4.mp4" type="video/mp4">
                         </video>
                         <p style="font-size: 14px; color: blue;">Input 3</p>
                         <p style="font-size: 18px; font-weight: bold;">Noisy Real-World Data</p>
-                        <video class="autoplay-video" playsinline muted loop>
+                        <video class="autoplay-video" playsinline muted="muted" loop autoplay>
                             <source src="static/videos/gimo4_ours.mp4" type="video/mp4">
                         </video>
                         <p style="font-size: 14px; font-weight: bold; color: violet;">Output 3</p>
@@ -201,12 +201,12 @@
                     </div>
 
                     <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
-                        <video class="autoplay-video" playsinline muted loop>
+                        <video class="autoplay-video" playsinline muted="muted" loop autoplay>
                             <source src="static/videos/video2animation1_input.mp4" type="video/mp4">
                         </video>
                         <p style="font-size: 14px; color: blue;">Input 4</p>
                         <p style="font-size: 18px; font-weight: bold;">Monocular RGB Video</p>
-                        <video class="autoplay-video" playsinline muted loop>
+                        <video class="autoplay-video" playsinline muted="muted" loop autoplay>
                             <source src="static/videos/video2animation1_ours.mp4" type="video/mp4">
                         </video>
                         <p style="font-size: 14px; font-weight: bold; color: violet;">Output 4</p>
@@ -219,11 +219,21 @@
 </section>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll('.autoplay-video').forEach(video => {
-        video.play().catch(error => console.log("Autoplay failed:", error));
+    document.addEventListener("DOMContentLoaded", function () {
+        let videos = document.querySelectorAll(".autoplay-video");
+        videos.forEach(video => {
+            video.play().catch(error => {
+                console.log("Autoplay failed:", error);
+            });
+        });
     });
-});
+
+    document.addEventListener("click", function () {
+        let videos = document.querySelectorAll(".autoplay-video");
+        videos.forEach(video => {
+            video.play();
+        });
+    }, { once: true });
 </script>
 
 <section class="hero is-small">
