@@ -98,17 +98,21 @@
         <div class="is-size-5 publication-authors">
         <div class="author-list">
             <span class="author-block"><a href="https://inwoohwang.me/">Inwoo Hwang</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="https://zhoubinwy.github.io/">Bing Zhou</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://zhoubinwy.github.io/">Bing Zhou</a><sup>2✉</sup>,</span>
             <span class="author-block"><a href="https://3d.snu.ac.kr/">Young Min Kim</a><sup>1</sup>,</span>
             <span class="author-block"><a href="https://jianwang-cmu.github.io/">Jian Wang</a><sup>2</sup>,</span>
-            <span class="author-block"><a href="https://ericguo5513.github.io/">Chuan Guo</a><sup>2</sup></span>
+            <span class="author-block"><a href="https://ericguo5513.github.io/">Chuan Guo</a><sup>2✉</sup></span>
         </div>
         </div>
         
         <div class="is-size-5 publication-authors affiliation-list">
             <span class="author-block"><sup>1</sup>Seoul National University</span><br>
-            <span class="author-block"><sup>2</sup>Snap Inc.</span>
+            <span class="author-block"><sup>2</sup>Snap Inc.</span><br>
+            <div class="is-size-6 publication-authors affiliation-list">
+                <span class="author-block" style="font-size: smaller;"><sup>✉</sup>Co-corresponding author</span> 
+            </div>
         </div>
+        
         
         <div class="is-size-5 publication-authors lab-logos" style="display: flex; justify-content: center; align-items: center; gap: 20px;">
             <a class="lab-logo" href="https://3d.snu.ac.kr/" style="max-width: 150px; height: auto;">
@@ -245,12 +249,21 @@
 <section class="section" style="text-align:left">
     <div class="container is-max-desktop">
         <h3 class="title is-3 is-size-5-tablet is-size-6-mobile">TL;DR</h3>
-        <ol> We formulate Human-Scene Interaction (HSI) modeling as Scene-aware Motion In-betweening (SceneMI), a more tractable and practical task. SceneMI supports several practical applications:
-            1. Keyframe-guided character animation in 3D scenes. 2. Robust performance with noisy keyframes, enhancing motion quality of imperfect HSI data and generalizing to real-world scenarios.</li>
-            3. Assisting HSI reconstruction using only monocular video.
-        </ol>
+        
+        <h2 class="subtitle is-size-6" style="text-align: left;">
+             <b>SceneMI</b> modeling Human-Scene Interaction (HSI) as Scene-aware Motion In-betweening, supports several practical applications:
+            <div style="text-align: center;">
+                <img src="./static/images/concept_of_scenemi.png"
+                     alt="SceneMI concept image."
+                     class="teaser-image"/>
+            </div>
+            1. Keyframe-guided character animation in 3D scenes (<span style="color: rgb(201, 102, 135);">generation</span>).
+            2. Robust performance with noisy keyframes, enhancing motion quality of imperfect HSI data and generalizing to real-world scenarios.
+            3. Assisting HSI reconstruction using only monocular video (<span style="color: rgba(51, 124, 158, 0.849);">reconstruction</span>).
+        </h2>
     </div>
 </section>
+
 
 
 <section class="section">
