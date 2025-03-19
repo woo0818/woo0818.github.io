@@ -221,67 +221,6 @@
 
 
 
-<section class="hero is-small">
-    <div class="hero-body">
-        <div class="container is-max-desktop">
-            <div class="column is-centered has-text-centered">
-                <h2 class="title is-3">SceneMI's Featured Videos</h2>
-                
-                <div class="columns is-multiline is-mobile is-centered is-gapless">
-                    <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
-                        <img src="static/videos/scene_aware3_keyframes.png" alt="Sparse Keyframes" style="max-width: 100%; height: auto; margin-right: 2px;">
-                        <p style="font-size: 14px; color: blue;">Input 1</p>
-                        <p style="font-size: 18px; font-weight: bold;">Sparse Keyframes</p>
-                        <video class="autoplay-video" playsinline muted="muted" loop autoplay style="margin-right: 2px;">
-                            <source src="static/videos/scene_aware3_ours.mp4" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; font-weight: bold; color: violet;">Output 1</p>
-                        <p style="font-size: 18px; font-weight: bold;">Scene-Aware Motion In-betweening</p>
-                    </div>
-
-                    <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
-                        <video class="autoplay-video" playsinline muted="muted" loop autoplay style="margin-right: 2px;">
-                            <source src="static/videos/robustness2_keyframes.mp4" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; color: blue;">Input 2</p>
-                        <p style="font-size: 18px; font-weight: bold;">Noisy Keyframes</p>
-                        <video class="autoplay-video" playsinline muted="muted" loop autoplay style="margin-right: 20px;">
-                            <source src="static/videos/robustness2_ours.mp4" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; font-weight: bold; color: violet;">Output 2</p>
-                        <p style="font-size: 18px; font-weight: bold;">Robustness on Noisy Keyframes</p>
-                    </div>
-
-                    <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
-                        <video class="autoplay-video" playsinline muted="muted" loop autoplay>
-                            <source src="static/videos/gimo4.mp4" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; color: blue;">Input 3</p>
-                        <p style="font-size: 18px; font-weight: bold;">Noisy Real-World Data</p>
-                        <video class="autoplay-video" playsinline muted="muted" loop autoplay>
-                            <source src="static/videos/gimo4_ours.mp4" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; font-weight: bold; color: violet;">Output 3</p>
-                        <p style="font-size: 18px; font-weight: bold;">Generalization to Real-World</p>
-                    </div>
-
-                    <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
-                        <video class="autoplay-video" playsinline muted="muted" loop autoplay>
-                            <source src="static/videos/video2animation1_input.mp4" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; color: blue;">Input 4</p>
-                        <p style="font-size: 18px; font-weight: bold;">Monocular RGB Video</p>
-                        <video class="autoplay-video" playsinline muted="muted" loop autoplay>
-                            <source src="static/videos/video2animation1_ours.mp4" type="video/mp4">
-                        </video>
-                        <p style="font-size: 14px; font-weight: bold; color: violet;">Output 4</p>
-                        <p style="font-size: 18px; font-weight: bold;">Video-based HSI Reconstruction</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -416,13 +355,13 @@
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                         <source src="static/videos/scene_aware1_mdm.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; margin-top: 5px;">MDM</p>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">MDM</p>
                                 </div>
                                 <div class="column is-half-mobile has-text-centered is-narrow">
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                         <source src="static/videos/scene_aware1_condmdi.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; margin-top: 5px;">CondMDI</p>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">CondMDI</p>
                                 </div>
                             </div>
                             
@@ -431,13 +370,13 @@
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                         <source src="static/videos/scene_aware1_ours_wo_sceneawareness.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Scene-awareness</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Scene-awareness</p>
                                 </div>
                                 <div class="column is-half-mobile has-text-centered is-narrow">
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                         <source src="static/videos/scene_aware1_ours.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
                                 </div>
                             </div>
 
@@ -450,13 +389,13 @@
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                         <source src="static/videos/scene_aware2_mdm.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; margin-top: 5px;">MDM</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">MDM</p>
                                 </div>
                                 <div class="column is-half-mobile has-text-centered is-narrow">
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                         <source src="static/videos/scene_aware2_condmdi.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; margin-top: 5px;">CondMDI</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">CondMDI</p>
                                 </div>
                             </div>
                             
@@ -465,13 +404,13 @@
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                         <source src="static/videos/scene_aware2_ours_wo_sceneawareness.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Scene-awareness</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Scene-awareness</p>
                                 </div>
                                 <div class="column is-half-mobile has-text-centered is-narrow">
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                         <source src="static/videos/scene_aware2_ours.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
                                 </div>
                             </div>
                         </div>
@@ -500,13 +439,13 @@
                                 <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                     <source src="static/videos/scene_aware6_ours.mp4" type="video/mp4">
                                 </video>
-                                <p style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #1</p>
+                                <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #1</p>
                             </div>
                             <div class="column is-half-mobile has-text-centered is-narrow">
                                 <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                     <source src="static/videos/scene_aware4_ours.mp4" type="video/mp4">
                                 </video>
-                                <p style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #2</p>
+                                <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #2</p>
                             </div>
                         </div>
 
@@ -515,13 +454,13 @@
                                 <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                     <source src="static/videos/scene_aware3_ours.mp4" type="video/mp4">
                                 </video>
-                                <p style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #3</p>
+                                <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #3</p>
                             </div>
                             <div class="column is-half-mobile has-text-centered is-narrow">
                                 <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                     <source src="static/videos/scene_aware5_ours.mp4" type="video/mp4">
                                 </video>
-                                <p style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #4</p>
+                                <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;"><strong>Ours (SceneMI)</strong> Case #4</p>
                             </div>
                         </div>
                     </div>
@@ -587,7 +526,7 @@
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 290px; width: 100%; height: auto; margin-right: 2px;">
                                         <source src="static/videos/robustness1_keyframes.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Input Noisy Keyframes</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;">Input Noisy Keyframes</p>
                                 </div>
                             </div>
                             
@@ -596,13 +535,13 @@
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                         <source src="static/videos/robustness1_mdm.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; margin-top: 5px;">MDM</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">MDM</p>
                                 </div>
                                 <div class="column is-half-mobile has-text-centered is-narrow">
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                         <source src="static/videos/robustness1_condmdi.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; margin-top: 5px;">CondMDI</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">CondMDI</p>
                                 </div>
                             </div>
                             
@@ -611,13 +550,13 @@
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                         <source src="static/videos/robustness1_ours_wo_noiseawareness.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Noise-awareness</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Noise-awareness</p>
                                 </div>
                                 <div class="column is-half-mobile has-text-centered is-narrow">
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                         <source src="static/videos/robustness1_ours.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
                                 </div>
                             </div>
 
@@ -631,7 +570,7 @@
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 290px; width: 100%; height: auto; margin-right: 2px;">
                                         <source src="static/videos/robustness2_keyframes.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Input Noisy Keyframes</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;">Input Noisy Keyframes</p>
                                 </div>
                             </div>
                             
@@ -640,13 +579,13 @@
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                         <source src="static/videos/robustness2_mdm.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; margin-top: 5px;">MDM</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">MDM</p>
                                 </div>
                                 <div class="column is-half-mobile has-text-centered is-narrow">
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                         <source src="static/videos/robustness1_condmdi.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; margin-top: 5px;">CondMDI</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">CondMDI</p>
                                 </div>
                             </div>
                             
@@ -655,13 +594,13 @@
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                         <source src="static/videos/robustness2_ours_wo_noiseawareness.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Noise-awareness</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;">Without Noise-awareness</p>
                                 </div>
                                 <div class="column is-half-mobile has-text-centered is-narrow">
                                     <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                         <source src="static/videos/robustness2_ours.mp4" type="video/mp4">
                                     </video>
-                                    <p style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;">Ours (SceneMI)</p>
                                 </div>
                             </div>
                         </div>
@@ -726,13 +665,13 @@
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                 <source src="static/videos/gimo2.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
                         </div>
                         <div class="column is-half-mobile has-text-centered is-narrow">
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                  <source src="static/videos/gimo2_ours.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
                         </div>
                     </div>
                 </div>
@@ -761,13 +700,13 @@
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                 <source src="static/videos/gimo3.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
                         </div>
                         <div class="column is-half-mobile has-text-centered is-narrow">
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                 <source src="static/videos/gimo3_ours.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
                         </div>
                     </div>
                 </div>
@@ -796,13 +735,13 @@
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                 <source src="static/videos/gimo4.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
                         </div>
                         <div class="column is-half-mobile has-text-centered is-narrow">
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                 <source src="static/videos/gimo4_ours.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
                         </div>
                     </div>
                 </div>
@@ -831,13 +770,13 @@
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                 <source src="static/videos/gimo5.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
                         </div>
                         <div class="column is-half-mobile has-text-centered is-narrow">
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                 <source src="static/videos/gimo5_ours.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
                         </div>
                     </div>
                 </div>
@@ -866,13 +805,13 @@
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                 <source src="static/videos/gimo1_front.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
                         </div>
                         <div class="column is-half-mobile has-text-centered is-narrow">
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                 <source src="static/videos/gimo1_ours_front.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
                         </div>
                     </div>
                 </div>
@@ -901,13 +840,13 @@
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                 <source src="static/videos/gimo1_side.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;">Noisy Real-World Data</p>
                         </div>
                         <div class="column is-half-mobile has-text-centered is-narrow">
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                 <source src="static/videos/gimo1_ours_side.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;">SceneMI Results</p>
                         </div>
                     </div>
                 </div>
@@ -954,13 +893,13 @@
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                 <source src="static/videos/video2animation1_input.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px; font-weight: bold; margin-top: 5px;"><strong>Input Monocular Video</strong></p>
+                            <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;"><strong>Input Monocular Video</strong></p>
                         </div>
                         <div class="column is-half-mobile has-text-centered is-narrow">
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                 <source src="static/videos/video2animation1_initial.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px; font-weight: bold; margin-top: 5px;"><strong>Initial reconstruction</strong></p>
+                            <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;"><strong>Initial reconstruction</strong></p>
                         </div>
                     </div>
                 </div>
@@ -971,13 +910,13 @@
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                 <source src="static/videos/video2animation1_ours.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>Final reconstruction (Applying SceneMI)</strong></p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>Final reconstruction (Applying SceneMI)</strong></p>
                         </div>
                         <div class="column is-half-mobile has-text-centered is-narrow">
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                 <source src="static/videos/video2animation1_ours_keyframes.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>SceneMI results with input</strong></p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>SceneMI results with input</strong></p>
                         </div>
                     </div>
                 </div>
@@ -1000,13 +939,13 @@
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                 <source src="static/videos/video2animation2_input.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px; font-weight: bold; margin-top: 5px;"><strong>Input Monocular Video</strong></p>
+                            <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;"><strong>Input Monocular Video</strong></p>
                         </div>
                         <div class="column is-half-mobile has-text-centered is-narrow">
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                 <source src="static/videos/video2animation2_initial.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px; font-weight: bold; margin-top: 5px;"><strong>Initial reconstruction</strong></p>
+                            <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;"><strong>Initial reconstruction</strong></p>
                         </div>
                     </div>
                 </div>
@@ -1017,13 +956,13 @@
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
                                 <source src="static/videos/video2animation2_ours.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>Final reconstruction (Applying SceneMI)</strong></p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>Final reconstruction (Applying SceneMI)</strong></p>
                         </div>
                         <div class="column is-half-mobile has-text-centered is-narrow">
                             <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
                                 <source src="static/videos/video2animation2_ours_keyframes.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>SceneMI results with input</strong></p>
+                            <p class="is-size-6-mobile" style="font-size: 18px;  font-weight: bold; margin-top: 5px;"><strong>SceneMI results with input</strong></p>
                         </div>
                     </div>
                 </div>
