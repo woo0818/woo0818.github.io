@@ -156,7 +156,82 @@
   </div>
 </section>
 
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="column is-centered has-text-centered">
+                <h2 class="title is-3">SceneMI's Featured Videos</h2>
+                
+                <div class="columns is-multiline is-mobile is-centered">
+                    <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
+                        <img src="static/videos/scene_aware3_keyframes.png" alt="Sparse Keyframes" style="max-width: 100%; height: auto; margin-bottom: 5px;">
+                        <p style="font-size: 14px; color: blue;">Input 1</p>
+                        <p style="font-size: 18px; font-weight: bold;">Sparse Keyframes</p>
+                        <video class="autoplay-video" playsinline muted loop>
+                            <source src="static/videos/scene_aware3_ours.webm" type="video/webm">
+                            <source src="static/videos/scene_aware3_ours.mp4" type="video/mp4">
+                        </video>
+                        <p style="font-size: 14px; font-weight: bold; color: violet;">Output 1</p>
+                        <p style="font-size: 18px; font-weight: bold;">Scene-Aware Motion In-betweening</p>
+                    </div>
 
+                    <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
+                        <video class="autoplay-video" playsinline muted loop>
+                            <source src="static/videos/robustness2_keyframes.webm" type="video/webm">
+                            <source src="static/videos/robustness2_keyframes.mp4" type="video/mp4">
+                        </video>
+                        <p style="font-size: 14px; color: blue;">Input 2</p>
+                        <p style="font-size: 18px; font-weight: bold;">Noisy Keyframes</p>
+                        <video class="autoplay-video" playsinline muted loop>
+                            <source src="static/videos/robustness2_ours.webm" type="video/webm">
+                            <source src="static/videos/robustness2_ours.mp4" type="video/mp4">
+                        </video>
+                        <p style="font-size: 14px; font-weight: bold; color: violet;">Output 2</p>
+                        <p style="font-size: 18px; font-weight: bold;">Robustness on Noisy Keyframes</p>
+                    </div>
+
+                    <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
+                        <video class="autoplay-video" playsinline muted loop>
+                            <source src="static/videos/gimo4.webm" type="video/webm">
+                            <source src="static/videos/gimo4.mp4" type="video/mp4">
+                        </video>
+                        <p style="font-size: 14px; color: blue;">Input 3</p>
+                        <p style="font-size: 18px; font-weight: bold;">Noisy Real-World Data</p>
+                        <video class="autoplay-video" playsinline muted loop>
+                            <source src="static/videos/gimo4_ours.webm" type="video/webm">
+                            <source src="static/videos/gimo4_ours.mp4" type="video/mp4">
+                        </video>
+                        <p style="font-size: 14px; font-weight: bold; color: violet;">Output 3</p>
+                        <p style="font-size: 18px; font-weight: bold;">Generalization to Real-World</p>
+                    </div>
+
+                    <div class="column has-text-centered is-half-mobile is-one-quarter-tablet">
+                        <video class="autoplay-video" playsinline muted loop>
+                            <source src="static/videos/video2animation1_input.webm" type="video/webm">
+                            <source src="static/videos/video2animation1_input.mp4" type="video/mp4">
+                        </video>
+                        <p style="font-size: 14px; color: blue;">Input 4</p>
+                        <p style="font-size: 18px; font-weight: bold;">Monocular RGB Video</p>
+                        <video class="autoplay-video" playsinline muted loop>
+                            <source src="static/videos/video2animation1_ours.webm" type="video/webm">
+                            <source src="static/videos/video2animation1_ours.mp4" type="video/mp4">
+                        </video>
+                        <p style="font-size: 14px; font-weight: bold; color: violet;">Output 4</p>
+                        <p style="font-size: 18px; font-weight: bold;">Video-based HSI Reconstruction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.autoplay-video').forEach(video => {
+        video.play().catch(error => console.log("Autoplay failed:", error));
+    });
+});
+</script>
 
 <section class="hero is-small">
     <div class="hero-body">
