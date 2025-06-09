@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Goal-Driven Human Motion Synthesis in Diverse Tasks">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Goal-Driven Human Motion Synthesis in Diverse Tasks</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  
+
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+rel="stylesheet">
+
+<link rel="stylesheet" href="./static/css/bulma.min.css">
+<link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+<link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+<link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<link rel="stylesheet" href="./static/css/index.css">
+<link rel="icon"
+href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="./static/js/fontawesome.all.min.js"></script>
+<script src="./static/js/bulma-carousel.min.js"></script>
+<script src="./static/js/bulma-slider.min.js"></script>
+<script src="./static/js/index.js"></script>
+
+
+<style>
+/* Toggle arrow position is fixed */
+#toggle-comparisons {
+position: relative;
+z-index: 10;
+}
+
+#toggle-arrow {
+transition: transform 0.3s ease; /* Smooth arrow rotation */
+}
+
+.button:hover {
+transform: translateY(-50%) scale(1.1);
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+.arrow {
+width: 0;
+height: 0;
+border-style: solid;
+}
+.prev .arrow {
+border-width: 10px 15px 10px 0;
+border-color: transparent gray transparent transparent;
+}
+.next .arrow {
+border-width: 10px 0 10px 15px;
+border-color: transparent transparent transparent gray;
+}
+.prev {
+left: 5px;
+}
+.next {
+right: 5px;
+}
+        
+</style>
+
+
+
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title">Goal-Driven Human Motion Synthesis in Diverse Tasks</h1>
+          
+          
+        
+        <div class="is-size-5 publication-authors">
+        <div class="author-list">
+            <span class="author-block"><a href="https://inwoohwang.me/">Inwoo Hwang</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://jinseokbae.github.io/">Jinseok Bae</a><sup>1</sup>,</span>
+            <span class="author-block"><p style="color: rgba(26, 136, 199, 0.911)">Donggeun Lim</style><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://3d.snu.ac.kr/">Young Min Kim</a><sup>1</sup></span>
+        </div>
+        </div>
+
+
+        
+        <!--
+        <div class="is-size-5 publication-authors lab-logos" style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+            <a class="lab-logo" href="https://3d.snu.ac.kr/" style="max-width: 150px; height: auto;">
+                <img src="static/images/3dv.png" alt="3DV Lab" style="width: 100%; height: auto;">
+            </a>
+        </div>
+         -->
+
+        <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="paper/Goal_Driven_Human_Motion_Generation.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                   <span class="icon">
+                    <i class="fas fa-file-alt"></i> <!-- Updated icon -->
+                  </span>
+                  <span>paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://inwoohwang.me/GoalDrivenSynthesis"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (soon)</span>
+                  </a>
+              </span>
+            
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            <p></p>
+            We propose a framework for goal-driven human motion generation, which can synthesize interaction-rich scenarios.
+    Given target positions for key joints, our pipeline generates a natural full-body motion that approaches the goal in cluttered environments.
+    Our pipeline solves the complex constraints in a tractable formulation by disentangling the process of motion generation into two stages.
+    The first stage computes the trajectory of the key joints, such as hands and feet, to encourage the character to approach the target position while avoiding possible physical violation.
+    We demonstrate that diffusion-based guidance sampling can flexibly adapt to the local scene context while satisfying the target-goal conditions.
+    Then, the subsequent second stage can easily generate plausible full-body motion that traverses the key joint trajectories.
+    The proposed pipeline applies to various scenarios that have to account for 3D scene geometry and body joint configurations concurrently.
+            <p></p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+    
+    
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="./static/images/teaser.png"
+             alt="GoalDriven teaser image."
+             class="teaser-image"/>
+             <h2 class="subtitle has-text-centered is-size-6">
+                We propose a motion generation pipeline where pre-defined keyjoints approach user-specified positional goals. The goals are shown as green spheres, and our pipeline can adapt to the customized conditions, including novel scenes and goal conditions. We can generate motions that reach for an object in cluttered scenes, climb a wall, or sit with specified hand positions.
+            </h2>
+            
+      </div>
+
+  </div>
+  
+  </section>
+
+
+
+<section class="hero is-small is-light">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            
+            <div class="column is-centered has-text-centered">
+
+                <div class="content has-text-justified">
+                    <p></p>
+
+                    <h2 style="font-weight: bold; color: #20508f;">
+                        Reaching an Object Goal in a Cluttered Indoor Scene Examples
+                    </h2>
+                    
+                    <p style="font-size: 20px; text-align: left;">
+                        Our method able to generate motions reaching a goal while avoiding collision.
+
+                    
+                    </p>
+                    
+                    <p></p>
+                </div>
+                
+                
+                <div class="column is-centered has-text-centered">
+
+                    
+                    
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-top: 15px solid black;
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Examples</p>
+                            
+                                    
+                            
+                        </div>
+
+                        <div class="content has-text-justified">
+
+                
+                        </div>
+                    
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+                            
+                            
+                            <div class="columns is-centered">
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/reaching1.mp4" type="video/mp4">
+                                    </video>
+                                    <p>Case #1</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/reaching2.mp4" type="video/mp4">
+                                    </video>
+                                    <p>Case #2</p>
+                                </div>
+                                
+                            </div>
+
+                            <div class="columns is-centered">
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/reaching3.mp4" type="video/mp4">
+                                    </video>
+                                    <p>Case #3</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/reaching4.mp4" type="video/mp4">
+                                    </video>
+                                    <p>Case #4</p>
+                                </div>
+                            </div>
+
+                            
+                            
+                        
+
+                            
+
+                        </div>
+                    
+                    </div>
+
+                </div>
+
+                <div class="content has-text-justified">
+                    <p></p>
+
+                    <h2 style="font-weight: bold; color: #20508f;">
+                        Diverse Tasks Examples
+                    </h2>
+
+                    
+                    <p style="font-size: 20px; text-align: left;">
+                       </p>
+                    
+                    
+
+                <div class="column is-centered has-text-centered"></div>
+                    
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-top: 15px solid black;
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Examples</p>
+                        </div>
+                        <div class="content has-text-justified">
+                                    
+                        </div>
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+                            
+                            
+                            <div class="columns is-centered">
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/sitting1.mp4" type="video/mp4">
+                                    </video>
+                                    <p>Sitting with Suggested Contact Points.</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/sitting2.mp4" type="video/mp4">
+                                    </video>
+                                    <p>Sitting with Suggested Contact Points.</p>
+                                </div>
+                                
+                            </div>
+
+                            <div class="columns is-centered">
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/climbing1.mp4" type="video/mp4">
+                                    </video>
+                                    <p>Rock Climbing Guided by Multiple Goals.</p>
+                                </div>
+                                <div class="column is-centered has-text-centered">
+                                    <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                        <source src="static/videos/contact1.mp4" type="video/mp4">
+                                    </video>
+                                    <p>Contact-Aware Motion Generation.</p>
+                                </div>
+                            </div>
+
+                            
+                            
+                        
+
+                        </div>
+
+
+                        </div>
+                        
+                        
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+                
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+        @misc{hwang2025motionsynthesissparseflexible,
+            title={Motion Synthesis with Sparse and Flexible Keyjoint Control}, 
+            author={Inwoo Hwang and Jinseok Bae and Donggeun Lim and Young Min Kim},
+            year={2025},
+            eprint={2503.15557},
+            archivePrefix={arXiv},
+            primaryClass={cs.GR},
+            url={https://arxiv.org/abs/2503.15557}, 
+        }
+  </code></pre>
+    </div>
+  </section>
+  
+  
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                                                  href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+  
+              Website source code based on the Nerfies <a href="https://nerfies.github.io/">project page</a>. If you want to reuse their source code, please credit them appropriately.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+<script>
+    const toggleButton = document.getElementById("toggle-comparisons");
+    const comparisonsSection = document.getElementById("comparisons-section");
+    const toggleArrow = document.getElementById("toggle-arrow");
+
+    toggleButton.addEventListener("click", () => {
+        const isHidden = comparisonsSection.style.display === "none";
+
+        if (isHidden) {
+            comparisonsSection.style.display = "block"; // Show the content
+            toggleArrow.style.transform = "rotate(0deg)"; // Down arrow
+        } else {
+            comparisonsSection.style.display = "none"; // Hide the content
+            toggleArrow.style.transform = "rotate(180deg)"; // Up arrow
+        }
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.toggle-section').forEach(toggleGroup => {
+        const toggleButton = toggleGroup.querySelector('.toggle-button');
+        const contentSection = toggleGroup.querySelector('.toggle-content');
+        const toggleArrow = toggleButton.querySelector('.toggle-arrow');
+        
+        toggleButton.addEventListener('click', () => {
+            const isHidden = contentSection.style.display === "none";
+            
+            if (isHidden) {
+                contentSection.style.display = "block"; // Show content
+                toggleArrow.style.transform = "rotate(0deg)"; // Down arrow
+            } else {
+                contentSection.style.display = "none"; // Hide content
+                toggleArrow.style.transform = "rotate(180deg)"; // Up arrow
+            }
+        });
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.video-container').forEach(container => {
+      const videos = Array.from(container.querySelectorAll('video'));
+      const prevButton = container.querySelector('.prev');
+      const nextButton = container.querySelector('.next');
+      const caption = container.querySelector('p');
+      const captionsList = JSON.parse(container.dataset.captions);
+  
+      let currentIndex = 0;
+  
+      function showVideo(index) {
+        // Hide all videos in this container
+        videos.forEach(video => {
+          video.style.display = 'none';
+          video.pause();
+        });
+  
+        // Show the selected video
+        videos[index].style.display = 'block';
+        videos[index].play();
+  
+        // Update caption
+        caption.textContent = captionsList[index];
+      }
+  
+      // Event listeners for buttons
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+        showVideo(currentIndex);
+      });
+  
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % videos.length;
+        showVideo(currentIndex);
+      });
+  
+      // Initialize first video
+      showVideo(currentIndex);
+    });
+  </script>
+
+
+<style>
+    #clustrmaps {
+        display: none !important;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+    </style>
+    
+<script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=200&t=n&d=uQJN5flI_cOqhH19y7QsokJR3c8rLc1zA7UT34AArdI&co=ffffff&ct=ffffff&cmo=ffffff&cmn=ffffff'></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+        let clustrmapsDivs = document.querySelectorAll("iframe[src*='clustrmaps'], div[id*='clustrmaps']");
+        clustrmapsDivs.forEach(div => {
+            div.style.display = "none";
+            div.style.visibility = "hidden";
+            div.style.width = "0";
+            div.style.height = "0";
+            div.style.overflow = "hidden";
+        });
+    }, 3000); 
+});
+</script>
+
+</body>
+</html>
