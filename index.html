@@ -77,6 +77,45 @@
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
               
+              <tr onmouseout="snapmogen_stop()" onmouseover="snapmogen_start()">
+                <td style="padding:20px;width:25%;vertical-align:middle;">
+                  <div class="one">
+                    <div class='two' id='scenemi_over'>
+                      <img src="images/snapmogen.gif" width="160">
+                    </div>
+                    <img src='images/snapmogen.gif' width="160">
+                  </div>
+                  <script type="text/javascript">
+                    function snapmogen_start() {
+                      document.getElementById('snapmogen_over').style.opacity = "1";
+                    }
+
+                    function snapmogen_stop() {
+                      document.getElementById('snapmogen_over').style.opacity = "0";
+                    }
+                    snapmogen_stop()
+                  </script>
+                </td>
+                <td style="padding:20px;width:75%;vertical-align:middle">
+                  <a href="https://snap-research.github.io/SnapMoGen/">
+                    <papertitle>SnapMoGen: Human Motion Generation from Expressive Texts</papertitle>
+                  </a>
+                  <br>
+                  <a href="https://ericguo5513.github.io/">Chuan Guo</a>
+                  <strong>Inwoo Hwang</strong>,
+                  <a href="https://zhoubinwy.github.io/">Bing Zhou</a>,
+                  and
+                  <a href="https://jianwang-cmu.github.io/">Jian Wang</a>
+                  <br>
+                  <em>Arxiv</em>, 2025
+                  <br>
+                  <a href="https://www.arxiv.org/abs/2507.09122">arxiv</a>
+                  |
+                  <a href="https://snap-research.github.io/SnapMoGen/">project page</a>
+                  <p></p>
+                  <p>Text-motion dataset featuring high-quality motion capture data paired with accurate, expressive textual annotations.</p>
+                </td>
+              </tr>
 
               <tr onmouseout="scenemi_stop()" onmouseover="scenemi_start()">
                 <td style="padding:20px;width:25%;vertical-align:middle;">
