@@ -1,4 +1,4 @@
-This file contains the supplementary material for ICCV 2025, Paper ID 4215.
+This file contains the supplementary material for ECCV 2026, Paper ID 741.
 
 Additional qualitative results are provided in this document, organized in both PDF and project page formats for the convenience of the reviewer during the evaluation process.
 
