@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="EgoForce: Robust Online Egocentric Motion Reconstruction via Diffusion Forcing">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EgoForce: Robust Online Egocentric Motion Reconstruction via Diffusion Forcing</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  
+  <style>
+    /* Toggle arrow position is fixed */
+    #toggle-comparisons {
+        position: relative;
+        z-index: 10;
+    }
+
+    #toggle-arrow {
+        transition: transform 0.3s ease; /* Smooth arrow rotation */
+    }
+        
+    .button:hover {
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+    .arrow {
+        width: 0;
+        height: 0;
+        border-style: solid;
+    }
+    .prev .arrow {
+        border-width: 10px 15px 10px 0;
+        border-color: transparent gray transparent transparent;
+    }
+    .next .arrow {
+        border-width: 10px 0 10px 15px;
+        border-color: transparent transparent transparent gray;
+    }
+    .prev {
+        left: 5px;
+    }
+    .next {
+        right: 5px;
+    }
+                
+</style>
+</head>
+
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">EgoForce: Robust Online Egocentric Motion Reconstruction via Diffusion Forcing</h1>
+          
+          <div class="is-size-3 publication-authors">
+            Anonymous ECCV 2026 Submission # 742
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let videos = document.querySelectorAll(".autoplay-video");
+        videos.forEach(video => {
+            video.play().catch(error => {
+                console.log("Autoplay failed:", error);
+            });
+        });
+    });
+
+    document.addEventListener("click", function () {
+        let videos = document.querySelectorAll(".autoplay-video");
+        videos.forEach(video => {
+            video.play();
+        });
+    }, { once: true });
+</script>
+
+
+<!-- 
+<body class="body">
+    <div class="section" style="text-align: center">
+        <div class="content_block", style="display:inline-block; font-size: 1.2em; text-align: left">
+        <ul id="content" style="font-size: 1.2em; line-height: 1.6;">
+            <li><a href="#comparison">1. Comparisons to Previous Works</a></li>
+            <ul>
+                <li><a href="#in-the-wild-generation">2. Online Egocentric Reconstruction Gallery</a></li>
+                <li><a href="#test-generation">1.2 Generation from OmniMotion Test Prompts</a></li>
+            </ul>
+            <li><a href="#dataset">Noise Robustness</a></li>
+            <li><a href="#comparison">3. Comparisons to Previous Works</a></li>
+            <li><a href="#ablation">Online Version</a></li>
+            <ul>
+                <li><a href="#ablation_rec">4.1 Impact on VQ Reconstruction</a></li>
+                <li><a href="#ablation_gen">4.2 Impact on Text-to-motion Generation</a></li>
+            </ul>
+            <li><a href="#limitations">6. Limitations</a></li>
+        </ul>
+        </div>
+    </div> 
+</body>
+-->
+
+<section class="hero is-small is-light">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="column is-centered has-text-centered">
+                <h2 id="comparison" class="title is-3 has-text-weight-semibold" style="color: #1C3D5A;">
+                    Online Egocentric Reconstruction Results
+                </h2>
+
+                <div class="content has-text-justified">
+                    <!-- 
+                    <p class="has-text-weight-semibold mt-4 has-text-left is-size-5-tablet is-size-6-mobile" style="color: #B88A44;">
+                        Keyframes - Sparse, Clean &nbsp; | &nbsp; Scene - Hand-Crafted
+                    </p>
+                    <p class="has-text-weight-semibold mb-4 has-text-left is-size-5-tablet is-size-6-mobile" style="color: #4A90E2;">
+                        Dataset - TRUMANS (Clean)
+                    </p>
+                    -->
+                
+                    <p class="mt-6 is-size-5-tablet is-size-6-mobile" style="color: #333; text-align: left;">
+                        We visualize the results of <strong>EgoForce</strong> on <strong>streaming egocentric inputs</strong>.
+                    </p>
+                    <p class="mt-4 is-size-5-tablet is-size-6-mobile" style="color: #333; text-align: left;">
+                        EgoForce addresses egocentric motion reconstruction under <strong>strict causal constraints</strong>, demonstrating the ability to reconstruct <strong>high-fidelity and long-term stable motion</strong> across diverse scenarios.
+                    </p>
+
+                </div>
+                
+
+                <div class="column is-centered has-text-centered">
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 15px solid transparent;
+                                    border-right: 15px solid transparent;
+                                    border-top: 23px solid rgba(33, 175, 139, 0.822);
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Reconstruction Results</p>
+                        </div>
+                
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+                            <div class="columns is-centered is-mobile is-gapless" style="margin-top: 10px;">
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/ours1.mp4" type="video/mp4">
+                                    </video>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;"><strong>EgoForce (Ours)</strong></p>
+                                </div>
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/gt1.mp4" type="video/mp4">
+                                    </video>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">Groud Truth</p>
+                                </div>
+                            </div>
+                            
+                            <div class="columns is-centered is-mobile is-gapless" style="margin-top: 10px;">
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/ours2.mp4" type="video/mp4">
+                                    </video>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;"><strong>EgoForce (Ours)</strong></p>
+                                </div>
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/gt2.mp4" type="video/mp4">
+                                    </video>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">Groud Truth</p>
+                                </div>
+                            </div>
+                            
+                            <div class="columns is-centered is-mobile is-gapless" style="margin-top: 10px;">
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/ours3.mp4" type="video/mp4">
+                                    </video>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;"><strong>EgoForce (Ours)</strong></p>
+                                </div>
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/gt3.mp4" type="video/mp4">
+                                    </video>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">Groud Truth</p>
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="columns is-centered is-mobile is-gapless" style="margin-top: 10px;">
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/ours5.mp4" type="video/mp4">
+                                    </video>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;"><strong>EgoForce (Ours)</strong></p>
+                                </div>
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/gt5.mp4" type="video/mp4">
+                                    </video>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">Groud Truth</p>
+                                </div>
+                            </div>
+
+                            <div class="columns is-centered is-mobile is-gapless" style="margin-top: 10px;">
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/ours6.mp4" type="video/mp4">
+                                    </video>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;"><strong>EgoForce (Ours)</strong></p>
+                                </div>
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/gt6.mp4" type="video/mp4">
+                                    </video>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">Groud Truth</p>
+                                </div>
+                            </div>
+
+                            <div class="columns is-centered is-mobile is-gapless" style="margin-top: 10px;">
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/ours7.mp4" type="video/mp4">
+                                    </video>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;"><strong>EgoForce (Ours)</strong></p>
+                                </div>
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/gt7.mp4" type="video/mp4">
+                                    </video>
+                                    <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">Groud Truth</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="column is-centered has-text-centered">
+                <h2 class="title is-3 has-text-weight-semibold" style="color: #1C3D5A;">
+                    Comparisons
+                </h2>
+
+                <div class="content has-text-justified">
+                    
+
+                    <p class="mt-6 is-size-5-tablet is-size-6-mobile" style="color: #333; text-align: left;">
+                    We provide video comparisons with state-of-the-art online (<strong>RPM</strong>) and offline (<strong>UniEgoMotion</strong>) baselines for egocentric motion reconstruction.
+                    </p>
+                    
+                    <p class="mt-3 is-size-5-tablet is-size-6-mobile" style="color: #333; text-align: left;">
+                    - <strong>Online methods (RPM)</strong> struggle to handle abrupt changes in egocentric signals and typically have limited model capacity, resulting in lower motion quality.
+                    </p>
+                    
+                    <p class="mt-3 is-size-5-tablet is-size-6-mobile" style="color: #333; text-align: left;">
+                    - <strong>Offline methods (UniEgoMotion)</strong> achieve higher motion fidelity but violate causal constraints and rely on window-based generation and stitching for long-term motion reconstruction, which introduce temporal discontinuities.
+                    </p>
+                    
+                    <p class="mt-4 is-size-5-tablet is-size-6-mobile" style="color: #333; text-align: left;">
+                    In contrast, <strong>EgoForce</strong> generates globally <strong>coherent, smooth, and long-term stable</strong> motion while strictly satisfying <strong>causal constraints</strong>, achieving <strong>state-of-the-art reconstruction</strong> performance.
+                    </p>
+
+                </div>
+                
+
+                <div class="column is-centered has-text-centered">
+                    <div class="toggle-section" style="margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start;">
+                            <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                                <span class="toggle-arrow" style="
+                                    display: inline-block;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 15px solid transparent;
+                                    border-right: 15px solid transparent;
+                                    border-top: 23px solid rgba(33, 175, 139, 0.822);
+                                    transition: transform 0.3s ease;
+                                "></span>
+                            </button>
+                            <p style="font-weight: bold; margin: 0;">Comparisons</p>
+                        </div>
+
+                        <!-- Content to Toggle -->
+                        <div class="toggle-content" style="display: block; width: 100%;">
+                            <!-- Section for the first set of videos -->
+                            
+                            <div class="columns is-centered is-mobile is-gapless" style="margin-top: 10px;">
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/comparision_rpm1.mp4" type="video/mp4">
+                                    </video>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">RPM (Online)</p>
+                                </div>
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/comparision_uem1.mp4" type="video/mp4">
+                                    </video>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">UniEgoMotion (Offline)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="columns is-centered is-mobile is-gapless" style="margin-top: 10px;">
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/comparision_ours1.mp4" type="video/mp4">
+                                    </video>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;">EgoForce (Ours, Online)</p>
+                                </div>
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/comparision_gt1.mp4" type="video/mp4">
+                                    </video>
+                                    <p class="is-size-6-mobile" style="font-size: 18px;  margin-top: 5px;">Ground Truth</p>
+                                </div>
+                            </div>
+
+                            <div class="content is-centered" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+                                <hr style="border: 0; height: 2px; width: 80%; margin: 0 auto; background-color: transparent; border-top: 2px dashed #000508a8;">
+                            </div>
+
+                            <!-- Section for the second set of videos -->
+                            
+                            
+                            <div class="columns is-centered is-mobile is-gapless" style="margin-top: 10px;">
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/comparision_rpm2.mp4" type="video/mp4">
+                                    </video>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">RPM (Online)</p>
+                                </div>
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/comparision_uem2.mp4" type="video/mp4">
+                                    </video>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">UniEgoMotion (Offline)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="columns is-centered is-mobile is-gapless" style="margin-top: 10px;">
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
+                                        <source src="static/videos/comparision_ours2.mp4" type="video/mp4">
+                                    </video>
+                                    <p class="is-size-6-mobile" style="font-size: 18px; font-weight: bold; margin-top: 5px;">EgoForce (Ours, Online)</p>
+                                </div>
+                                <div class="column is-half-mobile has-text-centered is-narrow">
+                                    <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
+                                        <source src="static/videos/comparision_gt2.mp4" type="video/mp4">
+                                    </video>
+                                    <p class="is-size-6-mobile" style="font-size: 18px;  margin-top: 5px;">Ground Truth</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="hero is-small is-light">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="column is-centered has-text-centered">
+                <h2 class="title is-3 has-text-weight-semibold" style="color: #1C3D5A;">
+                    Noise Robust Reconstruction
+                </h2>
+
+                <div class="content has-text-justified">
+                    
+                    <p class="mt-7 is-size-5-tablet is-size-6-mobile" style="color: #333; text-align: left;">
+                        EgoForce demonstrates robustness to egocentric signal noise by effectively handling noise during the diffusion process.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="toggle-section" style="margin-bottom: 10px;"> 
+                <div style="display: flex; align-items: center; justify-content: flex-start;">
+                    <button class="toggle-button" style="border: none; background: none; cursor: pointer;">
+                        <span class="toggle-arrow" style="
+                            display: inline-block;
+                            width: 0;
+                            height: 0;
+                            border-left: 15px solid transparent;
+                            border-right: 15px solid transparent;
+                            border-top: 23px solid rgba(33, 175, 139, 0.822);
+                            transition: transform 0.3s ease;
+                        "></span>
+                    </button>
+                    <p style="font-weight: bold; margin: 0;">Noise Robust</p>
+                </div>
+
+                <!-- Content to Toggle -->
+                <div class="toggle-content" style="display: block; width: 100%;">
+                    <div class="columns is-centered">
+                        <div class="column is-centered has-text-centered">
+                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                <source src="static/videos/headhand_dno.mp4" type="video/mp4">
+                            </video>
+                            <p>Without Noise-awareness</p>
+                        </div>
+                        <div class="column is-centered has-text-centered">
+                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                <source src="static/videos/headhand_single.mp4" type="video/mp4">
+                            </video>
+                            <p><strong>EgoForce (Ours)</strong></p>
+                        </div>
+                        <div class="column is-centered has-text-centered">
+                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                <source src="static/videos/headhand_ours.mp4" type="video/mp4">
+                            </video>
+                            <p>Groud Truth</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toggle-content" style="display: block; width: 100%;">
+                    <div class="columns is-centered">
+                        <div class="column is-centered has-text-centered">
+                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                <source src="static/videos/headhand_dno.mp4" type="video/mp4">
+                            </video>
+                            <p>Without Noise-awareness</p>
+                        </div>
+                        <div class="column is-centered has-text-centered">
+                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                <source src="static/videos/headhand_single.mp4" type="video/mp4">
+                            </video>
+                            <p><strong>EgoForce (Ours)</strong></p>
+                        </div>
+                        <div class="column is-centered has-text-centered">
+                            <video poster="" id="tree" playsinline autoplay muted loop width="100%">
+                                <source src="static/videos/headhand_ours.mp4" type="video/mp4">
+                            </video>
+                            <p>Groud Truth</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>  
+        </div>
+    </div>
+</section>
+
+
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="column is-centered has-text-centered">
+                <h2 class="title is-3 has-text-weight-semibold" style="color: #1C3D5A;">
+                    Limitations
+                </h2>
+
+                <div class="content has-text-justified">
+                    
+                    <p class="mt-4 is-size-5-tablet is-size-6-mobile" style="color: #333; text-align: left;">
+                        Our reconstruction occasionally fails to capture subtle motion details and may produce head pose errors when the subject performs large global movements.
+                    </p>
+                    
+                </div>
+                
+                
+                <div class="columns is-centered is-mobile is-gapless" style="margin-top: 10px;">
+                    <div class="column is-half-mobile has-text-centered is-narrow">
+                        <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
+                            <source src="static/videos/ours_limit1.mp4" type="video/mp4">
+                        </video>
+                        <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">Ours</p>
+                    </div>
+                    <div class="column is-half-mobile has-text-centered is-narrow">
+                        <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
+                            <source src="static/videos/gt_limit1.mp4" type="video/mp4">
+                        </video>
+                        <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">Groud Truth</p>
+                    </div>
+                    
+                </div>
+
+                <div class="columns is-centered is-mobile is-gapless" style="margin-top: 10px;">
+                    <div class="column is-half-mobile has-text-centered is-narrow">
+                        <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-right: 2px;">
+                            <source src="static/videos/ours_limit2.mp4" type="video/mp4">
+                        </video>
+                        <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">Ours</p>
+                    </div>
+                    <div class="column is-half-mobile has-text-centered is-narrow">
+                        <video class="autoplay-video" playsinline muted="muted" loop autoplay style="max-width: 390px; width: 100%; height: auto; margin-left: 2px;">
+                            <source src="static/videos/gt_limit2.mp4" type="video/mp4">
+                        </video>
+                        <p  class="is-size-6-mobile" style="font-size: 18px; margin-top: 5px;">Groud Truth</p>
+                    </div>
+                    
+                </div>
+
+            
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<script>
+    const toggleButton = document.getElementById("toggle-comparisons");
+    const comparisonsSection = document.getElementById("comparisons-section");
+    const toggleArrow = document.getElementById("toggle-arrow");
+
+    toggleButton.addEventListener("click", () => {
+        const isHidden = comparisonsSection.style.display === "none";
+
+        if (isHidden) {
+            comparisonsSection.style.display = "block"; // Show the content
+            toggleArrow.style.transform = "rotate(0deg)"; // Down arrow
+        } else {
+            comparisonsSection.style.display = "none"; // Hide the content
+            toggleArrow.style.transform = "rotate(180deg)"; // Up arrow
+        }
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.toggle-section').forEach(toggleGroup => {
+        const toggleButton = toggleGroup.querySelector('.toggle-button');
+        const contentSection = toggleGroup.querySelector('.toggle-content');
+        const toggleArrow = toggleButton.querySelector('.toggle-arrow');
+        
+        toggleButton.addEventListener('click', () => {
+            const isHidden = contentSection.style.display === "none";
+            
+            if (isHidden) {
+                contentSection.style.display = "block"; // Show content
+                toggleArrow.style.transform = "rotate(0deg)"; // Down arrow
+            } else {
+                contentSection.style.display = "none"; // Hide content
+                toggleArrow.style.transform = "rotate(180deg)"; // Up arrow
+            }
+        });
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.video-container').forEach(container => {
+      const videos = Array.from(container.querySelectorAll('video'));
+      const prevButton = container.querySelector('.prev');
+      const nextButton = container.querySelector('.next');
+      const caption = container.querySelector('p');
+      const captionsList = JSON.parse(container.dataset.captions);
+  
+      let currentIndex = 0;
+  
+      function showVideo(index) {
+        // Hide all videos in this container
+        videos.forEach(video => {
+          video.style.display = 'none';
+          video.pause();
+        });
+  
+        // Show the selected video
+        videos[index].style.display = 'block';
+        videos[index].play();
+  
+        // Update caption
+        caption.textContent = captionsList[index];
+      }
+  
+      // Event listeners for buttons
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+        showVideo(currentIndex);
+      });
+  
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % videos.length;
+        showVideo(currentIndex);
+      });
+  
+      // Initialize first video
+      showVideo(currentIndex);
+    });
+  </script>
+
+<style>
+    #clustrmaps {
+        display: none !important;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+    </style>
+    
+
+
+</body>
+</html>
