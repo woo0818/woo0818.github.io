@@ -78,15 +78,16 @@
 <aside class="sidebar">
   <p class="sidebar-title">Contents</p>
   <ul class="menu-list">
-    <li><a href="#pipeline">1. Text-to-Motion</a></li>
+    <li><a href="#pipeline">1. Text-to-Motion Generation</a></li>
     <li><ul style="margin-left: 10px;">
       <li><a href="#pipeline-sub">1.1 Next-Scale Prediction</a></li>
-        <li><a href="#gallery">1.2. Motion Gallery</a></li>
+        <li><a href="#gallery">1.2. Motion Generation Gallery</a></li>
         <li><a href="#comparisons">1.3. Comparisons</a></li>
     </ul></li>
     <li><a href="#editing">2. Zero-Shot Motion Editing</a></li>
     <li><ul style="margin-left: 10px;">
-        <li><a href="#editing-sub">2.1 Motion Editing Gallery</a></li>
+        <li><a href="#editing-sub">2.1 Editing Pipeline</a></li>
+        <li><a href="#editing-results">2.2 Motion Editing Gallery</a></li>
     </ul></li>
     <li><a href="#token-map">3. Multi-Scale Skeletal-Temporal Token Map</a></li>
   </ul>
@@ -260,11 +261,11 @@
 
         <!-- 1. Text-to-Motion Generation -->
         <div id="editing" class="mb-6 pt-5">
-            <h2 class="title is-2" style="color: #1C3D5A; font-weight: 800;"><span class="section-num">2.</span> Zero-Shot Text-Driven Motion Editing</h2>
-            <br>
-            <div id="pipeline-sub" class="mt-5">
-            <!-- <h3 class="title is-3 has-text-centered" style="color: #1C3D5A; margin-bottom: 3rem;"><span class="section-num">2.1.</span> Motion Generation via Next-Scale Token Map Prediction</h3>
-            -->
+            <h2 class="title is-2" style="color: #1C3D5A; font-weight: 800;"><span class="section-num">2</span> Zero-Shot Text-Driven Motion Editing</h2>
+            
+            <div id="editing-sub" class="mt-5">
+            <h3 class="title is-3 has-text-centered" style="color: #1C3D5A; margin-bottom: 3rem;"><span class="section-num">2.1.</span> Motion Editing Overview</h3>
+            
             <div style="margin-bottom: 2rem;">
                 <video controls autoplay muted loop playsinline><source src="./assets/editing_pipeline_short.mp4" type="video/mp4"></video>
                 <div class="mt-5 has-text-centered">
@@ -285,9 +286,9 @@
         </div>
 
         <!-- 4. Motion Editing (No Card Style) -->
-        <div id="editing-sub" class="mb-6 pt-5">
+        <div id="editing-results" class="mb-6 pt-5">
             <h3 class="title is-3 has-text-centered" style="color: #1C3D5A; margin-bottom: 3rem;">
-                <span class="section-num">2.1</span> Motion Editing Gallery
+                <span class="section-num">2.2</span> Motion Editing Gallery
             </h3>
 
             <div class="container" style="max-width: 900px; margin: 0 auto;">
