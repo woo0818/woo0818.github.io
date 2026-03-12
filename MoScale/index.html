@@ -1,177 +1,487 @@
 <!DOCTYPE html>
-<html data-theme="light">
-
+<html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MoScale</title>
+  <meta charset="utf-8">
+  <meta name="description" content="MoScale: Autoregressive Next-Scale Prediction">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MoScale: Autoregressive Next-Scale Prediction</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!--
-    <link
-      href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300;400;500;600&family=Roboto+Mono&display=swap"
-      rel="stylesheet"
-    />
-    <link href='https://fonts.googleapis.com/css?family=Architects Daughter' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
-    -->
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap"
-        rel="stylesheet">
+  <!-- External CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
 
-    <!-- Bulma -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
-    <link rel="stylesheet" href="./css/styles.css" />
-    <script src="./js/bulma_toggle.js"></script>
+  <!-- LaTeX Rendering -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/5fd1dd8417.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], processEscapes: true }
+    };
+  </script>
 
-    <!-- Academicons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
-    <link rel="apple-touch-icon" sizes="96x96" href="./assets/favicon-96x96.png" />
-    <link rel="icon" sizes="48x48" href="./assets/favicon-48x48.png" />
-    <link rel="icon" sizes="24x24" href="./assets/favicon-24x24.png" />
-    <!-- MathJax -->
-    <script>
-        MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']]
-            }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { background-color: #ffffff; color: #333; font-family: 'Noto Sans', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+    
+    /* 사이드바 스타일 */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 250px; height: 100vh;
+      padding: 2rem 1.5rem; background-color: #fcfcfc; border-right: 1px solid #eee;
+      overflow-y: auto; z-index: 1000;
+    }
+    .sidebar-title { font-family: 'Google Sans', sans-serif; font-weight: 700; color: #1C3D5A; margin-bottom: 2rem; font-size: 1.2rem; }
+    .menu-list a { color: #555; font-size: 0.95rem; padding: 0.5rem 0.75rem; border-radius: 4px; }
+    .menu-list a:hover { background-color: #f0f4f8; color: #1C3D5A; }
+
+    /* 메인 콘텐츠 영역 */
+    .main-content { margin-left: 250px; padding: 2.5rem; }
+
+    /* 슬라이더 복구 CSS */
+    .carousel { overflow: hidden; width: 100%; position: relative; }
+    .carousel .item { display: block; width: 100% !important; margin-right: 0 !important; float: left; }
+
+    .video-card {
+      background: #ffffff; padding: 1.5rem; border-radius: 12px; border: 1px solid #efefef;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 1rem; height: 100%;
+    }
+
+    /* 상세 설명 박스 (세로선 포인트) */
+    .detail-box {
+      border-left: 3px solid #1C3D5A; padding-left: 12px; margin-top: 15px;
+    }
+
+    .description-box {
+      border-left: 5px solid #1C3D5A; padding: 1.25rem; background-color: #f8f9fa;
+      border-radius: 0 8px 8px 0; margin-bottom: 2rem;
+    }
+
+    .divider { width: 60px; height: 3px; background-color: #1C3D5A; margin: 3rem auto; opacity: 0.2; }
+    video { border-radius: 8px; display: block; width: 100%; }
+    .section-num { color: #1C3D5A; margin-right: 0.5rem; }
+
+    /* 슬라이더 버튼 */
+    .slider-navigation-prev, .slider-navigation-next {
+      background-color: rgba(28, 61, 90, 0.7) !important; color: white !important;
+      border-radius: 50% !important; border: none !important; width: 40px !important; height: 40px !important;
+    }
+
+    @media screen and (max-width: 1024px) {
+      .sidebar { display: none; }
+      .main-content { margin-left: 0; }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- title / authors / icons -->
-    <section class="hero">
-        <div class="hero-body">
-            <div class="container is-max-widescreen has-text-centered">
-                <!-- title -->
-                <h1 class="title is-size-1 is-size-2-mobile publication-title">
-                    MoScale: Autoregressive Next-Scale Prediction <br /> for Human Motion Generation
-                </h1>
-                <div class="is-size-4-tablet publication-institute">
-                    <span class="author-block">Anonymous ECCV 2026 Submission<br /></span>
-                </div>
-                <div class="is-size-4-tablet publication-institute">
-                    <span class="author-block">Paper ID #741<br /></span>
+<aside class="sidebar">
+  <p class="sidebar-title">Contents</p>
+  <ul class="menu-list">
+    <li><a href="#pipeline">1. Text-to-Motion</a></li>
+    <li><ul style="margin-left: 10px;">
+      <li><a href="#pipeline-sub">1.1 Next-Scale Prediction</a></li>
+        <li><a href="#gallery">1.2. Motion Gallery</a></li>
+        <li><a href="#comparisons">1.3. Comparisons</a></li>
+    </ul></li>
+    <li><a href="#editing">2. Zero-Shot Motion Editing</a></li>
+    <li><ul style="margin-left: 10px;">
+        <li><a href="#editing-s">2.1 Motion Editing Gallery</a></li>
+    </ul></li>
+    <li><a href="#token-map">3. Multi-Scale Skeletal-Temporal Token Map</a></li>
+  </ul>
+</aside>
+
+<div class="main-content">
+  <!-- Hero -->
+  <section class="hero mb-6 has-text-centered">
+    <div class="container is-max-desktop">
+      <h1 class="title is-1 publication-title">MoScale: Autoregressive Next-Scale Prediction for Human Motion Generation</h1>
+      <div class="is-size-4" style="color: #555;">Anonymous ECCV 2026 Submission</div>
+      <div class="is-size-5 has-text-grey">Paper ID #741</div>
+    </div>
+  </section>
+
+  <div class="container is-max-desktop">
+    
+        <!-- 1. Text-to-Motion Generation -->
+        <div id="pipeline" class="mb-6 pt-5">
+            <h2 class="title is-2" style="color: #1C3D5A; font-weight: 800;"><span class="section-num">1.</span> Text-to-Motion Generation</h2>
+            
+            <div id="pipeline-sub" class="mt-5">
+            <h3 class="title is-3 has-text-centered" style="color: #1C3D5A; margin-bottom: 3rem;"><span class="section-num">1.1.</span> Motion Generation via Next-Scale Token Map Prediction</h3>
+            <div style="margin-bottom: 2rem;">
+                <video controls autoplay muted loop playsinline><source src="./assets/generation_pipeline_short.mp4" type="video/mp4"></video>
+                <div class="mt-5 has-text-centered">
+                <p class="is-size-5" style="color: #333; line-height: 1.6;">
+                    Given a prompt $c$, we autoregressively predict the next-scale token maps $\{q^v\}_{v=0}^{V}$
+                conditioned on all coarser-scale token maps.
+                Note that the 2D skeletal-temporal token maps are flattened into 1D for ease of visualization.
+                </p>
                 </div>
             </div>
+            </div>
         </div>
-    </section>
 
-    <!-- teasor -->
-    <section class="hero">
-        <div class="container is-max-desktop">
-            <div class="hero-body">
-                <div
-                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-family: 'Zen Maru Gothic', serif;">
-                    <div>
-                        <video controls autoplay muted loop playsinline width="100%">
-                            <source src="./assets/generation_results/gen_new_22.mkv" type="video/mp4">
-                        </video>
-                        <p style="text-align:center; font-size:1.3rem; margin: 5px 0 3px 0;">"A person is bowing
-                            politely."</p>
-                        <p style="text-align:justify; font-size:0.8rem; margin: 0;">
-                            The person aligns both feet together and straightens posture before bending smoothly forward
-                            from the hips. Hands remain at the sides while the back remains straight. After a short
-                            pause, they rise again with controlled motion, reestablishing upright balance and respectful
-                            demeanor.
-                        </p>
-                    </div>
-                    <div>
-                        <video controls autoplay muted loop playsinline width="100%">
-                            <source src="./assets/generation_results/gen_new_23.mkv" type="video/mp4">
-                        </video>
-                        <p style="text-align:center; font-size:1.3rem; margin: 5px 0 3px 0;">"A person is running
-                            joyfully."</p>
-                        <p style="text-align:justify; font-size:0.8rem; margin: 0;">
-                            The person accelerates into a light run, taking buoyant strides with arms swinging actively.
-                            The torso leans slightly forward, head lifted, and each step shows relaxed rhythm.
-                            Occasionally they hop or extend their stride playfully, giving the sense of freedom and
-                            delight through dynamic, flowing motion.
-                        </p>
+        <div class="divider"></div>
+
+        <!-- 2. Motion Generation Gallery (카드 상세 설명 복구) -->
+        <div id="gallery" class="mb-6 pt-5">
+            <h3 class="title is-3 has-text-centered" style="color: #1C3D5A; margin-bottom: 3rem;"><span class="section-num">1.2.</span> Motion Generation Gallery</h3>
+            <div class="columns is-multiline is-centered">
+                
+                <!-- 카드 1 -->
+                <div class="column is-6 mb-4">
+                <div class="video-card">
+                    <h4 class="title is-5" style="color: #1C3D5A; margin-bottom: 1rem;">"A person is bowing politely."</h4>
+                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_new_22.mkv" type="video/mp4"></video>
+                    <div class="detail-box">
+                    <p class="is-size-7 has-text-justified" style="line-height: 1.5; color: #555;">
+                        The person aligns both feet together and straightens posture before bending smoothly forward
+                        from the hips. Hands remain at the sides while the back remains straight. After a short
+                        pause, they rise again with controlled motion, reestablishing upright balance and respectful
+                        demeanor.
+                    </p>
                     </div>
                 </div>
+                </div>
 
-                <br>
+                <!-- 카드 2 -->
+                <div class="column is-6 mb-4">
+                <div class="video-card">
+                    <h4 class="title is-5" style="color: #1C3D5A; margin-bottom: 1rem;">"A person is mimicking a
+                        slow zombie walk."</h4>
+                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_casual_87.mkv" type="video/mp4"></video>
+                    <div class="detail-box">
+                    <p class="is-size-7 has-text-justified" style="line-height: 1.5; color: #555;">
+                        The person shuffles forward with slow, stiff movements typical of a zombie walk. Feet drag
+                            lightly, knees slightly bent, and arms reach out with elbows locked and fingers splayed. The
+                            torso leans forward with a slight wobble, and the head tilts awkwardly to one side,
+                            emphasizing an eerie, unnatural gait.
+                    </p>
+                    </div>
+                </div>
+                </div>
 
-                <div
-                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-family: 'Zen Maru Gothic', serif;">
-                    <div>
-                        <video controls autoplay muted loop playsinline width="100%">
-                            <source src="./assets/generation_results/gen_new_23.mkv" type="video/mp4">
-                        </video>
-                        <p style="text-align:center; font-size:1.3rem; margin: 5px 0 3px 0;">"A person is running
-                            joyfully."</p>
-                        <p style="text-align:justify; font-size:0.8rem; margin: 0;">
-                            The person accelerates into a light run, taking buoyant strides with arms swinging actively.
+                <!-- 카드 3 -->
+                <div class="column is-6 mb-4">
+                <div class="video-card">
+                    <h4 class="title is-5" style="color: #1C3D5A; margin-bottom: 1rem;">"A person is running joyfully."</h4>
+                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_new_23.mkv" type="video/mp4"></video>
+                    <div class="detail-box">
+                    <p class="is-size-7 has-text-justified" style="line-height: 1.5; color: #555;">
+                        The person accelerates into a light run, taking buoyant strides with arms swinging actively.
                             The torso leans slightly forward, head lifted, and each step shows relaxed rhythm.
                             Occasionally they hop or extend their stride playfully, giving the sense of freedom and
                             delight through dynamic, flowing motion.
-                        </p>
+                    </p>
                     </div>
-                    <div>
-                        <video controls autoplay muted loop playsinline width="100%">
-                            <source src="./assets/generation_results/gen_test_m_st3_00349_537_743_gen.mkv"
-                                type="video/mp4">
-                        </video>
-                        <p style="text-align:center; font-size:1.3rem; margin: 5px 0 3px 0;">"A person walks and turns
-                            right."</p>
-                        <p style="text-align:justify; font-size:0.8rem; margin: 0;">
-                            The person begins in a relaxed standing position. They start walking forward, smoothly
+                </div>
+                </div>
+
+                <!-- 카드 4 -->
+                <div class="column is-6 mb-4">
+                <div class="video-card">
+                    <h4 class="title is-5" style="color: #1C3D5A; margin-bottom: 1rem;">"A person walks and turns right."</h4>
+                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_test_m_st3_00349_537_743_gen.mkv" type="video/mp4"></video>
+                    <div class="detail-box">
+                    <p class="is-size-7 has-text-justified" style="line-height: 1.5; color: #555;">
+                        The person begins in a relaxed standing position. They start walking forward, smoothly
                             turning their head to the right. As they continue moving, they gently change direction by
                             turning their entire boy to the right, maintaining a steady pace.
-                        </p>
+                    </p>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- 3. Comparisons to Previous Works -->
+        <div id="comparisons" class="mb-6 pt-5 has-text-centered">
+            <h3 class="title is-3" style="color: #1C3D5A; margin-bottom: 2.5rem;"><span class="section-num">1.3.</span> Comparisons to Previous Works</h3>
+            
+            <div id="comparison-carousel" class="carousel results-carousel">
+                <div class="item">
+                <div class="video-card" style="padding: 2rem;">
+                    <div class="description-box has-text-justified">
+                    <p class="is-size-5">The person adopts a defensive stance, arms up guarding the head. They <font color='red'><b>rapidly lean
+                        back and duck to the
+                        side as if dodging punches</b></font>. Their knees bend for agility, feet shuffle quickly to
+                maintain position.
+                After each dodge, they reset their stance, <font color='red'><b>staying alert and ready for another
+                        incoming strike</b></font>.</p>
+                    </div>
+                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_0_combined.mp4" type="video/mp4"></video>
+                </div>
+                </div>
+
+                <div class="item">
+                <div class="video-card" style="padding: 2rem;">
+                    <div class="description-box has-text-justified">
+                    <p class="is-size-5">The person <font color='red'><b>strums an invisible guitar</b></font> with vigorous hand movements.
+                        Their <font color='red'><b>right hand mimics fast strumming motions while the left hand presses
+                                imaginary strings on the fretboard</b></font>. They lean forward slightly, shifting weight
+                        between feet with a rhythmic bounce, expressing excitement and musical engagement.</p>
+                    </div>
+                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_1_combined.mp4" type="video/mp4"></video>
+                </div>
+                </div>
+
+                <div class="item">
+                    <div class="video-card" style="padding: 2rem;">
+                        <div class="description-box has-text-justified">
+                        <p class="is-size-5">The person <font color='red'><b>sits or stands and mimics rowing a boat, grasping an imaginary oar with
+                            both hands</b></font>. They perform slow, controlled strokes, pulling back with their arms while
+                    leaning torso backward, then pushing forward while leaning torso slightly forward. <font color='red'>
+                        <b>Legs and feet shift subtly</b>
+                    </font> to stabilize each stroke in a rhythmic, flowing motion.</p>
+                        </div>
+                        <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_2_combined.mp4" type="video/mp4"></video>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="video-card" style="padding: 2rem;">
+                        <div class="description-box has-text-justified">
+                        <p class="is-size-5">The person <font color='red'><b>bends forward with one knee slightly bent and one foot in front</b>
+                        </font>. <font color='red'><b>Both hands move quickly and precisely near the shoe area</b></font>,
+                        looping and pulling imaginary laces in alternating patterns. The torso shifts slightly for balance, then
+                        the person <font color='red'><b>straightens up smoothly</b></font> and adjusts stance before relaxing
+                        arms by their sides.</p>
+                        </div>
+                        <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_3_combined.mp4" type="video/mp4"></video>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="section">
-        <div class="container is-max-desktop">
-            <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
-                <h2 class="subtitle is-size-3 publication-keywords">
-                    Abstract
-                </h2>
-                <div class="content has-text-justified">
-                    <p>
-                        We present <b>MoScale</b>, a scale-wise autoregressive framework for text-driven human motion
-                        generation.
-                        Unlike conventional autoregressive approaches that rely on standard next-token prediction,
-                        MoScale frames motion generation as a coarse-to-fine process.
-                        We quantize 3D motions into compositional discrete tokens across multiple skeletal-temporal
-                        scales of increasing granularity, learning to generate motion by autoregressively predicting
-                        next-scale token maps.
-                        To maintain structural integrity, our motion tokenizers and quantizers are explicitly designed
-                        so that discrete tokens at every scale strictly preserve the skeletal hierarchy.
-                        Additionally, we employ bitwise quantization and prediction, which efficiently scale up the
-                        tokenizer vocabulary to preserve motion details and stabilize optimization.
-                        Extensive experiments demonstrate that MoScale achieves state-of-the-art performance,
-                        establishing an FID of 0.030 (vs. 0.045 for MoMask) on HumanML3D and a CLIP Score of 0.693 (vs.
-                        0.685 for MoMask++) on the SnapMoGen dataset.
-                        Furthermore, we demonstrate that our skeletal-temporal multi-scale representation naturally
-                        facilitates training-free, text-guided motion editing.
-                    </p>
+        <!-- 1. Text-to-Motion Generation -->
+        <div id="editing" class="mb-6 pt-5">
+            <h2 class="title is-2" style="color: #1C3D5A; font-weight: 800;"><span class="section-num">2.</span> Zero-Shot Text-Driven Motion Editing</h2>
+            
+            <div id="pipeline-sub" class="mt-5">
+            <!-- <h3 class="title is-3 has-text-centered" style="color: #1C3D5A; margin-bottom: 3rem;"><span class="section-num">2.1.</span> Motion Generation via Next-Scale Token Map Prediction</h3>
+            -->
+            <div style="margin-bottom: 2rem;">
+                <video controls autoplay muted loop playsinline><source src="./assets/editing_pipeline_short.mp4" type="video/mp4"></video>
+                <div class="mt-5 has-text-centered">
+                <p class="is-size-5" style="color: #333; line-height: 1.6;">
+                    Starting from the source prompt $c_s$, we autoregressively generate the source tokens
+                    $\{q_s^v\}_{v=0}^{V}$.
+                    With additional target prompt $c_t$ with a source-token preservation mask $\{\mathcal{M}^v\}_{v=0}^{V}$,
+                    we predict edited tokens $q'^{(v)}_t$ conditioned on the remaining source motion context and $c_t$.
+                    The target token maps $\{q_t^v\}_{v=0}^{V}$ are generated by blending the source tokens $q_s^v$ with the
+                    predicted tokens $q'^{(v)}_t$.
+                </p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="section">
-        <div class="container is-max-desktop">
-            <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
-                <h2 class="subtitle is-size-3 publication-keywords">
-                    Multi-Scale Skeletal-Temporal Token Map
-                </h2>
-                <img src="./assets/vq_pipeline.png" width="100%" style="display: block; margin: auto;" />
+
+
             </div>
-            <p class="normal-text has-text-justified">
+        </div>
+
+        <!-- 4. Motion Editing (No Card Style) -->
+        <div id="editing-sub" class="mb-6 pt-5">
+            <h3 class="title is-3 has-text-centered" style="color: #1C3D5A; margin-bottom: 3rem;">
+                <span class="section-num">2.1</span> Motion Editing Gallery
+            </h3>
+
+            <div class="container" style="max-width: 900px; margin: 0 auto;">
+                <!-- 상단 헤더: 제목 위아래로 얇은 선을 두어 강조 -->
+                <div style="border-top: 2px solid #f8f8f8; border-bottom: 1px solid #eee; padding: 1rem 0; margin-bottom: 1.5rem;">
+                    <div class="columns is-mobile has-text-centered">
+                        <div class="column is-6">
+                            <span style="font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 1.3rem; color: #1C3D5A;">Original Motion</span>
+                        </div>
+                        <div class="column is-6">
+                            <span style="font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 1.3rem; color: #1C3D5A;">Edited Motion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 비디오 영역: 테두리나 그림자 제거 -->
+                <div style="margin-bottom: 1.5rem;">
+                    <video controls autoplay muted loop playsinline style="width: 100%; border-radius: 4px;">
+                        <source src="./assets/editing_results/edit_arm_concat.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- 하단 설명: 박스 없이 텍스트만 좌우 배치 -->
+                <div class="columns is-variable is-8">
+                    <div class="column is-6">
+                        <p style="text-align: justify; font-size: 1rem; line-height: 1.7; color: #333;">
+                            The person walks forward at a relaxed pace with an upright posture.
+                        Their <font color='red'><b>arms swing naturally at their sides in opposition to the legs.</b>
+                        </font>
+                        The steps are even and steady, with a smooth heel-to-toe motion.
+                        The head faces forward, and the torso remains stable throughout the walk.
+                        </p>
+                    </div>
+                    <div class="column is-6" style="border-left: 1px solid #f0f0f0;">
+                        <p style="text-align: justify; font-size: 1rem; line-height: 1.7; color: #333;">
+                            The person walks forward at a relaxed pace with an upright posture.
+                        Their <font color='red'><b>arms lift upward away from the sides, raising the hands to about
+                                shoulder height or higher.</b></font>
+                        The steps are even and steady, with a smooth heel-to-toe motion. The head faces forward, and the
+                        torso remains stable throughout the walk.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 상단 헤더: 제목 위아래로 얇은 선을 두어 강조 -->
+                <div style="border-top: 2px solid #f8f8f8; border-bottom: 1px solid #eee; padding: 1rem 0; margin-bottom: 1.5rem;">
+                    <div class="columns is-mobile has-text-centered">
+                        <div class="column is-6">
+                            <span style="font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 1.3rem; color: #1C3D5A;">Original Motion</span>
+                        </div>
+                        <div class="column is-6">
+                            <span style="font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 1.3rem; color: #1C3D5A;">Edited Motion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 비디오 영역: 테두리나 그림자 제거 -->
+                <div style="margin-bottom: 1.5rem;">
+                    <video controls autoplay muted loop playsinline style="width: 100%; border-radius: 4px;">
+                        <source src="./assets/editing_results/edit_limp_concat.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="columns is-variable is-8">
+                    <div class="column is-6">
+                        <p style="text-align: justify; font-size: 1rem; line-height: 1.7; color: #333;">
+                            The person walks forward at a steady pace with arms swinging naturally at the sides. <font
+                            color='red'><b>Both legs
+                                move evenly with a smooth heel-to-toe motion</b></font>, and the torso remains upright
+                        and stable
+                        throughout.
+                        </p>
+                    </div>
+                    <div class="column is-6" style="border-left: 1px solid #f0f0f0;">
+                        <p style="text-align: justify; font-size: 1rem; line-height: 1.7; color: #333;">
+                            The person walks forward at a steady pace with arms swinging naturally at the sides. <font
+                            color='red'><b>The right
+                                leg moves with a heavy limp, landing with less weight and a shortened stride, while the
+                                left leg
+                                carries more of the body's load.</b></font> The torso sways gently to the left with each
+                        step to
+                        compensate.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 상단 헤더: 제목 위아래로 얇은 선을 두어 강조 -->
+                <div style="border-top: 2px solid #f8f8f8; border-bottom: 1px solid #eee; padding: 1rem 0; margin-bottom: 1.5rem;">
+                    <div class="columns is-mobile has-text-centered">
+                        <div class="column is-6">
+                            <span style="font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 1.3rem; color: #1C3D5A;">Original Motion</span>
+                        </div>
+                        <div class="column is-6">
+                            <span style="font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 1.3rem; color: #1C3D5A;">Edited Motion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 비디오 영역: 테두리나 그림자 제거 -->
+                <div style="margin-bottom: 1.5rem;">
+                    <video controls autoplay muted loop playsinline style="width: 100%; border-radius: 4px;">
+                        <source src="./assets/editing_results/edit_mid_concat.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="columns is-variable is-8">
+                    <div class="column is-6">
+                        <p style="text-align: justify; font-size: 1rem; line-height: 1.7; color: #333;">
+                            The person walks forward steadily in a relaxed pace, <font color='red'><b>pauses in the middle,
+                                stands still briefly</b></font>,
+                        then resumes walking forward at the same steady pace.
+                        </p>
+                    </div>
+                    <div class="column is-6" style="border-left: 1px solid #f0f0f0;">
+                        <p style="text-align: justify; font-size: 1rem; line-height: 1.7; color: #333;">
+                            he person walks forward steadily in a relaxed pace, <font color='red'><b>then bends the knees
+                                and lowers into a
+                                squat position midway, rises back upright</b></font>, and resumes walking forward at the
+                        same steady pace.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 상단 헤더: 제목 위아래로 얇은 선을 두어 강조 -->
+                <div style="border-top: 2px solid #f8f8f8; border-bottom: 1px solid #eee; padding: 1rem 0; margin-bottom: 1.5rem;">
+                    <div class="columns is-mobile has-text-centered">
+                        <div class="column is-6">
+                            <span style="font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 1.3rem; color: #1C3D5A;">Original Motion</span>
+                        </div>
+                        <div class="column is-6">
+                            <span style="font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 1.3rem; color: #1C3D5A;">Edited Motion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 비디오 영역: 테두리나 그림자 제거 -->
+                <div style="margin-bottom: 1.5rem;">
+                    <video controls autoplay muted loop playsinline style="width: 100%; border-radius: 4px;">
+                        <source src="./assets/editing_results/edit_punch_concat.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="columns is-variable is-8">
+                    <div class="column is-6">
+                        <p style="text-align: justify; font-size: 1rem; line-height: 1.7; color: #333;">
+                            The person stands in a fighting stance and throws a quick jab forward with the <font
+                            color='red'><b>left fist</b></font>, fully
+                        extending the left arm</b></font>, then immediately follows with a straight cross punch with the
+                        <font color='red'><b>right
+                                fist</b></font>, extending the right arm forward with more power. Both fists then
+                        retract back to guard
+                        position.
+                        </p>
+                    </div>
+                    <div class="column is-6" style="border-left: 1px solid #f0f0f0;">
+                        <p style="text-align: justify; font-size: 1rem; line-height: 1.7; color: #333;">
+                            The person stands in a fighting stance and throws a quick jab forward with the <font
+                            color='red'><b>right fist</b></font>, fully
+                        extending the right arm, then immediately follows with a straight cross punch with the <font
+                            color='red'><b>left
+                                fist</b></font>, extending the left arm forward with more power. Both fists then retract
+                        back to guard
+                        position.
+                        </p>
+                    </div>
+                </div>
+                
+                
+                <!-- 섹션 마무리 선 -->
+                <div style="border-bottom: 1px solid #eee; margin-top: 2rem;"></div>
+            </div>
+        </div>
+
+
+
+        <div class="divider"></div>
+
+
+
+        <!-- 5. Multi-Scale Skeletal-Temporal Token Map -->
+<div id="token-map" class="mb-6 pt-5">
+    <h3 class="title is-3 has-text-centered" style="color: #1C3D5A; margin-bottom: 3rem;">
+        <span class="section-num">3.</span> Multi-Scale Skeletal-Temporal Token Map
+    </h3>
+
+    <div class="container" style="max-width: 900px; margin: 0 auto;">
+        <!-- 이미지 영역 -->
+        <div class="has-text-centered mb-5">
+            <img src="./assets/vq_pipeline.png" width="100%" style="display: block; margin: auto; border-radius: 4px;" />
+        </div>
+
+        <!-- 첫 번째 설명 텍스트 (수식 포함) -->
+        <div class="mb-6">
+            <p style="text-align: justify; font-size: 1.05rem; line-height: 1.7; color: #333;">
                 Given an input motion sequence $\mathbf{m}$, the encoder $\mathcal{E}$ maps it to a continuous
                 skeletal-temporal latent grid $f$.
                 The latent is decomposed into a hierarchy of residual components $\{q^v\}_{v=0}^V$ via binary
@@ -180,29 +490,48 @@
                 The quantized residuals are then upsampled and accumulated to form the reconstructed latent $\hat{f}$,
                 which the decoder $\mathcal{D}$ converts back into a full-resolution motion sequence.
             </p>
+        </div>
 
-            <br>
-            <br>
-
-            <video controls autoplay muted loop playsinline width="100%" style="display: block; margin: auto;">
+        <!-- 비디오 영역 (나열형) -->
+        <div class="mb-5">
+            <video controls autoplay muted loop playsinline style="width: 100%; border-radius: 4px; margin-bottom: 1.5rem;">
                 <source src="./assets/vq_results/leg.mp4" type="video/mp4">
             </video>
-            <br>
-            <video controls autoplay muted loop playsinline width="100%" style="display: block; margin: auto;">
+            <video controls autoplay muted loop playsinline style="width: 100%; border-radius: 4px; margin-bottom: 1.5rem;">
                 <source src="./assets/vq_results/arm.mp4" type="video/mp4">
             </video>
-            <br>
-            <video controls autoplay muted loop playsinline width="100%" style="display: block; margin: auto;">
+            <video controls autoplay muted loop playsinline style="width: 100%; border-radius: 4px;">
                 <source src="./assets/vq_results/full.mp4" type="video/mp4">
             </video>
-            <br>
 
-            <p class="normal-text has-text-justified">
+            <table align="center" width="100%" style='font-family:"Zen Maru Gothic", serif;font-size:1.1rem'>
+                <tr>
+                    <td style="text-align:center; width:25%">$\sum_{v=0}^{\mathbf{2}}\mathcal{I}_{up}^{(v)} \left(
+                        q^v,n,j
+                        \right)$<br>(Scale 3 / 11)</td>
+                    <td style="text-align:center; width:25%">$\sum_{v=0}^{\mathbf{5}}\mathcal{I}_{up}^{(v)} \left(
+                        q^v,n,j
+                        \right)$<br>(Scale 6 / 11)</td>
+                    <td style="text-align:center; width:25%">$\sum_{v=0}^{\mathbf{8}}\mathcal{I}_{up}^{(v)} \left(
+                        q^v,n,j
+                        \right)$<br>(Scale 9 / 11)</td>
+                    <td style="text-align:center; width:25%">$\sum_{v=0}^{\mathbf{10}}\mathcal{I}_{up}^{(v)} \left(
+                        q^v,n,j
+                        \right)$<br>(Full Scale)</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <!-- 두 번째 설명 텍스트 -->
+        <div class="mt-5">
+            <p style="text-align: justify; font-size: 1.05rem; line-height: 1.7; color: #333;">
                 To understand our learned multi-scale motion representation, we visualize the
                 step-by-step reconstruction of motions by progressively accumulating tokens across the skeletal-temporal
                 hierarchy.
                 In the earlier, coarse-level tokens, the motions of paired limbs—such as both arms or both legs—are
                 naturally grouped and embedded into shared, symmetric joint representations.
+                <br>
                 As we process rightward towards finer scales, the token maps recursively split according to our
                 predefined skeletal hierarchy.
                 Consequently, the coarse, symmetric movements gradually disentangle into independent, highly articulated
@@ -210,226 +539,25 @@
                 details of the original motion (the rightmost character).
             </p>
         </div>
-    </section>
 
-    <section class="section">
-        <div class="container is-max-desktop">
-            <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
-                <h2 class="subtitle is-size-3 publication-keywords">
-                    Next-Scale Token Map Prediction
-                </h2>
-                <video controls autoplay muted loop playsinline width="100%" style="display: block; margin: auto;">
-                    <source src="./assets/generation_pipeline_short.mp4" type="video/mp4">
-                </video>
-            </div>
-            <p class="normal-text has-text-justified">
-                Given a prompt $c$, we autoregressively predict the next-scale token maps $\{q^v\}_{v=0}^{V}$
-                conditioned on all coarser-scale token maps.
-                Note that the 2D skeletal-temporal token maps are flattened into 1D for ease of visualization.
-            </p>
+        <!-- 섹션 마무리 선 -->
+        <div style="border-bottom: 1px solid #eee; margin-top: 3rem;"></div>
+    </div>
+</div>
 
-            <br>
-            <br>
-            <br>
+    </div>
+</div>
 
-            <p class="small-text has-text-justified">
-                The person adopts a defensive stance, arms up guarding the head. They <font color='red'><b>rapidly lean
-                        back and duck to the
-                        side as if dodging punches</b></font>. Their knees bend for agility, feet shuffle quickly to
-                maintain position.
-                After each dodge, they reset their stance, <font color='red'><b>staying alert and ready for another
-                        incoming strike</b></font>.
-            </p>
-            <video controls autoplay muted loop playsinline width="100%">
-                <source src="./assets/generation_results/gen_0_combined.mp4" type="video/mp4">
-            </video>
-
-            <br>
-            <br>
-
-            <p class="small-text has-text-justified">
-                The person <font color='red'><b>strums an invisible guitar</b></font> with vigorous hand movements.
-                Their <font color='red'><b>right hand mimics fast strumming motions while the left hand presses
-                        imaginary strings on the fretboard</b></font>. They lean forward slightly, shifting weight
-                between feet with a rhythmic bounce, expressing excitement and musical engagement.
-            </p>
-            <video controls autoplay muted loop playsinline width="100%">
-                <source src="./assets/generation_results/gen_1_combined.mp4" type="video/mp4">
-            </video>
-
-            <br>
-            <br>
-
-            <p class="small-text has-text-justified">
-                The person <font color='red'><b>sits or stands and mimics rowing a boat, grasping an imaginary oar with
-                        both hands</b></font>. They perform slow, controlled strokes, pulling back with their arms while
-                leaning torso backward, then pushing forward while leaning torso slightly forward. <font color='red'>
-                    <b>Legs and feet shift subtly</b>
-                </font> to stabilize each stroke in a rhythmic, flowing motion.
-            </p>
-            <video controls autoplay muted loop playsinline width="100%">
-                <source src="./assets/generation_results/gen_2_combined.mp4" type="video/mp4">
-            </video>
-
-            <br>
-            <br>
-
-            <p class="small-text has-text-justified">
-                The person <font color='red'><b>bends forward with one knee slightly bent and one foot in front</b>
-                </font>. <font color='red'><b>Both hands move quickly and precisely near the shoe area</b></font>,
-                looping and pulling imaginary laces in alternating patterns. The torso shifts slightly for balance, then
-                the person <font color='red'><b>straightens up smoothly</b></font> and adjusts stance before relaxing
-                arms by their sides.
-            </p>
-            <video controls autoplay muted loop playsinline width="100%">
-                <source src="./assets/generation_results/gen_3_combined.mp4" type="video/mp4">
-            </video>
-
-        </div>
-    </section>
-
-
-
-
-
-    <section class="section">
-        <div class="container is-max-desktop">
-            <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
-                <h2 class="subtitle is-size-3 publication-keywords">
-                    Zero-Shot Text-Driven Motion Editing
-                </h2>
-                <video controls autoplay muted loop playsinline width="100%" style="display: block; margin: auto;">
-                    <source src="./assets/editing_pipeline_short.mp4" type="video/mp4">
-                </video>
-            </div>
-            <p class="normal-text has-text-justified">
-                Starting from the source prompt $c_s$, we autoregressively generate the source tokens
-                $\{q_s^v\}_{v=0}^{V}$.
-                With additional target prompt $c_t$ with a source-token preservation mask $\{\mathcal{M}^v\}_{v=0}^{V}$,
-                we predict edited tokens $q'^{(v)}_t$ conditioned on the remaining source motion context and $c_t$.
-                The target token maps $\{q_t^v\}_{v=0}^{V}$ are generated by blending the source tokens $q_s^v$ with the
-                predicted tokens $q'^{(v)}_t$.
-            </p>
-
-            <br>
-            <br>
-
-            <table align="center" width="100%" style='font-family:"Zen Maru Gothic", serif;font-size:1.4rem'>
-                <tr>
-                    <th style="text-align:center; width:50%">Original Motion</th>
-                    <th style="text-align:center; width:50%">Edited Motion</th>
-                </tr>
-            </table>
-
-            <br>
-
-            <video controls autoplay muted loop playsinline width="100%">
-                <source src="./assets/editing_results/edit_arm_concat.mp4" type="video/mp4">
-            </video>
-            <table align="center" width="100%" style='font-family:"Zen Maru Gothic", serif;font-size:0.9rem'>
-                <tr>
-                    <td style="text-align:justify; width:49%; padding-right:10px;">
-                        The person walks forward at a relaxed pace with an upright posture.
-                        Their <font color='red'><b>arms swing naturally at their sides in opposition to the legs.</b>
-                        </font>
-                        The steps are even and steady, with a smooth heel-to-toe motion.
-                        The head faces forward, and the torso remains stable throughout the walk.
-                    </td>
-                    <td style="text-align:justify; width:49%; padding-left:10px;">
-                        The person walks forward at a relaxed pace with an upright posture.
-                        Their <font color='red'><b>arms lift upward away from the sides, raising the hands to about
-                                shoulder height or higher.</b></font>
-                        The steps are even and steady, with a smooth heel-to-toe motion. The head faces forward, and the
-                        torso remains stable throughout the walk.
-                    </td>
-                </tr>
-            </table>
-
-            <br>
-            <br>
-            <br>
-
-            <video controls autoplay muted loop playsinline width="100%">
-                <source src="./assets/editing_results/edit_limp_concat.mp4" type="video/mp4">
-            </video>
-
-            <table align="center" width="100%" style='font-family:"Zen Maru Gothic", serif;font-size:0.9rem'>
-                <tr>
-                    <td style="text-align:justify; width:49%; padding-right:10px;">
-                        The person walks forward at a steady pace with arms swinging naturally at the sides. <font
-                            color='red'><b>Both legs
-                                move evenly with a smooth heel-to-toe motion</b></font>, and the torso remains upright
-                        and stable
-                        throughout.
-                    </td>
-                    <td style="text-align:justify; width:49%; padding-left:10px;">
-                        The person walks forward at a steady pace with arms swinging naturally at the sides. <font
-                            color='red'><b>The right
-                                leg moves with a heavy limp, landing with less weight and a shortened stride, while the
-                                left leg
-                                carries more of the body's load.</b></font> The torso sways gently to the left with each
-                        step to
-                        compensate.
-                    </td>
-                </tr>
-            </table>
-
-            <br>
-            <br>
-
-            <video controls autoplay muted loop playsinline width="100%">
-                <source src="./assets/editing_results/edit_mid_concat.mp4" type="video/mp4">
-            </video>
-
-            <table align="center" width="100%" style='font-family:"Zen Maru Gothic", serif;font-size:0.9rem'>
-                <tr>
-                    <td style="text-align:justify; width:49%; padding-right:10px;">
-                        The person walks forward steadily in a relaxed pace, <font color='red'><b>pauses in the middle,
-                                stands still briefly</b></font>,
-                        then resumes walking forward at the same steady pace.
-                    </td>
-                    <td style="text-align:justify; width:49%; padding-left:10px;">
-                        The person walks forward steadily in a relaxed pace, <font color='red'><b>then bends the knees
-                                and lowers into a
-                                squat position midway, rises back upright</b></font>, and resumes walking forward at the
-                        same steady pace.
-                    </td>
-                </tr>
-            </table>
-
-            <br>
-            <br>
-
-            <video controls autoplay muted loop playsinline width="100%">
-                <source src="./assets/editing_results/edit_punch_concat.mp4" type="video/mp4">
-            </video>
-
-            <table align="center" width="100%" style='font-family:"Zen Maru Gothic", serif;font-size:0.9rem'>
-                <tr>
-                    <td style="text-align:justify; width:49%; padding-right:10px;">
-                        The person stands in a fighting stance and throws a quick jab forward with the <font
-                            color='red'><b>left fist</b></font>, fully
-                        extending the left arm</b></font>, then immediately follows with a straight cross punch with the
-                        <font color='red'><b>right
-                                fist</b></font>, extending the right arm forward with more power. Both fists then
-                        retract back to guard
-                        position.
-                    </td>
-                    <td style="text-align:justify; width:49%; padding-left:10px;">
-                        The person stands in a fighting stance and throws a quick jab forward with the <font
-                            color='red'><b>right fist</b></font>, fully
-                        extending the right arm, then immediately follows with a straight cross punch with the <font
-                            color='red'><b>left
-                                fist</b></font>, extending the left arm forward with more power. Both fists then retract
-                        back to guard
-                        position.
-                    </td>
-                </tr>
-            </table>
-
-        </div>
-    </section>
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    bulmaCarousel.attach('#comparison-carousel', {
+      slidesToScroll: 1, slidesToShow: 1, infinite: true, loop: true, autoplay: false, navigation: true, pagination: true
+    });
+    if (window.MathJax) { MathJax.typesetPromise(); }
+  });
+</script>
 
 </body>
-
 </html>
