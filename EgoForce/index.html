@@ -83,16 +83,61 @@
       border-radius: 50% !important; border: none !important; width: 40px !important; height: 40px !important;
     }
 
-    @media screen and (max-width: 1024px) {
-      .sidebar { display: none; }
-      .main-content { margin-left: 0; }
+    /* Mobile hamburger */
+    .nav-toggle {
+      display: none; position: fixed; top: 14px; left: 14px; z-index: 1100;
+      width: 42px; height: 42px; border-radius: 8px;
+      background: #1C3D5A; color: #fff; border: none; cursor: pointer;
+      font-size: 18px; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
+    .nav-toggle:focus { outline: 2px solid #275a85; outline-offset: 2px; }
+    .nav-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+      z-index: 999;
+    }
+
+    @media screen and (max-width: 1024px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        box-shadow: 4px 0 18px rgba(0,0,0,0.08);
+      }
+      .sidebar.is-open { transform: translateX(0); }
+      .main-content { margin-left: 0; padding: 4.5rem 1.1rem 2.5rem; }
+      .nav-toggle { display: inline-flex; }
+      .nav-overlay.is-open { display: block; }
+
+      /* Tighten content for narrow screens */
+      .video-card { padding: 1rem; border-radius: 10px; }
+      .description-box { padding: 1rem; }
+      .title.is-1 { font-size: 1.7rem !important; line-height: 1.2; }
+      .title.is-2 { font-size: 1.4rem !important; }
+      .title.is-3 { font-size: 1.2rem !important; }
+      .title.is-4, .title.is-5 { font-size: 1rem !important; }
+      .author-list { font-size: 1.15rem !important; line-height: 1.5; }
+      .affiliation-list { font-size: 0.95rem !important; }
+
+      /* Math overflow protection */
+      mjx-container { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+
+      /* Wide divs shouldn't blow out viewport */
+      .video-row { max-width: 100% !important; }
+      .columns.is-mobile { margin: 0 !important; }
+    }
+
+    /* Global horizontal-overflow safety */
+    img, video { max-width: 100%; height: auto; }
+    table { max-width: 100%; }
   </style>
 </head>
 
 <body>
 
-<aside class="sidebar">
+<button class="nav-toggle" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
+<div class="nav-overlay" aria-hidden="true"></div>
+
+<aside class="sidebar" id="sidebar">
   <p class="sidebar-title">Contents</p>
   <ul class="menu-list">
     <li><a href="#pipeline">1. Online Reconstruction Pipeline</a></li>
@@ -570,6 +615,27 @@
       if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
       if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
     });
+
+    // Mobile sidebar toggle
+    const toggle  = document.querySelector('.nav-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.querySelector('.nav-overlay');
+    const close = () => {
+      if (!sidebar) return;
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+    if (toggle && sidebar && overlay) {
+      toggle.addEventListener('click', () => {
+        const open = sidebar.classList.toggle('is-open');
+        overlay.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      overlay.addEventListener('click', close);
+      sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+      window.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    }
   });
 </script>
 
