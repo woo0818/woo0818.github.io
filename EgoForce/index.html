@@ -129,7 +129,17 @@
       mjx-container { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
 
       /* Wide divs shouldn't blow out viewport */
-      .video-row { max-width: 100% !important; }
+      .video-row { max-width: 100% !important; gap: 6px !important; flex-wrap: nowrap !important; }
+      /* Force 3-up comparison rows to stay side-by-side on mobile */
+      .video-row > div {
+        min-width: 0 !important;
+        flex: 1 1 0 !important;
+      }
+      .video-row > div > p {
+        font-size: 0.72rem !important;
+        margin: 0 !important;
+        line-height: 1.25;
+      }
       .columns.is-mobile { margin: 0 !important; }
     }
 
