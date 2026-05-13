@@ -428,6 +428,8 @@ strong { font-weight: 600; }
 .badge--cvprw        { background: #f5e4e6; color: #8a3340; }
 .badge--eurographics { background: #ecf1d8; color: #4f6824; }
 .badge--ijcv         { background: #dce5f3; color: #1f4172; }
+.badge--wacv         { background: #dceef4; color: #1a5a72; }
+.badge--iros         { background: #fbe6cf; color: #8a4a14; }
 
 /* =============================================================
    News — earlier-updates toggle (single timeline)
