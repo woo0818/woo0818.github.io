@@ -28,6 +28,7 @@
         <li><a href="#news">News</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#honors">Honors</a></li>
         <li><a href="/pdfs/cv.pdf">CV</a></li>
       </ul>
     </div>
@@ -43,8 +44,8 @@
       <div class="hero__body">
         <h1 class="hero__name">Inwoo Hwang</h1>
         <p class="hero__bio">
-          I am a final-year PhD candidate in the ECE department at Seoul National
-          University, working in the
+          I am a final-year PhD candidate in the Electrical and Computer Engineering department at Seoul National
+          University (SNU), working in the
           <a href="https://3d.snu.ac.kr/">3D Vision Lab</a> advised by
           Prof. <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>.
           Previously, I was a Research Scientist Intern at
@@ -100,8 +101,17 @@
           <time class="news__date">May 2026</time>
           <div class="news__body">
             <span class="badge badge--new">New</span>
-            Preprint <em>ScaleMoGen</em> released on
+            Preprint <em>ScaleMoGen: Autoregressive Next-Scale Prediction for Human Motion Generation</em> released on
             <a href="https://arxiv.org/abs/2605.11704">arXiv</a>.
+          </div>
+        </li>
+        <li class="news__item">
+          <time class="news__date">May 2026</time>
+          <div class="news__body">
+            <span class="badge badge--new">New</span>
+            Preprint <em>EgoForce: Robust Online Egocentric Motion
+            Reconstruction via Diffusion Forcing</em> released on
+            <a href="https://arxiv.org/abs/2605.XXXXX">arXiv</a>.
           </div>
         </li>
         <li class="news__item">
@@ -114,8 +124,8 @@
         <li class="news__item">
           <time class="news__date">Jan 2026</time>
           <div class="news__body">
-            <span class="badge badge--ijcv">IJCV</span>
-            Survey <em>A Survey on Human Interaction Motion Generation</em>
+            <span class="badge badge--ijcv">IJCV 2026</span>
+            <em>A Survey on Human Interaction Motion Generation</em>
             accepted to IJCV.
           </div>
         </li>
@@ -219,11 +229,46 @@
           </p>
           <p class="pub__venue"><em>arXiv preprint</em>, 2026</p>
           <p class="pub__tldr">
-            Next-scale token map prediction with a skeletal-temporal hierarchy for human motion generation.
+            A next-scale token map prediction framework with a multi-scale skeletal-temporal hierarchy for human motion generation.
           </p>
           <p class="pub__links">
             <a href="https://arxiv.org/abs/2605.11704">arXiv</a>
             <a href="https://inwoohwang.me/ScaleMoGen/">project page</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="pub" onmouseout="egoforce_stop()" onmouseover="egoforce_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="egoforce_over">
+              <img src="images/egoforce_teaser.gif" alt="">
+            </div>
+            <img src="images/egoforce_teaser.gif" alt="EgoForce teaser">
+          </div>
+          <script>
+            function egoforce_start() { document.getElementById('egoforce_over').style.opacity = "1"; }
+            function egoforce_stop()  { document.getElementById('egoforce_over').style.opacity = "0"; }
+            egoforce_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="https://inwoohwang.me/EgoForce/">
+            EgoForce: Robust Online Egocentric Motion Reconstruction via Diffusion Forcing
+          </a>
+          <p class="pub__authors">
+            <strong>Inwoo Hwang</strong>,
+            <a href="https://rms0329.github.io/">Donggeun Lim</a>,
+            <a href="https://hojunjang17.github.io/">Hojun Jang</a>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+          </p>
+          <p class="pub__venue"><em>arXiv preprint</em>, 2026</p>
+          <p class="pub__tldr">
+            An online causal framework for full-body motion reconstruction from sparse and noisy egocentric observations using diffusion forcing.
+          </p>
+          <p class="pub__links">
+            <a href="https://arxiv.org/abs/2605.XXXXX">arXiv</a>
+            <a href="https://inwoohwang.me/EgoForce/">project page</a>
           </p>
         </div>
       </article>
@@ -291,7 +336,7 @@
           </p>
           <p class="pub__venue"><em>NeurIPS</em>, 2025</p>
           <p class="pub__tldr">
-            A large-scale text-motion dataset of high-quality motion capture paired with accurate, expressive textual annotations.
+            A large-scale text-motion dataset featuring high-quality motion capture and expressive textual annotations, alongside a masked modeling framework with multi-scale tokens.
           </p>
           <p class="pub__links">
             <a href="https://www.arxiv.org/abs/2507.09122">arXiv</a>
@@ -330,7 +375,8 @@
             <span class="badge badge--alt">Highlight</span>
           </p>
           <p class="pub__tldr">
-            Models Human-Scene Interaction as scene-aware motion in-betweening and supports practical applications including video-based HSI reconstruction.
+            Models human-scene interaction as in-betweening, 
+            while remaining robust to inaccurate keyframes and supporting practical applications such as video-based HSI reconstruction.
           </p>
           <p class="pub__links">
             <a href="https://arxiv.org/abs/2503.16289">arXiv</a>
@@ -365,7 +411,8 @@
           </p>
           <p class="pub__venue"><em>ICCV</em>, 2025</p>
           <p class="pub__tldr">
-            A controllable motion synthesis pipeline that achieves high quality and precision from explicit or implicit control signals, including time-agnostic motion control.
+            A controllable motion synthesis pipeline for high-quality motion generation from sparse control signals, 
+            including time-agnostic motion control without explicit timing signals.
           </p>
           <p class="pub__links">
             <a href="https://arxiv.org/abs/2503.15557">arXiv</a>
@@ -737,7 +784,7 @@
     <!-- ============ Honors and Awards ============ -->
     <section class="section" id="honors">
       <header class="section__head">
-        <h2 class="section__title">Honors &amp; Awards</h2>
+        <h2 class="section__title">Selected Honors &amp; Awards</h2>
       </header>
       <ul class="list">
         <li><strong>Young Researcher Award</strong>, SNU INMC <span class="list__meta">2026</span></li>
@@ -778,14 +825,42 @@
       </ul>
     </section>
 
-    <!-- ============ Academic Service ============ -->
+    <!-- ============ Academic Activities ============ -->
     <section class="section" id="service">
       <header class="section__head">
-        <h2 class="section__title">Academic Service</h2>
+        <h2 class="section__title">Academic Activities</h2>
       </header>
       <ul class="list">
-        <li><strong>Conference Reviewer:</strong> CVPR, ICCV, NeurIPS, 3DV, ICRA</li>
-        <li><strong>Journal Reviewer:</strong> RA-L</li>
+        <li>
+          <strong>Conference Reviewer:</strong>
+          CVPR<span class="list__meta">2023, 2024, 2025, 2026</span>,
+          ICCV<span class="list__meta">2023, 2025</span>,
+          ECCV<span class="list__meta">2026</span>,
+          NeurIPS<span class="list__meta">2025, 2026</span>,
+          3DV<span class="list__meta">2025, 2026</span>,
+          BMVC<span class="list__meta">2026</span>,
+          ICRA<span class="list__meta">2023</span>
+        </li>
+        <li>
+          <strong>Journal Reviewer:</strong>
+          ACM TOG<span class="list__meta">2026</span>,
+          IEEE RA-L<span class="list__meta">2023</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ Teaching ============ -->
+    <section class="section" id="teaching">
+      <header class="section__head">
+        <h2 class="section__title">Teaching</h2>
+      </header>
+      <ul class="list">
+        <li>
+          <strong>Seminar in Electrical and Computer Engineering</strong>, Teaching Assistant<span class="list__meta">Spring 2026</span>
+        </li>
+        <li>
+          <strong>Linear Algebra for Electrical Systems</strong>, Teaching Assistant<span class="list__meta">Fall 2025</span>
+        </li>
       </ul>
     </section>
 

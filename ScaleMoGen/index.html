@@ -124,6 +124,42 @@
       .nav-toggle { display: inline-flex; }
       .nav-overlay.is-open { display: block; }
     }
+
+    /* BibTeX block */
+    .bibtex-wrap {
+      position: relative;
+      background: #f8f9fa;
+      border: 1px solid #e6e9ee;
+      border-radius: 10px;
+      padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+      margin: 1.5rem 0 0;
+    }
+    .bibtex-wrap pre {
+      margin: 0;
+      background: transparent;
+      color: #2c3338;
+      padding: 0;
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.85rem;
+      line-height: 1.55;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    .bibtex-copy {
+      position: absolute;
+      top: 10px; right: 10px;
+      padding: 4px 12px;
+      font-size: 0.78rem; font-weight: 600;
+      font-family: 'Google Sans', sans-serif;
+      color: #1C3D5A;
+      background: #ffffff;
+      border: 1px solid #d4dae2;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .bibtex-copy:hover { background: #1C3D5A; color: #fff; border-color: #1C3D5A; }
+    .bibtex-copy.copied { background: #2f7d32; color: #fff; border-color: #2f7d32; }
   </style>
 </head>
 
@@ -147,6 +183,7 @@
         <li><a href="#editing-results">2.2 Motion Editing Gallery</a></li>
     </ul></li>
     <li><a href="#token-map">3. Multi-Scale Skeletal-Temporal Token Map</a></li>
+    <li><a href="#citation">4. Citation</a></li>
   </ul>
 </aside>
 
@@ -640,6 +677,29 @@
     </div>
 </div>
 
+<!-- 4. Citation -->
+<div id="citation" class="mb-6 pt-5">
+    <h2 class="title is-2" style="color: #1C3D5A; font-weight: 800;"><span class="section-num">4.</span> Citation</h2>
+    <br>
+    <div class="container" style="max-width: 900px; margin: 0 auto;">
+        <p style="font-size: 1.05rem; color: #333; line-height: 1.6;">
+            If you find our work useful, please consider citing:
+        </p>
+        <div class="bibtex-wrap">
+            <button class="bibtex-copy" type="button" aria-label="Copy BibTeX">Copy</button>
+<pre id="bibtex">@misc{hwang2026scalemogenautoregressivenextscaleprediction,
+      title={ScaleMoGen: Autoregressive Next-Scale Prediction for Human Motion Generation},
+      author={Inwoo Hwang and Hojun Jang and Bing Zhou and Jian Wang and Young Min Kim and Chuan Guo},
+      year={2026},
+      eprint={2605.11704},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2605.11704},
+}</pre>
+        </div>
+    </div>
+</div>
+
     </div>
 </div>
 
@@ -680,6 +740,36 @@
       if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
       if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
     });
+
+    // BibTeX copy
+    const copyBtn = document.querySelector('.bibtex-copy');
+    const bib = document.getElementById('bibtex');
+    if (copyBtn && bib) {
+      copyBtn.addEventListener('click', () => {
+        const txt = bib.innerText;
+        const done = () => {
+          const orig = copyBtn.textContent;
+          copyBtn.textContent = 'Copied';
+          copyBtn.classList.add('copied');
+          setTimeout(() => {
+            copyBtn.textContent = orig;
+            copyBtn.classList.remove('copied');
+          }, 1500);
+        };
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(txt).then(done).catch(() => {});
+        } else {
+          // Fallback
+          const ta = document.createElement('textarea');
+          ta.value = txt;
+          ta.style.position = 'fixed'; ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); done(); } catch (e) {}
+          document.body.removeChild(ta);
+        }
+      });
+    }
 
     // Mobile sidebar toggle
     const toggle  = document.querySelector('.nav-toggle');

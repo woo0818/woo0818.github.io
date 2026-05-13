@@ -360,7 +360,7 @@ strong { font-weight: 600; }
   transition: all 0.15s ease;
 }
 
-.news__item:first-child::before {
+.news__item:has(.badge--new)::before {
   background: var(--accent);
   border-color: var(--accent);
   box-shadow: 0 0 0 4px var(--accent-soft);
