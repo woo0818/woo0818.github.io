@@ -2,831 +2,814 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+  <meta charset="UTF-8">
   <title>Inwoo Hwang</title>
-
   <meta name="author" content="Inwoo Hwang">
+  <meta name="description"
+    content="Inwoo Hwang — PhD candidate in the 3D Vision Lab at Seoul National University. Research on controllable and robust human motion generation.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap">
 
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
   <link rel="icon" href="images/icon.png">
-  <script src="script/functions.js"></script>
 </head>
 
 <body>
-  <table
-    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-    <tbody>
-      <tr style="padding:0px">
-        <td style="padding:0px">
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-              <tr style="padding:0px">
-                <td style="padding:2.5%;width:63%;vertical-align:middle">
-                  <p style="text-align:center">
-                    <name>Inwoo Hwang</name>
-                  </p>
-                  <p>I'm a PhD student in <a href="https://3d.snu.ac.kr/">3D Vision lab</a> at Seoul
-                    National University, advised by Prof. <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>.
-                    I was a research intern at <a href="https://research.snap.com/index.html">Snap Research</a>.
+  <!-- ============ Top navigation ============ -->
+  <nav class="topnav" aria-label="Primary">
+    <div class="topnav__inner">
+      <a href="#top" class="topnav__brand">Inwoo&nbsp;Hwang</a>
+      <ul class="topnav__links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="/pdfs/cv.pdf">CV</a></li>
+      </ul>
+    </div>
+  </nav>
 
-                    <p></p>
-                    My work focuses on generative motion modeling for Embodied Motion Intelligence, with an emphasis on controllable and robust motion generation from sparse, noisy, and causal conditions, alongside text-driven motion synthesis.
-                    
+  <main class="container" id="top">
 
-                    
-                  </p>
-                  <p style="text-align:center">
-                      <script>
-                          var user = "inwoohwang0818";
-                          var domain = "gmail.com";
-                          document.write('<a href="mailto:' + user + '@' + domain + '">Email</a>');
-                      </script> &nbsp;/&nbsp;
-                    <a href="/pdfs/cv.pdf">CV</a> &nbsp;/&nbsp;
-                    <a href="https://www.linkedin.com/in/inwoo-hwang-58821325a/">LinkedIn</a> &nbsp;/&nbsp;
-                    <a href="https://scholar.google.co.kr/citations?user=_6DhycEAAAAJ&hl=ko">Google Scholar</a>
-                  </p>
-                </td>
-                <td style="padding:2.5%;width:40%;max-width:40%">
-                  <img style="width:100%;max-width:100%;border-radius:50%" alt="profile photo"
-                    src="images/profile_img.jpg">
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    <!-- ============ Hero ============ -->
+    <header class="hero" id="about">
+      <div class="hero__photo">
+        <img src="images/profile_img.jpg" alt="Portrait of Inwoo Hwang">
+      </div>
+      <div class="hero__body">
+        <h1 class="hero__name">Inwoo Hwang</h1>
+        <p class="hero__bio">
+          I am a final-year PhD candidate in the ECE department at Seoul National
+          University, working in the
+          <a href="https://3d.snu.ac.kr/">3D Vision Lab</a> advised by
+          Prof. <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>.
+          Previously, I was a Research Scientist Intern at
+          <a href="https://research.snap.com/index.html">Snap Research</a>.
+        </p>
+        <p class="hero__bio">
+          My research focuses on generative motion modeling for
+          <strong>Embodied Motion Intelligence</strong>, with an emphasis on
+          controllable and robust motion generation under sparse, noisy, and
+          causal conditions, alongside text-driven motion synthesis.
+        </p>
+        <aside class="hero__cta" role="note">
+          <span class="hero__cta-dot" aria-hidden="true"></span>
+          <span class="hero__cta-text">
+            <strong>Currently looking.</strong>
+            I'm actively exploring research opportunities in industry (full-time and internships), 
+            as well as academic postdoctoral positions. If my work aligns with your interests or what you're building, 
+            I'd be happy to connect and discuss potential collaborations or opportunities.
+          </span>
+        </aside>
+        <nav class="hero__contacts" aria-label="Contact links">
+          <script>
+            var user = "inwoohwang0818";
+            var domain = "gmail.com";
+            document.write(
+              '<a class="pill" href="mailto:' + user + '@' + domain + '">' +
+              '<span class="pill__icon" aria-hidden="true">@</span>Email</a>'
+            );
+          </script>
+          <a class="pill" href="/pdfs/cv.pdf">
+            <span class="pill__icon" aria-hidden="true">↗</span>CV
+          </a>
+          <a class="pill" href="https://scholar.google.co.kr/citations?user=_6DhycEAAAAJ&hl=ko">
+            <span class="pill__icon" aria-hidden="true">⌕</span>Scholar
+          </a>
+          <a class="pill" href="https://www.linkedin.com/in/inwoo-hwang-58821325a/">
+            <span class="pill__icon" aria-hidden="true">in</span>LinkedIn
+          </a>
+        </nav>
+      </div>
+    </header>
 
-          <hr>
+    <!-- ============ News ============ -->
+    <section class="section" id="news">
+      <header class="section__head">
+        <h2 class="section__title">News</h2>
+        <span class="section__hint">Latest updates</span>
+      </header>
 
+      <input type="checkbox" id="news-toggle" class="news-toggle-input">
+      <ol class="news">
+        <li class="news__item">
+          <time class="news__date">May 2026</time>
+          <div class="news__body">
+            <span class="badge badge--new">New</span>
+            Preprint <em>ScaleMoGen</em> released on
+            <a href="https://arxiv.org/abs/2605.11704">arXiv</a>.
+          </div>
+        </li>
+        <li class="news__item">
+          <time class="news__date">May 2026</time>
+          <div class="news__body">
+            <span class="badge badge--award">Award</span>
+            Received the <em>Young Researcher Award</em> from SNU INMC.
+          </div>
+        </li>
+        <li class="news__item">
+          <time class="news__date">Jan 2026</time>
+          <div class="news__body">
+            <span class="badge badge--ijcv">IJCV</span>
+            Survey <em>A Survey on Human Interaction Motion Generation</em>
+            accepted to IJCV.
+          </div>
+        </li>
+        <li class="news__item">
+          <time class="news__date">Sep 2025</time>
+          <div class="news__body">
+            <span class="badge badge--neurips">NeurIPS 2025</span>
+            <em>SnapMoGen</em> accepted to NeurIPS 2025.
+          </div>
+        </li>
+        <li class="news__item">
+          <time class="news__date">Jul 2025</time>
+          <div class="news__body">
+            <span class="badge badge--iccv">ICCV 2025</span>
+            Four papers at ICCV 2025: <em>SceneMI</em>
+            <span class="badge badge--alt">Highlight</span>,
+            <em>SFControl</em>, <em>Less is More</em>, and
+            <em>Event-Driven Storytelling</em>.
+          </div>
+        </li>
+        <li class="news__item news__item--more">
+          <time class="news__date">Jun 2025</time>
+          <div class="news__body">
+            <span class="badge badge--cvprw">CVPRW</span>
+            <em>Goal-Driven Human Motion Synthesis in Diverse Tasks</em>
+            presented at CVPR 2025.
+          </div>
+        </li>
+        <li class="news__item news__item--more">
+          <time class="news__date">May 2025</time>
+          <div class="news__body">
+            <span class="badge badge--eurographics">Eurographics 2025</span>
+            <em>Versatile Physics-based Character Control with Hybrid Latent
+            Representation</em> presented at Eurographics 2025.
+          </div>
+        </li>
+        <li class="news__item news__item--more">
+          <time class="news__date">May 2024</time>
+          <div class="news__body">
+            Started a research internship at
+            <a href="https://research.snap.com/index.html">Snap Research</a>
+            in New York City.
+          </div>
+        </li>
+        <li class="news__item news__item--more">
+          <time class="news__date">Jun 2023</time>
+          <div class="news__body">
+            <span class="badge badge--cvpr">CVPR 2023</span>
+            <em>Text2Scene</em> selected as
+            <span class="badge badge--alt">Highlight</span> at CVPR 2023.
+          </div>
+        </li>
+      </ol>
+      <label for="news-toggle" class="news-toggle-label">
+        <span class="news-toggle__more">Show earlier updates</span>
+        <span class="news-toggle__less">Hide earlier updates</span>
+      </label>
+    </section>
 
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-              <tr>
-                <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>Publications</heading>
-                  <p>
-                    <b>Research Keywords</b>: Character Animation, Human Interaction, Controllable Motion Synthesis, Robust Motion Reconstruction.
-                  </p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    <!-- ============ Publications ============ -->
+    <section class="section" id="publications">
+      <header class="section__head">
+        <h2 class="section__title">Publications</h2>
+        <span class="section__hint">* equal contribution</span>
+      </header>
+      <!--
+      <p class="keywords">
+        <span class="keywords__label">Research keywords</span>
+        <span class="chip">Character Animation</span>
+        <span class="chip">Human Interaction</span>
+        <span class="chip">Controllable Motion Synthesis</span>
+        <span class="chip">Robust Motion Reconstruction</span>
+      </p>
+      -->
 
+      <article class="pub" onmouseout="scalemogen_stop()" onmouseover="scalemogen_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="scalemogen_over">
+              <img src="images/scalemogen_teaser.gif" alt="">
+            </div>
+            <img src="images/scalemogen_teaser.gif" alt="ScaleMoGen teaser">
+          </div>
+          <script>
+            function scalemogen_start() { document.getElementById('scalemogen_over').style.opacity = "1"; }
+            function scalemogen_stop()  { document.getElementById('scalemogen_over').style.opacity = "0"; }
+            scalemogen_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="https://inwoohwang.me/ScaleMoGen/">
+            ScaleMoGen: Autoregressive Next-Scale Prediction for Human Motion Generation
+          </a>
+          <p class="pub__authors">
+            <strong>Inwoo Hwang*</strong>,
+            <a href="https://hojunjang17.github.io/">Hojun Jang*</a>,
+            <a href="https://zhoubinwy.github.io/">Bing Zhou</a>,
+            <a href="https://jianwang-cmu.github.io/">Jian Wang</a>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>,
+            <a href="https://ericguo5513.github.io/">Chuan Guo</a>
+          </p>
+          <p class="pub__venue"><em>arXiv preprint</em>, 2026</p>
+          <p class="pub__tldr">
+            Next-scale token map prediction with a skeletal-temporal hierarchy for human motion generation.
+          </p>
+          <p class="pub__links">
+            <a href="https://arxiv.org/abs/2605.11704">arXiv</a>
+            <a href="https://inwoohwang.me/ScaleMoGen/">project page</a>
+          </p>
+        </div>
+      </article>
 
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
+      <article class="pub" onmouseout="surveyhi_stop()" onmouseover="surveyhi_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="surveyhi_over">
+              <img src="images/surveyhi.png" alt="">
+            </div>
+            <img src="images/surveyhi.png" alt="Human Interaction Survey teaser">
+          </div>
+          <script>
+            function surveyhi_start() { document.getElementById('surveyhi_over').style.opacity = "1"; }
+            function surveyhi_stop()  { document.getElementById('surveyhi_over').style.opacity = "0"; }
+            surveyhi_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="https://arxiv.org/abs/2503.12763">
+            A Survey on Human Interaction Motion Generation
+          </a>
+          <p class="pub__authors">
+            <a href="https://scholar.google.com/citations?user=D_BjJ30AAAAJ&hl=en">Kewei Sui</a>,
+            <a href="https://anindita127.github.io/">Anindita Ghosh*</a>,
+            <strong>Inwoo Hwang*</strong>,
+            <a href="https://zhoubinwy.github.io/">Bing Zhou</a>,
+            <a href="https://jianwang-cmu.github.io/">Jian Wang</a>,
+            <a href="https://ericguo5513.github.io/">Chuan Guo</a>
+          </p>
+          <p class="pub__venue"><em>IJCV</em>, 2026</p>
+          <p class="pub__tldr">
+            A review of recent advances in human interaction motion generation: human-human, human-object, human-scene, and human-mix interactions.
+          </p>
+          <p class="pub__links">
+            <a href="https://arxiv.org/abs/2503.12763">arXiv</a>
+            <a href="https://github.com/soraproducer/Awesome-Human-Interaction-Motion-Generation">project page</a>
+          </p>
+        </div>
+      </article>
 
-              <tr onmouseout="scalemogen_stop()" onmouseover="scalemogen_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle;">
-                  <div class="one">
-                    <div class='two' id='scalemogen_over'>
-                      <img src="images/scalemogen_teaser.gif" width="160">
-                    </div>
-                    <img src='images/scalemogen_teaser.gif' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function scalemogen_start() {
-                      document.getElementById('scalemogen_over').style.opacity = "1";
-                    }
+      <article class="pub" onmouseout="snapmogen_stop()" onmouseover="snapmogen_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="snapmogen_over">
+              <img src="images/snapmogen_teaser.gif" alt="">
+            </div>
+            <img src="images/snapmogen_teaser.gif" alt="SnapMoGen teaser">
+          </div>
+          <script>
+            function snapmogen_start() { document.getElementById('snapmogen_over').style.opacity = "1"; }
+            function snapmogen_stop()  { document.getElementById('snapmogen_over').style.opacity = "0"; }
+            snapmogen_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="https://snap-research.github.io/SnapMoGen/">
+            SnapMoGen: Human Motion Generation from Expressive Texts
+          </a>
+          <p class="pub__authors">
+            <a href="https://ericguo5513.github.io/">Chuan Guo</a>,
+            <strong>Inwoo Hwang</strong>,
+            <a href="https://jianwang-cmu.github.io/">Jian Wang</a>,
+            <a href="https://zhoubinwy.github.io/">Bing Zhou</a>
+          </p>
+          <p class="pub__venue"><em>NeurIPS</em>, 2025</p>
+          <p class="pub__tldr">
+            A large-scale text-motion dataset of high-quality motion capture paired with accurate, expressive textual annotations.
+          </p>
+          <p class="pub__links">
+            <a href="https://www.arxiv.org/abs/2507.09122">arXiv</a>
+            <a href="https://snap-research.github.io/SnapMoGen/">project page</a>
+          </p>
+        </div>
+      </article>
 
-                    function snapmogen_stop() {
-                      document.getElementById('scalemogen_over').style.opacity = "0";
-                    }
-                    scalemogen_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://inwoohwang.me/ScaleMoGen/">
-                    <papertitle>ScaleMoGen: Autoregressive Next-Scale Prediction for Human Motion Generation</papertitle>
-                  </a>
-                  <br>
-                  <strong>Inwoo Hwang</strong>,
-                  <a href="https://hojunjang17.github.io/">Hojun Jang</a>,
-                  <a href="https://zhoubinwy.github.io/">Bing Zhou</a>,
-                  <a href="https://jianwang-cmu.github.io/">Jian Wang</a>,
-                  <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
-                  and
-                  <a href="https://ericguo5513.github.io/">Chuan Guo</a>
-                  <br>
-                  <em>Arxiv</em>, 2026
-                  <br>
-                  <a href="https://arxiv.org/abs/2605.11704">arxiv</a>
-                  |
-                  <a href="https://inwoohwang.me/ScaleMoGen/">project page</a>
-                  <p></p>
-                  <p>Next-scale token map prediction with skeletal-temporal hierarchy for human motion generation.</p>
-                </td>
-              </tr>
-              
-              <tr onmouseout="snapmogen_stop()" onmouseover="snapmogen_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle;">
-                  <div class="one">
-                    <div class='two' id='snapmogen_over'>
-                      <img src="images/snapmogen_teaser.gif" width="160">
-                    </div>
-                    <img src='images/snapmogen_teaser.gif' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function snapmogen_start() {
-                      document.getElementById('snapmogen_over').style.opacity = "1";
-                    }
+      <article class="pub" onmouseout="scenemi_stop()" onmouseover="scenemi_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="scenemi_over">
+              <img src="images/SceneMI.gif" alt="">
+            </div>
+            <img src="images/SceneMI.gif" alt="SceneMI teaser">
+          </div>
+          <script>
+            function scenemi_start() { document.getElementById('scenemi_over').style.opacity = "1"; }
+            function scenemi_stop()  { document.getElementById('scenemi_over').style.opacity = "0"; }
+            scenemi_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="http://inwoohwang.me/SceneMI">
+            SceneMI: Motion In-betweening for Modeling Human-Scene Interaction
+          </a>
+          <p class="pub__authors">
+            <strong>Inwoo Hwang</strong>,
+            <a href="https://zhoubinwy.github.io/">Bing Zhou</a>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>,
+            <a href="https://jianwang-cmu.github.io/">Jian Wang</a>,
+            <a href="https://ericguo5513.github.io/">Chuan Guo</a>
+          </p>
+          <p class="pub__venue">
+            <em>ICCV</em>, 2025
+            <span class="badge badge--alt">Highlight</span>
+          </p>
+          <p class="pub__tldr">
+            Models Human-Scene Interaction as scene-aware motion in-betweening and supports practical applications including video-based HSI reconstruction.
+          </p>
+          <p class="pub__links">
+            <a href="https://arxiv.org/abs/2503.16289">arXiv</a>
+            <a href="http://inwoohwang.me/SceneMI">project page</a>
+          </p>
+        </div>
+      </article>
 
-                    function snapmogen_stop() {
-                      document.getElementById('snapmogen_over').style.opacity = "0";
-                    }
-                    snapmogen_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://snap-research.github.io/SnapMoGen/">
-                    <papertitle>SnapMoGen: Human Motion Generation from Expressive Texts</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://ericguo5513.github.io/">Chuan Guo</a>,
-                  <strong>Inwoo Hwang</strong>,
-                  <a href="https://jianwang-cmu.github.io/">Jian Wang</a>,
-                  and
-                  <a href="https://zhoubinwy.github.io/">Bing Zhou</a>
-                  <br>
-                  <em>NeurIPS</em>, 2025
-                  <br>
-                  <a href="https://www.arxiv.org/abs/2507.09122">arxiv</a>
-                  |
-                  <a href="https://snap-research.github.io/SnapMoGen/">project page</a>
-                  <p></p>
-                  <p>Large-scale text-motion dataset featuring high-quality motion capture data paired with accurate, expressive textual annotations.</p>
-                </td>
-              </tr>
+      <article class="pub" onmouseout="sfcontrol_stop()" onmouseover="sfcontrol_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="sfcontrol_over">
+              <img src="images/SFControl.gif" alt="">
+            </div>
+            <img src="images/SFControl.gif" alt="SFControl teaser">
+          </div>
+          <script>
+            function sfcontrol_start() { document.getElementById('sfcontrol_over').style.opacity = "1"; }
+            function sfcontrol_stop()  { document.getElementById('sfcontrol_over').style.opacity = "0"; }
+            sfcontrol_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="http://inwoohwang.me/SFControl">
+            Motion Synthesis with Sparse and Flexible Keyjoint Control
+          </a>
+          <p class="pub__authors">
+            <strong>Inwoo Hwang</strong>,
+            <a href="https://jinseokbae.github.io/">Jinseok Bae</a>,
+            <span class="ext">Donggeun Lim</span>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+          </p>
+          <p class="pub__venue"><em>ICCV</em>, 2025</p>
+          <p class="pub__tldr">
+            A controllable motion synthesis pipeline that achieves high quality and precision from explicit or implicit control signals, including time-agnostic motion control.
+          </p>
+          <p class="pub__links">
+            <a href="https://arxiv.org/abs/2503.15557">arXiv</a>
+            <a href="http://inwoohwang.me/SFControl">project page</a>
+          </p>
+        </div>
+      </article>
 
-              <tr onmouseout="scenemi_stop()" onmouseover="scenemi_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle;">
-                  <div class="one">
-                    <div class='two' id='scenemi_over'>
-                      <img src="images/SceneMI.gif" width="160">
-                    </div>
-                    <img src='images/SceneMI.gif' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function scenemi_start() {
-                      document.getElementById('scenemi_over').style.opacity = "1";
-                    }
+      <article class="pub" onmouseout="lessismore_stop()" onmouseover="lessismore_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="lessismore_over">
+              <img src="images/less_is_more.gif" alt="">
+            </div>
+            <img src="images/less_is_more.gif" alt="Less is More teaser">
+          </div>
+          <script>
+            function lessismore_start() { document.getElementById('lessismore_over').style.opacity = "1"; }
+            function lessismore_stop()  { document.getElementById('lessismore_over').style.opacity = "0"; }
+            lessismore_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="https://jinseokbae.github.io/less_is_more/">
+            Less is More: Improving Motion Diffusion Models with Sparse Keyframes
+          </a>
+          <p class="pub__authors">
+            <a href="https://jinseokbae.github.io/">Jinseok Bae</a>,
+            <strong>Inwoo Hwang</strong>,
+            <span class="ext">Young Yoon Lee</span>,
+            <span class="ext">Ziyu Guo</span>,
+            <span class="ext">Joseph Liu</span>,
+            <span class="ext">Yizhak Ben-Shabat</span>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>,
+            <a href="https://www.cs.rutgers.edu/people/professors/details/mubbasir-kapadia">Mubbasir Kapadia</a>
+          </p>
+          <p class="pub__venue"><em>ICCV</em>, 2025</p>
+          <p class="pub__tldr">
+            A sparse keyframe-based motion diffusion model that better captures text prompts and improves overall motion quality.
+          </p>
+          <p class="pub__links">
+            <a href="https://arxiv.org/abs/2503.13859">arXiv</a>
+            <a href="https://jinseokbae.github.io/less_is_more/">project page</a>
+          </p>
+        </div>
+      </article>
 
-                    function scenemi_stop() {
-                      document.getElementById('scenemi_over').style.opacity = "0";
-                    }
-                    scenemi_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="http://inwoohwang.me/SceneMI">
-                    <papertitle>SceneMI: Motion In-betweening for Modeling Human-Scene Interaction</papertitle>
-                  </a>
-                  <br>
-                  <strong>Inwoo Hwang</strong>,
-                  <a href="https://zhoubinwy.github.io/">Bing Zhou</a>,
-                  <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>,
-                  <a href="https://jianwang-cmu.github.io/">Jian Wang</a>,
-                  and <a href="https://ericguo5513.github.io/">Chuan Guo</a>
-                  <br>
-                  <em>ICCV</em>, 2025 <mark>(Highlight)</mark>
-                  <br>
-                  <a href="https://arxiv.org/abs/2503.16289">arxiv</a>
-                  |
-                  <a href="http://inwoohwang.me/SceneMI">project page</a>
-                  <p></p>
-                  <p>Modeling Human-Scene Interaction (HSI) as scene-aware motion in-betweening, and supports various practical applications including video-based HSI reconstruction.</p>
-                </td>
-              </tr>
+      <article class="pub" onmouseout="eventscene_stop()" onmouseover="eventscene_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="eventscene_over">
+              <img src="images/EDS_teasor.gif" alt="">
+            </div>
+            <img src="images/EDS_teasor.gif" alt="Event-Driven Storytelling teaser">
+          </div>
+          <script>
+            function eventscene_start() { document.getElementById('eventscene_over').style.opacity = "1"; }
+            function eventscene_stop()  { document.getElementById('eventscene_over').style.opacity = "0"; }
+            eventscene_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="https://rms0329.github.io/Event-Driven-Storytelling/">
+            Event-Driven Storytelling with Multiple Lifelike Humans in a 3D Scene
+          </a>
+          <p class="pub__authors">
+            <a href="https://rms0329.github.io/">Donggeun Lim</a>,
+            <a href="https://jinseokbae.github.io/">Jinseok Bae</a>,
+            <strong>Inwoo Hwang</strong>,
+            <span class="ext">Seungmin Lee</span>,
+            <a href="https://hwanheelee1993.github.io/">Hwanhee Lee</a>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+          </p>
+          <p class="pub__venue"><em>ICCV</em>, 2025</p>
+          <p class="pub__tldr">
+            A framework that creates lively virtual dynamic scenes with contextual motions of multiple humans.
+          </p>
+          <p class="pub__links">
+            <a href="https://www.arxiv.org/abs/2507.19232">arXiv</a>
+            <a href="https://rms0329.github.io/Event-Driven-Storytelling/">project page</a>
+          </p>
+        </div>
+      </article>
 
+      <article class="pub" onmouseout="goaldriven_stop()" onmouseover="goaldriven_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="goaldriven_over">
+              <img src="images/goaldriven.png" alt="">
+            </div>
+            <img src="images/goaldriven.png" alt="Goal-Driven Synthesis teaser">
+          </div>
+          <script>
+            function goaldriven_start() { document.getElementById('goaldriven_over').style.opacity = "1"; }
+            function goaldriven_stop()  { document.getElementById('goaldriven_over').style.opacity = "0"; }
+            goaldriven_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="http://inwoohwang.me/GoalDrivenSynthesis">
+            Goal-Driven Human Motion Synthesis in Diverse Tasks
+          </a>
+          <p class="pub__authors">
+            <strong>Inwoo Hwang</strong>,
+            <a href="https://jinseokbae.github.io/">Jinseok Bae</a>,
+            <a href="https://rms0329.github.io/">Donggeun Lim</a>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+          </p>
+          <p class="pub__venue"><em>CVPR Workshop</em> (HuMoGen), 2025</p>
+          <p class="pub__tldr">
+            A motion generation pipeline conditioned on predefined key joint goal positions and a 3D environment.
+          </p>
+          <p class="pub__links">
+            <a href="https://openaccess.thecvf.com/content/CVPR2025W/HuMoGen/papers/Hwang_Goal-Driven_Human_Motion_Synthesis_in_Diverse_Task_CVPRW_2025_paper.pdf">paper</a>
+            <a href="http://inwoohwang.me/GoalDrivenSynthesis">project page</a>
+          </p>
+        </div>
+      </article>
 
-              <tr onmouseout="sfcontrol_stop()" onmouseover="sfcontrol_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <div class='two' id='sfcontrol_over'>
-                      <img src="images/SFControl.gif" width="160">
-                    </div>
-                    <img src='images/SFControl.gif' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function sfcontrol_start() {
-                      document.getElementById('sfcontrol_over').style.opacity = "1";
-                    }
+      <article class="pub" onmouseout="versatile_stop()" onmouseover="versatile_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="versatile_over">
+              <img src="images/eurographics_versatile.jpg" alt="">
+            </div>
+            <img src="images/eurographics_versatile.jpg" alt="Versatile Physics-based Control teaser">
+          </div>
+          <script>
+            function versatile_start() { document.getElementById('versatile_over').style.opacity = "1"; }
+            function versatile_stop()  { document.getElementById('versatile_over').style.opacity = "0"; }
+            versatile_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="https://arxiv.org/abs/2503.12814">
+            Versatile Physics-based Character Control with Hybrid Latent Representation
+          </a>
+          <p class="pub__authors">
+            <a href="https://jinseokbae.github.io/">Jinseok Bae</a>,
+            <a href="https://sites.google.com/view/jungdam/home">Jungdam Won</a>,
+            <a href="https://rms0329.github.io/">Donggeun Lim</a>,
+            <strong>Inwoo Hwang</strong>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+          </p>
+          <p class="pub__venue"><em>Eurographics</em>, 2025</p>
+          <p class="pub__tldr">
+            Integrates continuous and discrete latent representations so that physically simulated characters can efficiently use motion priors and adapt to diverse challenging control tasks.
+          </p>
+          <p class="pub__links">
+            <a href="https://arxiv.org/abs/2503.12814">arXiv</a>
+            <a href="https://onlinelibrary.wiley.com/doi/10.1111/cgf.70018?af=R">paper</a>
+            <a href="https://jinseokbae.github.io/hybrid_latent_prior/">project page</a>
+          </p>
+        </div>
+      </article>
 
-                    function sfcontrol_stop() {
-                      document.getElementById('sfcontrol_over').style.opacity = "0";
-                    }
-                    sfcontrol_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="http://inwoohwang.me/SFControl">
-                    <papertitle>Motion Synthesis with Sparse and Flexible Keyjoint Control</papertitle>
-                  </a>
-                  <br>
-                  <strong>Inwoo Hwang</strong>, 
-                  <a href="https://jinseokbae.github.io/">Jinseok Bae</a>, 
-                  <span style="color: rgba(26, 101, 199, 0.911)">Donggeun Lim</span>, 
-                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+      <article class="pub" onmouseout="text2scene_stop()" onmouseover="text2scene_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="text2scene_over">
+              <img src="images/text2scene.gif" alt="">
+            </div>
+            <img src="images/text2scene.gif" alt="Text2Scene teaser">
+          </div>
+          <script>
+            function text2scene_start() { document.getElementById('text2scene_over').style.opacity = "1"; }
+            function text2scene_stop()  { document.getElementById('text2scene_over').style.opacity = "0"; }
+            text2scene_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="http://inwoohwang.me/Text2Scene">
+            Text2Scene: Text-driven Indoor Scene Stylization with Part-aware Details
+          </a>
+          <p class="pub__authors">
+            <strong>Inwoo Hwang</strong>,
+            <a href="https://www.sshowbiz.xyz/">Hyeonwoo Kim</a>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+          </p>
+          <p class="pub__venue">
+            <em>CVPR</em>, 2023
+            <span class="badge badge--alt">Highlight</span>
+          </p>
+          <p class="pub__tldr">
+            Automatically creates realistic, part-aware textures for virtual scenes composed of multiple objects.
+          </p>
+          <p class="pub__links">
+            <a href="https://arxiv.org/abs/2308.16880">arXiv</a>
+            <a href="https://openaccess.thecvf.com/content/CVPR2023/html/Hwang_Text2Scene_Text-Driven_Indoor_Scene_Stylization_With_Part-Aware_Details_CVPR_2023_paper.html">paper</a>
+            <a href="https://www.youtube.com/watch?v=CGIXY2kwIYM">video</a>
+            <a href="http://inwoohwang.me/Text2Scene">project page</a>
+          </p>
+        </div>
+      </article>
 
-                  <br>
-                  <em>ICCV</em>, 2025
-                  <br>
-                  <a href="https://arxiv.org/abs/2503.15557">arxiv</a>
-                  |
-                  <a href="http://inwoohwang.me/SFControl">project page</a>
-                  <p></p>
-                  <p>A controllable motion synthesis pipeline with high quality and precision, from explicit or implicit control signals, including time-agnostic motion control.</p>
-                </td>
-              </tr>
+      <article class="pub" onmouseout="text2pointcloud_stop()" onmouseover="text2pointcloud_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="text2pointcloud_over">
+              <img src="images/text2pointcloud.gif" alt="">
+            </div>
+            <img src="images/text2pointcloud.gif" alt="Text2PointCloud teaser">
+          </div>
+          <script>
+            function text2pointcloud_start() { document.getElementById('text2pointcloud_over').style.opacity = "1"; }
+            function text2pointcloud_stop()  { document.getElementById('text2pointcloud_over').style.opacity = "0"; }
+            text2pointcloud_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="https://diglib.eg.org/items/a33d8b89-8524-4a71-b217-303812a53990">
+            Text2PointCloud: Text-Driven Stylization for Sparse PointCloud
+          </a>
+          <p class="pub__authors">
+            <strong>Inwoo Hwang</strong>,
+            <a href="https://www.sshowbiz.xyz/">Hyeonwoo Kim</a>,
+            <a href="https://rms0329.github.io/">Donggeun Lim</a>,
+            <a href="https://inbumpark.github.io/">Inbum Park</a>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+          </p>
+          <p class="pub__venue"><em>Eurographics Short</em>, 2023</p>
+          <p class="pub__tldr">
+            Processes sparse, noisy point cloud input and generates high-quality stylized output.
+          </p>
+          <p class="pub__links">
+            <a href="https://diglib.eg.org/server/api/core/bitstreams/bc89542b-3b0a-42da-846a-cdf89d3dfc3e/content">paper</a>
+            <a href="https://www.youtube.com/watch?v=aGDaKHKv1Xc">video</a>
+          </p>
+        </div>
+      </article>
 
+      <article class="pub" onmouseout="evnerf_stop()" onmouseover="evnerf_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="evnerf_over">
+              <img src="images/evnerf.gif" alt="">
+            </div>
+            <img src="images/evnerf.gif" alt="Ev-NeRF teaser">
+          </div>
+          <script>
+            function evnerf_start() { document.getElementById('evnerf_over').style.opacity = "1"; }
+            function evnerf_stop()  { document.getElementById('evnerf_over').style.opacity = "0"; }
+            evnerf_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="http://inwoohwang.me/Ev-NeRF">
+            Ev-NeRF: Event Based Neural Radiance Field
+          </a>
+          <p class="pub__authors">
+            <strong>Inwoo Hwang</strong>,
+            <a href="https://www.junhokim.xyz/">Junho Kim</a>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+          </p>
+          <p class="pub__venue"><em>WACV</em>, 2023</p>
+          <p class="pub__tldr">
+            A Neural Radiance Field derived from event data — a basis for various event-based applications and robust to sensor noise.
+          </p>
+          <p class="pub__links">
+            <a href="https://arxiv.org/abs/2206.12455">arXiv</a>
+            <a href="https://openaccess.thecvf.com/content/WACV2023/html/Hwang_Ev-NeRF_Event_Based_Neural_Radiance_Field_WACV_2023_paper.html">paper</a>
+            <a href="https://www.youtube.com/watch?v=dU4Hqr41RUo">video</a>
+            <a href="http://inwoohwang.me/Ev-NeRF">project page</a>
+          </p>
+        </div>
+      </article>
 
-              <tr onmouseout="lessismore_stop()" onmouseover="lessismore_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <div class='two' id='lessismore_over'>
-                      <img src="images/less_is_more.gif" width="160">
-                    </div>
-                    <img src='images/less_is_more.gif' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function lessismore_start() {
-                      document.getElementById('lessismore_over').style.opacity = "1";
-                    }
+      <article class="pub" onmouseout="evtta_stop()" onmouseover="evtta_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="evtta_over">
+              <img src="images/evtta_over.png" alt="">
+            </div>
+            <img src="images/evtta.png" alt="Ev-TTA teaser">
+          </div>
+          <script>
+            function evtta_start() { document.getElementById('evtta_over').style.opacity = "1"; }
+            function evtta_stop()  { document.getElementById('evtta_over').style.opacity = "0"; }
+            evtta_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="https://openaccess.thecvf.com/content/CVPR2022/html/Kim_Ev-TTA_Test-Time_Adaptation_for_Event-Based_Object_Recognition_CVPR_2022_paper.html">
+            Ev-TTA: Test-Time Adaptation for Event-Based Object Recognition
+          </a>
+          <p class="pub__authors">
+            <a href="https://www.junhokim.xyz/">Junho Kim</a>,
+            <strong>Inwoo Hwang</strong>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+          </p>
+          <p class="pub__venue"><em>CVPR</em>, 2022</p>
+          <p class="pub__tldr">
+            A simple and effective test-time adaptation algorithm for event-based object recognition that adapts classifiers to various external conditions.
+          </p>
+          <p class="pub__links">
+            <a href="https://arxiv.org/abs/2203.12247">arXiv</a>
+            <a href="https://openaccess.thecvf.com/content/CVPR2022/papers/Kim_Ev-TTA_Test-Time_Adaptation_for_Event-Based_Object_Recognition_CVPR_2022_paper.pdf">paper</a>
+            <a href="https://www.youtube.com/watch?v=H4D7gDHn7oI">video</a>
+            <a href="https://82magnolia.github.io/ev_tta/">project page</a>
+          </p>
+        </div>
+      </article>
 
-                    function lessismore_stop() {
-                      document.getElementById('lessismore_over').style.opacity = "0";
-                    }
-                    lessismore_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://jinseokbae.github.io/less_is_more/">
-                    <papertitle>Less is More: Improving Motion Diffusion Models with Sparse Keyframes</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://jinseokbae.github.io/">Jinseok Bae</a>,
-                  <strong>Inwoo Hwang</strong>, 
-                  <span style="color: rgba(26, 101, 199, 0.911)">Young Yoon Lee</span>,
-                  <span style="color: rgba(26, 101, 199, 0.911)">Ziyu Guo</span>,
-                  <span style="color: rgba(26, 101, 199, 0.911)">Joseph Liu</span>,
-                  <span style="color: rgba(26, 101, 199, 0.911)">Yizhak Ben-Shabat</span>,
-                  <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>,
-                  and <a href="https://www.cs.rutgers.edu/people/professors/details/mubbasir-kapadia">Mubbasir Kapadia</a>
+      <article class="pub" onmouseout="maskgrasp_stop()" onmouseover="maskgrasp_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="maskgrasp_over">
+              <img src="images/maskgrasp.gif" alt="">
+            </div>
+            <img src="images/maskgrasp.gif" alt="MasKGrasp teaser">
+          </div>
+          <script>
+            function maskgrasp_start() { document.getElementById('maskgrasp_over').style.opacity = "1"; }
+            function maskgrasp_stop()  { document.getElementById('maskgrasp_over').style.opacity = "0"; }
+            maskgrasp_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="https://ieeexplore.ieee.org/document/9982130">
+            MasKGrasp: Mask-based Grasping for Scenes with Multiple General Real-world Objects
+          </a>
+          <p class="pub__authors">
+            <a href="https://twjhlee.github.io/">Junho Lee</a>,
+            <a href="https://hurjunhwa.github.io/">Junhwa Hur</a>,
+            <strong>Inwoo Hwang</strong>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+          </p>
+          <p class="pub__venue"><em>IROS</em>, 2022</p>
+          <p class="pub__tldr">
+            A real-world grasping algorithm that generalizes to transparent and opaque objects via masks.
+          </p>
+          <p class="pub__links">
+            <a href="https://ieeexplore.ieee.org/document/9982130">paper</a>
+            <a href="https://www.youtube.com/watch?v=iWvstHPu97Y">video</a>
+          </p>
+        </div>
+      </article>
+    </section>
 
-                  <br>
-                  <em>ICCV</em>, 2025
-                  <br>
-                  <a href="https://arxiv.org/abs/2503.13859">arxiv</a>
-                  |
-                  <a href="https://jinseokbae.github.io/less_is_more/">project page</a>
-                  <p></p>
-                  <p>A sparse keyframe-based motion diffusion model that better captures text prompts and improves overall motion quality.</p>
-                </td>
-              </tr>
+    <!-- ============ Experience ============ -->
+    <section class="section" id="experience">
+      <header class="section__head">
+        <h2 class="section__title">Research Experience</h2>
+      </header>
 
-              <tr onmouseout="eventscene_stop()" onmouseover="eventscene_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <div class='two' id='EDS_over'>
-                      <img src="images/EDS_teasor.gif" width="160">
-                    </div>
-                    <img src='images/EDS_teasor.gif' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function eventscene_start() {
-                      document.getElementById('eventscene_over').style.opacity = "1";
-                    }
+      <article class="exp">
+        <div class="exp__media">
+          <img src="images/snap.png" alt="Snap Research logo">
+        </div>
+        <div class="exp__body">
+          <h3 class="exp__org">
+            <a href="https://research.snap.com/index.html">Snap Research</a>
+          </h3>
+          <p class="exp__role">Research Scientist Intern</p>
+          <p class="exp__meta">New York City, NY &middot; May 2024 &ndash; Sep 2024</p>
+          <p class="exp__mentors">
+            Mentors:
+            <a href="https://zhoubinwy.github.io">Bing Zhou</a>,
+            <a href="https://ericguo5513.github.io">Chuan Guo</a>,
+            <a href="https://jianwang-cmu.github.io">Jian Wang</a>
+          </p>
+          <p class="exp__tldr">
+            Physically plausible reconstruction of human motion and scenes from real-world videos.
+          </p>
+        </div>
+      </article>
+    </section>
 
-                    function eventscene_stop() {
-                      document.getElementById('eventscene_over').style.opacity = "0";
-                    }
-                    eventscene_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="">
-                    <papertitle>Event-Driven Storytelling with Multiple Lifelike Humans in a 3D Scene</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://rms0329.github.io/">Donggeun Lim</a>,
-                  <a href="https://jinseokbae.github.io/">Jinseok Bae</a>,
-                  <strong>Inwoo Hwang</strong>, 
-                  <span style="color: rgba(26, 101, 199, 0.911)">Seungmin Lee</span>,
-                  <a href="https://hwanheelee1993.github.io/">Hwanhee Lee</a>,
-                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+    <!-- ============ Honors and Awards ============ -->
+    <section class="section" id="honors">
+      <header class="section__head">
+        <h2 class="section__title">Honors &amp; Awards</h2>
+      </header>
+      <ul class="list">
+        <li><strong>Young Researcher Award</strong>, SNU INMC <span class="list__meta">2026</span></li>
+        <li><strong>Excellent Research Talent Fellowship</strong>, BK21 <span class="list__meta">2023, 2025</span></li>
+        <li><strong>Hyundai Motor Chung Mong-Koo Scholarship</strong> (Ph.D.) <span class="list__meta">2022 &ndash; present</span></li>
+        <li><strong>Presidential Science Scholarship</strong> (Mathematics), Ministry of Science and ICT <span class="list__meta">2016 &ndash; 2022</span></li>
+        <li><strong>Gold Medal</strong>, University Mathematics Competition (Mathematics Major) <span class="list__meta">2020</span></li>
+        <li><strong>Excellence Award</strong>, Final Korean Mathematical Olympiad (FKMO) <span class="list__meta">2015</span></li>
+      </ul>
+    </section>
 
-                  <br>
-                  <em>ICCV</em>, 2025
-                  <br>
-                  <a href="https://www.arxiv.org/abs/2507.19232">arxiv</a>
-                  |
-                  <a href="https://rms0329.github.io/Event-Driven-Storytelling/">project page</a>
-                  <p></p>
-                  <p>A framework that creates a lively virtual dynamic scene with contextual motions of multiple humans.</p>
-                </td>
-              </tr>
+    <!-- ============ Education ============ -->
+    <section class="section" id="education">
+      <header class="section__head">
+        <h2 class="section__title">Education</h2>
+      </header>
+      <ul class="list list--two">
+        <li>
+          <div>
+            <strong>Seoul National University</strong>
+            <span class="list__detail">M.S./Ph.D. in Electrical and Computer Engineering</span>
+          </div>
+          <span class="list__meta">Mar 2022 &ndash; present</span>
+        </li>
+        <li>
+          <div>
+            <strong>Seoul National University</strong>
+            <span class="list__detail">B.S. in Electrical and Computer Engineering</span>
+          </div>
+          <span class="list__meta">Mar 2016 &ndash; Feb 2022</span>
+        </li>
+        <li>
+          <div>
+            <strong>Seoul Science High School</strong>
+          </div>
+          <span class="list__meta">Mar 2013 &ndash; Feb 2016</span>
+        </li>
+      </ul>
+    </section>
 
+    <!-- ============ Academic Service ============ -->
+    <section class="section" id="service">
+      <header class="section__head">
+        <h2 class="section__title">Academic Service</h2>
+      </header>
+      <ul class="list">
+        <li><strong>Conference Reviewer:</strong> CVPR, ICCV, NeurIPS, 3DV, ICRA</li>
+        <li><strong>Journal Reviewer:</strong> RA-L</li>
+      </ul>
+    </section>
 
-              <tr onmouseout="surveyhi_stop()" onmouseover="surveyhi_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <div class='two' id='surveyhi_over'>
-                      <img src="images/surveyhi.png" width="160">
-                    </div>
-                    <img src='images/surveyhi.png' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function surveyhi_start() {
-                      document.getElementById('surveyhi_over').style.opacity = "1";
-                    }
+    <footer class="footer">
+      <p>&copy; Inwoo Hwang &middot; Last updated <time>May 2026</time></p>
+    </footer>
+  </main>
 
-                    function surveyhi_stop() {
-                      document.getElementById('surveyhi_over').style.opacity = "0";
-                    }
-                    surveyhi_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://arxiv.org/abs/2503.12763">
-                    <papertitle>A Survey on Human Interaction Motion Generation</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://scholar.google.com/citations?user=D_BjJ30AAAAJ&hl=en">Kewei Sui</a>,
-                  <a href="https://anindita127.github.io/">Anindita Ghosh*</a>,
-                  <strong>Inwoo Hwang*</strong>, 
-                  <a href="https://zhoubinwy.github.io/">Bing Zhou</a>,
-                  <a href="https://jianwang-cmu.github.io/">Jian Wang</a>,
-                  and <a href="https://ericguo5513.github.io/">Chuan Guo</a>
-
-                  <br>
-                  <em>IJCV</em>, 2025
-                  <br>
-                  <a href="https://arxiv.org/abs/2503.12763">arxiv</a>
-                  |
-                  <a href="https://github.com/soraproducer/Awesome-Human-Interaction-Motion-Generation">project page</a>
-                  <p></p>
-                  <p>A review of recent advances in human interaction motion generation, including human-human, human-object, human-scene, and human-mix interactions.</p>
-                </td>
-              </tr>
-
-
-
-              <tr onmouseout="goaldriven_stop()" onmouseover="goaldriven_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <div class='two' id='goaldriven_over'>
-                      <img src="images/goaldriven.png" width="160">
-                    </div>
-                    <img src='images/goaldriven.png' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function versatile_start() {
-                      document.getElementById('goaldriven_over').style.opacity = "1";
-                    }
-
-                    function versatile_stop() {
-                      document.getElementById('goaldrivenover').style.opacity = "0";
-                    }
-                    versatile_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="http://inwoohwang.me/GoalDrivenSynthesis">
-                    <papertitle>Goal-Driven Human Motion Synthesis in Diverse Tasks</papertitle>
-                  </a>
-                  <br>
-                  <strong>Inwoo Hwang</strong>,
-                  <a href="https://jinseokbae.github.io/">Jinseok Bae</a>,
-                  <a href="https://rms0329.github.io/">Donggeun Lim</a>,
-                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
-                  <br>
-                  <em>CVPRW</em>, 2025, HuMoGen
-                  <br>
-                  <a href="https://openaccess.thecvf.com/content/CVPR2025W/HuMoGen/papers/Hwang_Goal-Driven_Human_Motion_Synthesis_in_Diverse_Task_CVPRW_2025_paper.pdf">paper</a>
-                  |
-                  <a href="http://inwoohwang.me/GoalDrivenSynthesis">project page</a>
-                  <p></p>
-                  <p>A motion generation pipeline from predefined key joint goal positions and a 3D environment.</p>
-                </td>
-              </tr>
-
-              <tr onmouseout="versatile_stop()" onmouseover="versatile_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <div class='two' id='versatile_over'>
-                      <img src="images/eurographics_versatile.jpg" width="160">
-                    </div>
-                    <img src='images/eurographics_versatile.jpg' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function versatile_start() {
-                      document.getElementById('versatile_over').style.opacity = "1";
-                    }
-
-                    function versatile_stop() {
-                      document.getElementById('versatile_over').style.opacity = "0";
-                    }
-                    versatile_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://arxiv.org/abs/2503.12814">
-                    <papertitle>Versatile Physics-based Character Control with Hybrid Latent Representation</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://jinseokbae.github.io/">Jinseok Bae</a>,
-                  <a href="https://sites.google.com/view/jungdam/home">Jungdam Won</a>,
-                  <a href="https://rms0329.github.io/">Donggeun Lim</a>,
-                  <strong>Inwoo Hwang</strong>,
-                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
-                  <br>
-                  <em>Eurographics</em>, 2025
-                  <br>
-                  <a href="https://arxiv.org/abs/2503.12814">arxiv</a>
-                  |
-                  <a
-                    href="https://onlinelibrary.wiley.com/doi/10.1111/cgf.70018?af=R">paper</a>
-                  |
-                  <a href="https://jinseokbae.github.io/hybrid_latent_prior/">project page</a>
-                  <p></p>
-                  <p>Propose integrating continuous and discrete latent representations, enabling physically simulated characters to efficiently utilize motion priors and adapt to diverse challenging control tasks.
-                     </p>
-                </td>
-              </tr>
-
-
-              <tr onmouseout="text2scene_stop()" onmouseover="text2scene_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <div class='two' id='text2scene_over'>
-                      <img src="images/text2scene.gif" width="160">
-                    </div>
-                    <img src='images/text2scene.gif' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function text2scene_start() {
-                      document.getElementById('text2scene_over').style.opacity = "1";
-                    }
-
-                    function text2scene_stop() {
-                      document.getElementById('text2scene_over').style.opacity = "0";
-                    }
-                    text2scene_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="http://inwoohwang.me/Text2Scene">
-                    <papertitle>Text2Scene: Text-driven Indoor Scene Stylization with Part-aware Details</papertitle>
-                  </a>
-                  <br>
-                  <strong>Inwoo Hwang</strong>,
-                  <a href="https://www.sshowbiz.xyz/">Hyeonwoo Kim</a>,
-                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
-                  <br>
-                  <em>CVPR</em>, 2023 <mark>(Highlight)</mark>
-                  <br>
-                  <a href="https://arxiv.org/abs/2308.16880">arxiv</a>
-                  |
-                  <a
-                    href="https://openaccess.thecvf.com/content/CVPR2023/html/Hwang_Text2Scene_Text-Driven_Indoor_Scene_Stylization_With_Part-Aware_Details_CVPR_2023_paper.html">paper</a>
-                  |
-                  <a href="https://www.youtube.com/watch?v=CGIXY2kwIYM">video</a>
-                  |
-                  <a href="http://inwoohwang.me/Text2Scene">project page</a>
-                  <p></p>
-                  <p>A method to automatically create realistic and part-aware textures for virtual scenes
-                    composed of multiple objects.</p>
-                </td>
-              </tr>
-
-
-
-              <tr onmouseout="text2pointcloud_stop()" onmouseover="text2pointcloud_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <div class='two' id='text2pointcloud_over'>
-                      <img src="images/text2pointcloud.gif" width="160">
-                    </div>
-                    <img src=' images/text2pointcloud.gif' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function text2pointcloud_start() {
-                      document.getElementById('text2pointcloud_over').style.opacity = "1";
-                    }
-
-                    function text2pointcloud_stop() {
-                      document.getElementById('text2pointcloud_over').style.opacity = "0";
-                    }
-                    text2pointcloud_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://diglib.eg.org/items/a33d8b89-8524-4a71-b217-303812a53990">
-                    <papertitle>Text2PointCloud: Text-Driven Stylization for Sparse PointCloud</papertitle>
-                  </a>
-                  <br>
-                  <strong>Inwoo Hwang</strong>,
-                  <a href="https://www.sshowbiz.xyz/">Hyeonwoo Kim</a>,
-                  <a href="https://rms0329.github.io/">Donggeun Lim</a>,
-                  <a href="https://inbumpark.github.io/">Inbum Park</a>,
-                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
-                  <br>
-                  <em>Eurographics short</em>, 2023
-                  <br>
-                  <a href="https://diglib.eg.org/server/api/core/bitstreams/bc89542b-3b0a-42da-846a-cdf89d3dfc3e/content">paper</a>
-                  |
-                  <a href="https://www.youtube.com/watch?v=aGDaKHKv1Xc">video</a>
-                  <p></p>
-                  <p>A method to process sparse, noisy point cloud input and generate high-quality stylized output.</p>
-                </td>
-              </tr>
-
-              <tr onmouseout="evnerf_stop()" onmouseover="evnerf_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <div class='two' id='evnerf_over'>
-                      <img src="images/evnerf.gif" width="160">
-                    </div>
-                    <img src=' images/evnerf.gif' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function evnerf_start() {
-                      document.getElementById('evnerf_over').style.opacity = "1";
-                    }
-
-                    function evnerf_stop() {
-                      document.getElementById('evnerf_over').style.opacity = "0";
-                    }
-                    evnerf_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <!--<a
-                    href="https://openaccess.thecvf.com/content/WACV2023/html/Hwang_Ev-NeRF_Event_Based_Neural_Radiance_Field_WACV_2023_paper.html">
-                    <papertitle>Ev-NeRF: Event Based Neural Radiance Field</papertitle>
-                  </a> -->
-                  <a href="http://inwoohwang.me/Ev-NeRF">
-                    <papertitle>Ev-NeRF: Event Based Neural Radiance Field</papertitle>
-                  </a>
-                  <br>
-                  <strong>Inwoo Hwang</strong>,
-                  <a href="https://www.junhokim.xyz/">Junho Kim</a>,
-                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
-                  <br>
-                  <em>WACV</em>, 2023
-                  <br>
-                  <a href="https://arxiv.org/abs/2206.12455">arxiv</a>
-                  |
-                  <a
-                    href="https://openaccess.thecvf.com/content/WACV2023/html/Hwang_Ev-NeRF_Event_Based_Neural_Radiance_Field_WACV_2023_paper.html">paper</a>
-                  |
-                  <a href="https://www.youtube.com/watch?v=dU4Hqr41RUo">video</a>
-                  |
-                  <a href="http://inwoohwang.me/Ev-NeRF">project page</a>
-                  <p></p>
-                  <p>A Neural Radiance Field (NeRF) derived from event data, which serves as solutions for various
-                    event-based applications and highly robust to sensor noise.</p>
-                </td>
-              </tr>
-
-              <tr onmouseout="evtta_stop()" onmouseover="evtta_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <div class='two' id='evtta_over'>
-                      <img src="images/evtta_over.png" width="160">
-                    </div>
-                    <img src=' images/evtta.png' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function evtta_start() {
-                      document.getElementById('evtta_over').style.opacity = "1";
-                    }
-
-                    function evtta_stop() {
-                      document.getElementById('evtta_over').style.opacity = "0";
-                    }
-                    evtta_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a
-                    href="https://openaccess.thecvf.com/content/CVPR2022/html/Kim_Ev-TTA_Test-Time_Adaptation_for_Event-Based_Object_Recognition_CVPR_2022_paper.html">
-                    <papertitle>Ev-TTA: Test-Time Adaptation for Event-Based Object Recognition</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://www.junhokim.xyz/">Junho Kim</a>,
-                  <strong>Inwoo Hwang</strong>,
-                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
-                  <br>
-                  <em>CVPR</em>, 2022
-                  <br>
-                  <a href="https://arxiv.org/abs/2203.12247">arxiv</a>
-                  |
-                  <a
-                    href="https://openaccess.thecvf.com/content/CVPR2022/papers/Kim_Ev-TTA_Test-Time_Adaptation_for_Event-Based_Object_Recognition_CVPR_2022_paper.pdf">paper</a>
-                  |
-                  <a href="https://www.youtube.com/watch?v=H4D7gDHn7oI">video</a>
-                  |
-                  <a href="https://82magnolia.github.io/ev_tta/">project page</a>
-                  <p></p>
-                  <p>A simple and effective test-time adaptation algorithms for event-based object recognition.
-                    Successfully adapt classifiers to various external conditions.</p>
-                </td>
-              </tr>
-
-              <tr onmouseout="maskgrasp_stop()" onmouseover="maskgrasp_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <div class='two' id='maskgrasp_over'>
-                      <img src="images/maskgrasp.gif" width="160">
-                    </div>
-                    <img src=' images/maskgrasp.gif' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function maskgrasp_start() {
-                      document.getElementById('maskgrasp_over').style.opacity = "1";
-                    }
-
-                    function maskgrasp_stop() {
-                      document.getElementById('maskgrasp_over').style.opacity = "0";
-                    }
-                    maskgrasp_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/9982130">
-                    <papertitle>MasKGrasp: Mask-based Grasping for Scenes with Multiple General Real-world Objects
-                    </papertitle>
-                  </a>
-                  <br>
-                  <a href="https://twjhlee.github.io/">Junho Lee</a>,
-                  <a href="https://hurjunhwa.github.io/">Junhwa Hur</a>,
-                  <strong>Inwoo Hwang</strong>,
-                  and <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
-                  <br>
-                  <em>IROS</em>, 2022
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/document/9982130">paper</a>
-                  |
-                  <a href="https://www.youtube.com/watch?v=iWvstHPu97Y">video</a>
-                  <p></p>
-                  <p>A real world grasping algorithm that can generalize to transparent and opaque obejcts via masks.
-                  </p>
-                </td>
-              </tr>
-
-
-
-
-
-            </tbody>
-          </table>
-          
-
-          <hr>
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-              <tr>
-                <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>Research Experience</heading>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tr>
-              <td style="padding:20px;width:25%;place-items: center;">
-                <div class="one">
-                  <img src=' images/snap.png' width="140" height="140">
-                </div>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://research.snap.com/index.html">
-                  <papertitle>Snap Research
-                  </papertitle>
-                </a>
-                , <em>New York City, New York </em> 
-                <br>Research Scientist Intern, Computational Imaging Team
-                <br>May 2024 - Sep. 2024
-                <p></p>
-                Mentors:
-                <a href="https://zhoubinwy.github.io">Bing Zhou</a>,
-                <a href="https://ericguo5513.github.io">Chuan Guo</a>,
-                <a href="https://jianwang-cmu.github.io">Jian Wang</a>
-                <br>
-                <p></p>
-                <p>Working on physically plausible reconstruction of human motion and scenes from real-world videos.
-                </p>
-              </td>
-            </tr>
-          </table>
-
-
-
-
-          <hr>
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tr>
-              <td style="padding:2.5%;width:100%;vertical-align:middle">
-                <h2>Honors and Awards</h2>
-                <p> Excellent Research Talent Fellowship, from BK21, 2023 fall
-                </p>
-                <p> Hyundai Motor Chung Mong-Koo Scholarship, 2022 to current
-                </p>
-                <p> University Mathematics Competition, Field 1 for Mathematics Major, Gold Medal, 2020
-                </p>
-                <p>
-                  President Science Scholarship (Field: Mathematics), 2016 to 2021
-                </p>
-                <p>
-                  Final Korean Mathematical Olympiad, Excellence award, 2015
-                </p>
-              </td>
-            </tr>
-          </table>
-
-
-          <hr>
-          <!-- Education -->
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tr>
-              <td style="padding:2.5%;width:100%;vertical-align:middle">
-                <h2>Education</h2>
-                <p> Seoul National University, Seoul, Korea, Mar. 2022 - Present M.S./Ph.D. in Electrical and Computer
-                  Engineering </p>
-                <p> Seoul National University, Seoul, Korea, Mar. 2016 - Feb. 2022 B.S. in Electrical and Computer
-                  Engineering</p>
-                <p> Seoul Science High School, Seoul, Korea, Mar. 2013 - Feb. 2016
-                </p>
-              </td>
-            </tr>
-          </table>
-          <hr>
-
-          <!-- Academic Activities -->
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tr>
-              <td style="padding:2.5%;width:100%;vertical-align:middle">
-                <h2>Academic Activites</h2>
-                <p>Conference Reviewer: CVPR, ICCV, NeurIPS, 3DV, ICRA</p>
-                <p>Journal Reviewer: RA-L</p>
-              </td>
-            </tr>
-          </table>
-
-
-
-          <br>
-          <hr>
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tr>
-              <td style="padding:0px">
-                <br>
-                <p style="text-align:right;font-size:small;">
-                  Design / source code from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron</a>'s
-                </p>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <style>
-    #clustrmaps {
-        display: none !important;
-        visibility: hidden;
-        width: 0;
-        height: 0;
-        overflow: hidden;
-    }
-    </style>
-    
-    <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=200&t=n&d=uQJN5flI_cOqhH19y7QsokJR3c8rLc1zA7UT34AArdI&co=ffffff&ct=ffffff&cmo=ffffff&cmn=ffffff'></script>
-    
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        setTimeout(function() {
-            let clustrmapsDivs = document.querySelectorAll("iframe[src*='clustrmaps'], div[id*='clustrmaps']");
-            clustrmapsDivs.forEach(div => {
-                div.style.display = "none";
-                div.style.visibility = "hidden";
-                div.style.width = "0";
-                div.style.height = "0";
-                div.style.overflow = "hidden";
-            });
-        }, 3000); 
+  <!-- Visitor counter (hidden) -->
+  <script type="text/javascript" id="clustrmaps"
+    src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=200&t=n&d=uQJN5flI_cOqhH19y7QsokJR3c8rLc1zA7UT34AArdI&co=ffffff&ct=ffffff&cmo=ffffff&cmn=ffffff"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(function () {
+        document.querySelectorAll("iframe[src*='clustrmaps'], div[id*='clustrmaps']").forEach(function (el) {
+          el.style.display = "none";
+          el.style.visibility = "hidden";
+          el.style.width = "0";
+          el.style.height = "0";
+          el.style.overflow = "hidden";
+        });
+      }, 3000);
     });
-    </script>
+  </script>
 </body>
 
 </html>

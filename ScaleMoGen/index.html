@@ -6,13 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ScaleMoGen: Autoregressive Next-Scale Prediction</title>
 
+  <!-- Favicon -->
+  <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
   <!-- External CSS -->
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css">
 
   <!-- LaTeX Rendering -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <script>
@@ -62,16 +66,73 @@
       border-radius: 50% !important; border: none !important; width: 40px !important; height: 40px !important;
     }
 
+    /* Author + affiliation */
+    .author-list {
+      font-size: 1.2rem; line-height: 1.7;
+      font-family: 'Google Sans', sans-serif;
+    }
+    .author-list .author-block { margin-right: 4px; }
+    .author-list a { color: #1C3D5A; }
+    .author-list a:hover { color: #275a85; text-decoration: underline; }
+    .author-list sup { font-size: 0.7em; }
+
+    .affiliation-list {
+      font-size: 1.05rem; color: #555;
+      margin-top: 0.75rem; line-height: 1.6;
+      font-family: 'Google Sans', sans-serif;
+    }
+    .affiliation-list .author-block { margin: 0 10px; }
+    .affiliation-list sup { font-size: 0.7em; }
+
+    /* Hero links */
+    .hero-links {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+      margin-top: 1.5rem;
+    }
+    .hero-links a {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 18px; border-radius: 999px;
+      background: #1C3D5A; color: #ffffff;
+      font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 0.95rem;
+      text-decoration: none; transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .hero-links a:hover { background: #275a85; transform: translateY(-1px); }
+    .hero-links a .icon { font-size: 1rem; line-height: 1; }
+
+    /* Mobile sidebar toggle */
+    .nav-toggle {
+      display: none; position: fixed; top: 16px; left: 16px; z-index: 1100;
+      width: 42px; height: 42px; border-radius: 8px;
+      background: #1C3D5A; color: #fff; border: none; cursor: pointer;
+      font-size: 18px; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .nav-toggle:focus { outline: 2px solid #275a85; outline-offset: 2px; }
+    .nav-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+      z-index: 999;
+    }
+
     @media screen and (max-width: 1024px) {
-      .sidebar { display: none; }
-      .main-content { margin-left: 0; }
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        box-shadow: 4px 0 18px rgba(0,0,0,0.08);
+      }
+      .sidebar.is-open { transform: translateX(0); }
+      .main-content { margin-left: 0; padding: 4.5rem 1.25rem 2.5rem; }
+      .nav-toggle { display: inline-flex; }
+      .nav-overlay.is-open { display: block; }
     }
   </style>
 </head>
 
 <body>
 
-<aside class="sidebar">
+<button class="nav-toggle" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
+<div class="nav-overlay" aria-hidden="true"></div>
+
+<aside class="sidebar" id="sidebar">
   <p class="sidebar-title">Contents</p>
   <ul class="menu-list">
     <li><a href="#pipeline">1. Text-to-Motion Generation</a></li>
@@ -111,6 +172,15 @@
         <span class="author-block"><sup>1</sup>Seoul National University</span>
         <span class="author-block"><sup>2</sup>Snap Inc.</span>
         <span class="author-block"><sup>3</sup>Meta Reality Labs</span>
+      </div>
+
+      <div class="hero-links">
+        <a href="https://arxiv.org/abs/2605.11704" target="_blank" rel="noopener">
+          <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
+        </a>
+        <a href="https://arxiv.org/pdf/2605.11704" target="_blank" rel="noopener">
+          <span class="icon">📄</span><span>PDF</span>
+        </a>
       </div>
 
     </div>
@@ -154,7 +224,7 @@
                 <div class="column is-6 mb-4">
                 <div class="video-card">
                     <h4 class="title is-5" style="color: #1C3D5A; margin-bottom: 1rem;">"A person is bowing politely."</h4>
-                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_new_22.mkv" type="video/mp4"></video>
+                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_new_22.mp4" type="video/mp4"></video>
                     <div class="detail-box">
                     <p class="is-size-7 has-text-justified" style="line-height: 1.5; color: #555;">
                         The person aligns both feet together and straightens posture before bending smoothly forward
@@ -170,7 +240,7 @@
                 <div class="video-card">
                     <h4 class="title is-5" style="color: #1C3D5A; margin-bottom: 1rem;">"A person is mimicking a
                         slow zombie walk."</h4>
-                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_casual_87.mkv" type="video/mp4"></video>
+                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_casual_87.mp4" type="video/mp4"></video>
                     <div class="detail-box">
                     <p class="is-size-7 has-text-justified" style="line-height: 1.5; color: #555;">
                         The person shuffles forward with slow, stiff movements typical of a zombie walk. Feet drag
@@ -185,7 +255,7 @@
                 <div class="column is-6 mb-4">
                 <div class="video-card">
                     <h4 class="title is-5" style="color: #1C3D5A; margin-bottom: 1rem;">"A person is running joyfully."</h4>
-                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_new_23.mkv" type="video/mp4"></video>
+                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_new_23.mp4" type="video/mp4"></video>
                     <div class="detail-box">
                     <p class="is-size-7 has-text-justified" style="line-height: 1.5; color: #555;">
                         The person accelerates into a light run, taking buoyant strides with arms swinging actively.
@@ -200,12 +270,12 @@
                 <div class="column is-6 mb-4">
                 <div class="video-card">
                     <h4 class="title is-5" style="color: #1C3D5A; margin-bottom: 1rem;">"A person walks and turns right."</h4>
-                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_test_m_st3_00349_537_743_gen.mkv" type="video/mp4"></video>
+                    <video controls autoplay muted loop playsinline><source src="./assets/generation_results/gen_test_m_st3_00349_537_743_gen.mp4" type="video/mp4"></video>
                     <div class="detail-box">
                     <p class="is-size-7 has-text-justified" style="line-height: 1.5; color: #555;">
                         The person begins in a relaxed standing position. They start walking forward, smoothly
                             turning their head to the right. As they continue moving, they gently change direction by
-                            turning their entire boy to the right, maintaining a steady pace.
+                            turning their entire body to the right, maintaining a steady pace.
                     </p>
                     </div>
                 </div>
@@ -276,7 +346,7 @@
 
         <!-- 1. Text-to-Motion Generation -->
         <div id="editing" class="mb-6 pt-5">
-            <h2 class="title is-2" style="color: #1C3D5A; font-weight: 800;"><span class="section-num">2</span> Zero-Shot Text-Driven Motion Editing</h2>
+            <h2 class="title is-2" style="color: #1C3D5A; font-weight: 800;"><span class="section-num">2.</span> Zero-Shot Text-Driven Motion Editing</h2>
             
             <div id="editing-sub" class="mt-5">
             <h3 class="title is-3 has-text-centered" style="color: #1C3D5A; margin-bottom: 3rem;"><span class="section-num">2.1.</span> Motion Editing Overview</h3>
@@ -303,7 +373,7 @@
         <!-- 4. Motion Editing (No Card Style) -->
         <div id="editing-results" class="mb-6 pt-5">
             <h3 class="title is-3 has-text-centered" style="color: #1C3D5A; margin-bottom: 3rem;">
-                <span class="section-num">2.2</span> Motion Editing Gallery
+                <span class="section-num">2.2.</span> Motion Editing Gallery
             </h3>
             <p class="is-size-5" style="color: #333; line-height: 1.6;">
                 We show the original source motion corresponding to the source text and edit prompt, along with its edited motion.
@@ -428,7 +498,7 @@
                     </div>
                     <div class="column is-6" style="border-left: 1px solid #f0f0f0;">
                         <p style="text-align: justify; font-size: 1rem; line-height: 1.7; color: #333;">
-                            he person walks forward steadily in a relaxed pace, <font color='red'><b>then bends the knees
+                            The person walks forward steadily in a relaxed pace, <font color='red'><b>then bends the knees
                                 and lowers into a
                                 squat position midway, rises back upright</b></font>, and resumes walking forward at the
                         same steady pace.
@@ -581,6 +651,55 @@
       slidesToScroll: 1, slidesToShow: 1, infinite: true, loop: true, autoplay: false, navigation: true, pagination: true
     });
     if (window.MathJax) { MathJax.typesetPromise(); }
+
+    // Lazy-play videos: only fetch+play when scrolled into view, pause when out
+    const videos = document.querySelectorAll('video');
+    videos.forEach(v => {
+      v.removeAttribute('autoplay');
+      if (!v.hasAttribute('preload')) v.setAttribute('preload', 'metadata');
+      v.muted = true;
+    });
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.play().catch(() => {});
+          } else {
+            e.target.pause();
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '200px 0px' });
+      videos.forEach(v => io.observe(v));
+    } else {
+      // Fallback for very old browsers
+      videos.forEach(v => v.play().catch(() => {}));
+    }
+
+    // Defer non-critical images
+    document.querySelectorAll('img').forEach(img => {
+      if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+      if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
+    });
+
+    // Mobile sidebar toggle
+    const toggle  = document.querySelector('.nav-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.querySelector('.nav-overlay');
+    const close = () => {
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+    if (toggle && sidebar && overlay) {
+      toggle.addEventListener('click', () => {
+        const open = sidebar.classList.toggle('is-open');
+        overlay.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      overlay.addEventListener('click', close);
+      sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+      window.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    }
   });
 </script>
 
