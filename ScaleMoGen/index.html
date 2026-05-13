@@ -159,7 +159,12 @@
 
       /* Math + tables shouldn't blow out viewport */
       mjx-container { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
-      table { display: block; max-width: 100%; overflow-x: auto; }
+      table:not(.vq-scale-labels) { display: block; max-width: 100%; overflow-x: auto; }
+
+      /* Section 3 scale-label table must mirror video's 4 equal columns */
+      .vq-scale-labels { width: 100%; table-layout: fixed; font-size: 0.78rem !important; }
+      .vq-scale-labels td { padding: 4px 2px; }
+      .vq-scale-labels mjx-container { font-size: 90% !important; }
 
       /* Bibtex on mobile */
       .bibtex-wrap { padding: 1rem 0.75rem; }
@@ -691,7 +696,7 @@
                 <source src="./assets/vq_results/full.mp4" type="video/mp4">
             </video>
 
-            <table align="center" width="100%" style='font-family:"Zen Maru Gothic", serif;font-size:1.3rem'>
+            <table class="vq-scale-labels" align="center" width="100%" style='font-family:"Zen Maru Gothic", serif; font-size:1rem; table-layout: fixed;'>
                 <tr>
                     <td style="text-align:center; width:25%">$\sum_{v=0}^{\mathbf{2}}\mathcal{I}_{up}^{(v)} \left(
                         q^v,n,j
