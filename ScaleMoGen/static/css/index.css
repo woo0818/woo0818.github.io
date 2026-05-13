@@ -158,9 +158,9 @@ body {
 
 .case-divider {
   border: none;
-  border-top: 2px dashed #000; /* 두께 2px, 대시 스타일, 검정색 */
-  margin: 20px 0; /* 상하 여백 */
-  width: 100%; /* 가로로 전체 채우기 */
+  border-top: 2px dashed #000; 
+  margin: 20px 0; 
+  width: 100%; 
 }
 
 .bd-placeholder-img {
@@ -319,15 +319,40 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
+  gap: 4px 14px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.author-list .author-block a {
+  color: #1C3D5A;
+  border-bottom: 1px solid rgba(28, 61, 90, 0.3);
+  transition: border-color 0.2s ease;
+}
+.author-list .author-block a:hover {
+  border-bottom-color: #1C3D5A;
+}
+.author-list sup {
+  font-weight: 400;
+}
+.author-list .author-block {
+  font-size: inherit;
 }
 .author-block {
   font-size: 1.1rem;
 }
 .affiliation-list {
-  display: block;
-  font-size: 1rem;
-  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 18px;
+  font-size: 1.1rem;
+  color: #444;
+  margin-top: 10px;
+}
+.corresponding-note {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 6px;
 }
 .lab-logos {
   display: flex;
