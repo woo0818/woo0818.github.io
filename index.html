@@ -78,6 +78,48 @@
           <table
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
+
+              <tr onmouseout="scalemogen_stop()" onmouseover="scalemogen_start()">
+                <td style="padding:20px;width:25%;vertical-align:middle;">
+                  <div class="one">
+                    <div class='two' id='scalemogen_over'>
+                      <img src="images/scalemogen_teaser.gif" width="160">
+                    </div>
+                    <img src='images/scalemogen_teaser.gif' width="160">
+                  </div>
+                  <script type="text/javascript">
+                    function scalemogen_start() {
+                      document.getElementById('scalemogen_over').style.opacity = "1";
+                    }
+
+                    function snapmogen_stop() {
+                      document.getElementById('scalemogen_over').style.opacity = "0";
+                    }
+                    scalemogen_stop()
+                  </script>
+                </td>
+                <td style="padding:20px;width:75%;vertical-align:middle">
+                  <a href="https://inwoohwang.me/ScaleMoGen/">
+                    <papertitle>ScaleMoGen: Autoregressive Next-Scale Prediction for Human Motion Generation</papertitle>
+                  </a>
+                  <br>
+                  <strong>Inwoo Hwang</strong>,
+                  <a href="https://hojunjang17.github.io/">Honjun Jang</a>,
+                  <a href="https://zhoubinwy.github.io/">Bing Zhou</a>,
+                  <a href="https://jianwang-cmu.github.io/">Jian Wang</a>,
+                  <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+                  and
+                  <a href="https://ericguo5513.github.io/">Chuan Guo</a>
+                  <br>
+                  <em>Arxiv</em>, 2026
+                  <br>
+                  <a href="https://www.arxiv.org/abs/2507.09122">arxiv</a>
+                  |
+                  <a href="https://inwoohwang.me/ScaleMoGen/">project page</a>
+                  <p></p>
+                  <p>Next-scale token map prediction with skeletal-temporal hierarchy for human motion generation.</p>
+                </td>
+              </tr>
               
               <tr onmouseout="snapmogen_stop()" onmouseover="snapmogen_start()">
                 <td style="padding:20px;width:25%;vertical-align:middle;">
