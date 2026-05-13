@@ -116,7 +116,7 @@ strong { font-weight: 600; }
   padding: 0;
   display: flex;
   gap: 28px;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -200,7 +200,7 @@ strong { font-weight: 600; }
 
 .hero__cta {
   margin-top: 14px;
-  font-size: 14.5px;
+  font-size: 15.5px;
   color: var(--fg-soft);
   line-height: 1.6;
 }
@@ -229,7 +229,7 @@ strong { font-weight: 600; }
   border-radius: 999px;
   background: var(--bg-elev);
   color: var(--fg-soft);
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 500;
   transition: all 0.15s ease;
 }
@@ -250,7 +250,7 @@ strong { font-weight: 600; }
   border-radius: 4px;
   background: var(--accent-soft);
   color: var(--accent);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   line-height: 1;
 }
@@ -301,7 +301,7 @@ strong { font-weight: 600; }
 }
 
 .keywords__label {
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--muted);
   font-weight: 600;
   text-transform: uppercase;
@@ -310,7 +310,7 @@ strong { font-weight: 600; }
 }
 
 .chip {
-  font-size: 12.5px;
+  font-size: 12px;
   padding: 3px 10px;
   border-radius: 999px;
   background: var(--bg-elev);
@@ -368,7 +368,7 @@ strong { font-weight: 600; }
 
 .news__date {
   text-align: right;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--muted);
   padding-top: 2px;
@@ -377,7 +377,7 @@ strong { font-weight: 600; }
 }
 
 .news__body {
-  font-size: 14.5px;
+  font-size: 15.5px;
   color: var(--fg-soft);
   line-height: 1.6;
 }
@@ -393,7 +393,7 @@ strong { font-weight: 600; }
 
 .badge {
   display: inline-block;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -460,7 +460,7 @@ strong { font-weight: 600; }
   gap: 8px;
   margin: 16px 0 0 148px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--muted);
   padding: 6px 14px;
@@ -571,7 +571,7 @@ strong { font-weight: 600; }
 
 .pub__authors {
   margin: 0 0 4px;
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--fg-soft);
   line-height: 1.55;
 }
@@ -589,7 +589,7 @@ strong { font-weight: 600; }
 
 .pub__venue {
   margin: 0 0 8px;
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--fg-soft);
 }
 
@@ -601,13 +601,13 @@ strong { font-weight: 600; }
 .pub__tldr {
   margin: 6px 0 10px;
   color: var(--fg-soft);
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.6;
 }
 
 .pub__links {
   margin: 0;
-  font-size: 12.5px;
+  font-size: 12px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -660,7 +660,7 @@ strong { font-weight: 600; }
 .exp__org {
   font-family: var(--serif);
   margin: 0 0 4px;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -676,19 +676,19 @@ strong { font-weight: 600; }
 
 .exp__meta {
   margin: 0 0 10px;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--muted);
 }
 
 .exp__mentors {
   margin: 0 0 6px;
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--fg-soft);
 }
 
 .exp__tldr {
   margin: 6px 0 0;
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--muted);
   line-height: 1.6;
 }
@@ -731,7 +731,7 @@ strong { font-weight: 600; }
 
 .list__meta {
   color: var(--muted);
-  font-size: 12.5px;
+  font-size: 12px;
   font-variant-numeric: tabular-nums;
   margin-left: 6px;
 }
@@ -751,7 +751,7 @@ strong { font-weight: 600; }
 
 .list--two .list__detail {
   color: var(--fg-soft);
-  font-size: 13.5px;
+  font-size: 14px;
 }
 
 .list--two .list__meta {
@@ -768,7 +768,7 @@ strong { font-weight: 600; }
   padding: 24px 0 8px;
   border-top: 1px solid var(--rule);
   color: var(--muted);
-  font-size: 12.5px;
+  font-size: 12px;
   text-align: center;
 }
 
@@ -819,7 +819,7 @@ strong { font-weight: 600; }
   .pub__title { font-size: 17px; }
   .pub__authors,
   .pub__venue,
-  .pub__tldr { font-size: 13.5px; }
+  .pub__tldr { font-size: 14px; }
 
   .news::before { left: 89px; }
   .news__item {
@@ -838,7 +838,7 @@ strong { font-weight: 600; }
   .topnav__inner { padding: 0 16px; gap: 8px; }
   .topnav__links {
     gap: 14px;
-    font-size: 12.5px;
+    font-size: 12px;
     flex-wrap: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -852,7 +852,7 @@ strong { font-weight: 600; }
   .hero { gap: 18px; }
   .hero__name { font-size: 30px; }
   .hero__photo img { width: 140px; height: 140px; }
-  .hero__cta { font-size: 13.5px; }
+  .hero__cta { font-size: 14px; }
 
   .section__title { font-size: 22px; }
 
