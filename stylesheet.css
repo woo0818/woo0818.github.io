@@ -423,6 +423,7 @@ strong { font-weight: 600; }
 
 /* Venue-specific accents */
 .badge--neurips      { background: #ece2f5; color: #5b2b9a; }
+.badge--eccv         { background: #e4e7f6; color: #313f7a; }
 .badge--iccv         { background: #def0ec; color: #1f5e5e; }
 .badge--cvpr         { background: #fce0e3; color: #9b1c2b; }
 .badge--cvprw        { background: #f5e4e6; color: #8a3340; }
