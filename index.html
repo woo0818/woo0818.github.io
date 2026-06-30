@@ -104,7 +104,7 @@
             <span class="badge badge--eccv">ECCV 2026</span>
             Two papers accepted to ECCV 2026:
             <a href="https://inwoohwang.me/ScaleMoGen/"><em>ScaleMoGen: Autoregressive Next-Scale Prediction for Human Motion Generation</em></a>
-            and <em>ALM</em>.
+            and <a href="https://hleephilip.github.io/ALM/"><em>ALM</em></a>.
           </div>
         </li>
         <li class="news__item">
@@ -245,6 +245,41 @@
       </p>
       -->
 
+      <article class="pub" onmouseout="egoforce_stop()" onmouseover="egoforce_start()">
+        <div class="pub__media">
+          <div class="one">
+            <div class="two" id="egoforce_over">
+              <img src="images/egoforce_teaser.gif" alt="">
+            </div>
+            <img src="images/egoforce_teaser.gif" alt="EgoForce teaser">
+          </div>
+          <script>
+            function egoforce_start() { document.getElementById('egoforce_over').style.opacity = "1"; }
+            function egoforce_stop()  { document.getElementById('egoforce_over').style.opacity = "0"; }
+            egoforce_stop();
+          </script>
+        </div>
+        <div class="pub__body">
+          <a class="pub__title" href="https://inwoohwang.me/EgoForce/">
+            EgoForce: Robust Online Egocentric Motion Reconstruction via Diffusion Forcing
+          </a>
+          <p class="pub__authors">
+            <strong>Inwoo Hwang</strong>,
+            <a href="https://rms0329.github.io/">Donggeun Lim</a>,
+            <a href="https://hojunjang17.github.io/">Hojun Jang</a>,
+            <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
+          </p>
+          <p class="pub__venue"><em>arXiv preprint</em>, 2026</p>
+          <p class="pub__tldr">
+            An online causal framework for full-body motion reconstruction from sparse and noisy egocentric observations using diffusion forcing.
+          </p>
+          <p class="pub__links">
+            <a href="https://arxiv.org/abs/2605.13041">arXiv</a>
+            <a href="https://inwoohwang.me/EgoForce/">project page</a>
+          </p>
+        </div>
+      </article>
+
       <article class="pub" onmouseout="scalemogen_stop()" onmouseover="scalemogen_start()">
         <div class="pub__media">
           <div class="one">
@@ -282,40 +317,41 @@
         </div>
       </article>
 
-      <article class="pub" onmouseout="egoforce_stop()" onmouseover="egoforce_start()">
+      <article class="pub" onmouseout="alm_stop()" onmouseover="alm_start()">
         <div class="pub__media">
           <div class="one">
-            <div class="two" id="egoforce_over">
-              <img src="images/egoforce_teaser.gif" alt="">
+            <div class="two" id="alm_over">
+              <img src="images/ALM.gif" alt="">
             </div>
-            <img src="images/egoforce_teaser.gif" alt="EgoForce teaser">
+            <img src="images/ALM.gif" alt="ALM teaser">
           </div>
           <script>
-            function egoforce_start() { document.getElementById('egoforce_over').style.opacity = "1"; }
-            function egoforce_stop()  { document.getElementById('egoforce_over').style.opacity = "0"; }
-            egoforce_stop();
+            function alm_start() { document.getElementById('alm_over').style.opacity = "1"; }
+            function alm_stop()  { document.getElementById('alm_over').style.opacity = "0"; }
+            alm_stop();
           </script>
         </div>
         <div class="pub__body">
-          <a class="pub__title" href="https://inwoohwang.me/EgoForce/">
-            EgoForce: Robust Online Egocentric Motion Reconstruction via Diffusion Forcing
+          <a class="pub__title" href="https://hleephilip.github.io/ALM/">
+            Accelerated Likelihood Maximization for Diffusion-based Versatile Content Generation
           </a>
           <p class="pub__authors">
+            <a href="https://scholar.google.co.kr/citations?user=6JNXaH0AAAAJ&amp;hl=en">Hyunsoo Lee</a>,
             <strong>Inwoo Hwang</strong>,
-            <a href="https://rms0329.github.io/">Donggeun Lim</a>,
-            <a href="https://hojunjang17.github.io/">Hojun Jang</a>,
             <a href="https://3d.snu.ac.kr/members/">Young Min Kim</a>
           </p>
-          <p class="pub__venue"><em>arXiv preprint</em>, 2026</p>
+          <p class="pub__venue"><em>ECCV</em>, 2026</p>
           <p class="pub__tldr">
-            An online causal framework for full-body motion reconstruction from sparse and noisy egocentric observations using diffusion forcing.
+            A training-free sampling strategy that directly optimizes unobserved regions during diffusion sampling, turning pretrained models into versatile content generators.
           </p>
           <p class="pub__links">
-            <a href="https://arxiv.org/abs/2605.13041">arXiv</a>
-            <a href="https://inwoohwang.me/EgoForce/">project page</a>
+            <a href="https://hleephilip.github.io/ALM/assets/ALM_preprint.pdf">paper</a>
+            <a href="https://hleephilip.github.io/ALM/">project page</a>
           </p>
         </div>
       </article>
+
+
 
       <article class="pub" onmouseout="surveyhi_stop()" onmouseover="surveyhi_start()">
         <div class="pub__media">
