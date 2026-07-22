@@ -427,6 +427,7 @@ strong { font-weight: 600; }
   background: #eef0ff;
   color: #242a58;
 }
+.badge--kccv         { background: #e8f2dc; color: #3f641d; }
 .badge--iccv         { background: #def0ec; color: #1f5e5e; }
 .badge--cvpr         { background: #fce0e3; color: #9b1c2b; }
 .badge--cvprw        { background: #f5e4e6; color: #8a3340; }
